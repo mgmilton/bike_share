@@ -14,4 +14,6 @@ Rails.application.routes.draw do
       get :more
     end
   end
+
+  resources :trips
 end

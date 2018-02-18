@@ -23,21 +23,31 @@ describe "as a visitor" do
     end
 
     it "shows a link to a page with more trips" do
-      trips = create_list(:trip, 30)
+      trips = create_list(:trip, 90)
 
       visit trips_path
 
-      # expect(page).to have_link("View More Trips")
+      expect(page).to have_link("Next 30 Trips")
 
+      click_on "Next 30 Trips"
+
+      expect(page).to have_link("Next 30 Trips")
+      expect(page).to have_link("Previous 30 Trips")
+
+      click_on "Next 30 Trips"
+
+      expect(page).to have_link("Next 30 Trips")
+      expect(page).to have_link("Previous 30 Trips")
+
+      click_on "Previous 30 Trips"
+
+      expect(page).to have_link("Next 30 Trips")
+      expect(page).to have_link("Previous 30 Trips")
+
+      click_on "Previous 30 Trips"
+
+      expect(page).to have_link("Next 30 Trips")
+      expect(page).to_not have_link("Previous 30 Trips")
     end
   end
 end
-
-
-
-#
-# I also see a button to see more pages of trips,
-#
-# When I visit a second page, there should be buttons to move both forward and backward in time.
-#
-# ** All Attributes must be present **
