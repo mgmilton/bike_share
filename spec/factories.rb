@@ -1,5 +1,4 @@
 FactoryBot.define do
-<<<<<<< HEAD
   factory :condition do
     sequence(:date) {|n| "#{n}/#{n}/#{n}"}
     sequence(:max_temperature) {|n| "Max Temp #{n}"}
@@ -16,6 +15,7 @@ FactoryBot.define do
     sequence(:name) {|n| "Name #{n}"}
     sequence(:email) {|n| "Email#{n}@gmail.com"}
     sequence(:password) {|n| "Password#{n}"}
+  end
 
   factory :trip do
     duration 10
@@ -26,7 +26,8 @@ FactoryBot.define do
     sequence(:bike_id) { |n| n }
     subscription_type "Subscriber"
     zip_code 94965
-=======
+  end
+
   factory :station do
     sequence(:name) { |n| "Station #{n}" }
     dock_count 25
@@ -34,6 +35,5 @@ FactoryBot.define do
     installation_date Date.new(2013,8,20)
     latitude 	37.789756
     longitude (-122.39464299999999)
->>>>>>> Add factories
   end
 end
