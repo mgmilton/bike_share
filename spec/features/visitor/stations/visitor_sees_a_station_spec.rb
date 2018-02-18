@@ -6,7 +6,7 @@ context 'As a visitor' do
     scenario "I see the url '/:station-name' with that station's name instead of :id" do
       visit station_path(@station)
 
-      expect(current_path).to eq('/stations/Station-1')
+      expect(current_path).to eq('/stations/station-1')
     end
     scenario 'I see all attributes for that station.' do
       visit station_path(@station)

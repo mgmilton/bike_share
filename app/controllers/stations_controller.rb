@@ -4,7 +4,6 @@ class StationsController < ApplicationController
   end
 
   def show
-    binding.pry
     @station = Station.friendly.find(params[:name])
   end
 end
