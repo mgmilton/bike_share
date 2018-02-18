@@ -2,6 +2,8 @@
 <html>
 
   <body>
-    <h1> Welcome, <%= current_user.name %>! </h1>
+    <h3> Logged in as <%= current_user.name %>! </h3>
+    <ul> Email: <%= current_user.email %></ul>
+    <ul> Account Created: <%= current_user.created_at %></ul>
   </body>
 </html>

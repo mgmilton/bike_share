@@ -10,4 +10,10 @@ FactoryBot.define do
     sequence(:mean_precipitation) {|n| "Mean Precipitation#{n}"}
     sequence(:zip_code) {|n| "Zip Code #{n}"}
   end
+
+  factory :user do
+    sequence(:name) {|n| "Name #{n}"}
+    sequence(:email) {|n| "Email#{n}@gmail.com"}
+    sequence(:password) {|n| "Password#{n}"}
+  end
 end
