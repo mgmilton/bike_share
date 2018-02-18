@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180218202721) do
+ActiveRecord::Schema.define(version: 20180218205605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,5 +66,7 @@ ActiveRecord::Schema.define(version: 20180218202721) do
     t.date "installation_date"
     t.decimal "latitude"
     t.decimal "longitude"
+    t.string "slug"
+    t.index ["slug"], name: "index_stations_on_slug", unique: true
   end
 end
