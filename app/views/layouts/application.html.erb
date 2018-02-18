@@ -6,9 +6,27 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
   </head>
 
   <body>
+    <% if current_user.nil?  %>
+      <%= render "shared/login_navigation" %>
+    <% else %>
+      <%= render "shared/user_navigation" %>
+    <% end %>
+
+    <div id="main-container" class="container">
+      <div class="row">
+        <div class="col-xs-9">
+          <% flash.each do |name, msg| %>
+            <%= content_tag :div, msg, class: name %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
     <%= yield %>
   </body>
 </html>
