@@ -1,0 +1,21 @@
+<h2> 30 Most Recent Trips</h2>
+<% unless params[:offset] %>
+  <%= link_to "Next 30 Trips", "/trips/?offset=30" %> <br>
+<% end %>
+<% if params[:offset] %>
+  <%= link_to "Next 30 Trips", "/trips/?offset=#{(params[:offset]).to_i + 30}" %> <br>
+<% end %>
+<% if params[:offset].to_i != 0 %>
+  <%= link_to "Previous 30 Trips", "/trips/?offset=#{(params[:offset]).to_i - 30}" %> <br>
+<% end %>
+
+<% @trips.each do |trip| %>
+  <%= trip.duration %>
+  <%= trip.start_date %>
+  <%= trip.start_station_id %>
+  <%= trip.end_date %>
+  <%= trip.end_station_id %>
+  <%= trip.bike_id %>
+  <%= trip.subscription_type %>
+  <%= trip.zip_code %> <br>
+<% end %>
