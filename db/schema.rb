@@ -10,11 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180218205605) do
+=======
+ActiveRecord::Schema.define(version: 20180218183637) do
+>>>>>>> add passing trip model, show tests
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
   create_table "conditions", force: :cascade do |t|
     t.date "date"
     t.decimal "max_temperature"
@@ -36,6 +41,8 @@ ActiveRecord::Schema.define(version: 20180218205605) do
     t.integer "role", default: 0
   end
 
+=======
+>>>>>>> add passing trip model, show tests
   create_table "trips", force: :cascade do |t|
     t.integer "duration"
     t.datetime "start_date"
@@ -47,6 +54,7 @@ ActiveRecord::Schema.define(version: 20180218205605) do
     t.integer "zip_code"
   end
 
+<<<<<<< HEAD
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -89,4 +97,6 @@ ActiveRecord::Schema.define(version: 20180218205605) do
     t.datetime "updated_at", null: false
     t.integer "role", default: 0
   end
+=======
+>>>>>>> add passing trip model, show tests
 end
