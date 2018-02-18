@@ -3,7 +3,7 @@ class Station < ApplicationRecord
                           :dock_count,
                           :city,
                           :installation_date,
-                          :lattitude,
+                          :latitude,
                           :longitude
   validates_uniqueness_of :name
 end
