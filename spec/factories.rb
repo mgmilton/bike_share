@@ -1,4 +1,5 @@
 FactoryBot.define do
+<<<<<<< HEAD
   factory :condition do
     sequence(:date) {|n| "#{n}/#{n}/#{n}"}
     sequence(:max_temperature) {|n| "Max Temp #{n}"}
@@ -17,6 +18,8 @@ FactoryBot.define do
     sequence(:password) {|n| "Password#{n}"}
   end
 
+=======
+>>>>>>> add passing trip model, show tests
   factory :trip do
     duration 10
     start_date Time.now
@@ -27,6 +30,7 @@ FactoryBot.define do
     subscription_type "Subscriber"
     zip_code 94965
   end
+<<<<<<< HEAD
 
   factory :station do
     sequence(:name) { |n| "Station #{n}" }
@@ -36,4 +40,6 @@ FactoryBot.define do
     latitude 	37.789756
     longitude (-122.39464299999999)
   end
+=======
+>>>>>>> add passing trip model, show tests
 end
