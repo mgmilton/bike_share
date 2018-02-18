@@ -4,7 +4,6 @@ context 'As a visitor' do
   describe 'When I visit the stations index,' do
     scenario 'I see all stations (name, dock count, city, installation date)' do
       stations = create_list(:station, 3)
-
       visit stations_path
 
       stations.each do |station|

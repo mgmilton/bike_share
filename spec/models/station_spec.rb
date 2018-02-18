@@ -11,6 +11,6 @@ describe Station, type: :model do
   end
 
   describe 'uniqueness' do
-    it { should validated_uniqueness_of :name }
+    it { should validate_uniqueness_of :name }
   end
 end
