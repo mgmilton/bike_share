@@ -6,4 +6,8 @@ class Station < ApplicationRecord
                           :latitude,
                           :longitude
   validates_uniqueness_of :name
+
+  def format_date
+    installation_date.strftime('%B %d, %Y')
+  end
 end
