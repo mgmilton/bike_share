@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   end
 
   resources :trips
+
+  resources :stations, only: [:index, :show]
 end
