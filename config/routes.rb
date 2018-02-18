@@ -9,11 +9,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
 
-  resources :trips do
-    collection do
-      get :more
-    end
-  end
-
   resources :trips
+
+  resources :stations, only: [:index, :show], param: :name
 end

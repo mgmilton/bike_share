@@ -1,4 +1,5 @@
 FactoryBot.define do
+<<<<<<< HEAD
   factory :condition do
     sequence(:date) {|n| "#{n}/#{n}/#{n}"}
     sequence(:max_temperature) {|n| "Max Temp #{n}"}
@@ -25,5 +26,14 @@ FactoryBot.define do
     sequence(:bike_id) { |n| n }
     subscription_type "Subscriber"
     zip_code 94965
+=======
+  factory :station do
+    sequence(:name) { |n| "Station #{n}" }
+    dock_count 25
+    city 'San Francisco'
+    installation_date Date.new(2013,8,20)
+    latitude 	37.789756
+    longitude (-122.39464299999999)
+>>>>>>> Add factories
   end
 end

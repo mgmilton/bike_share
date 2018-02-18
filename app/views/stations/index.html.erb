@@ -1,0 +1,7 @@
+<h1>Stations</h1>
+<% @stations.each do |station| %>
+  <h2><%= station.name %></h2>
+  <p><%= station.city %></p>
+  <p>Dock Count: <%= station.dock_count %></p>
+  <p>Installation Date: <%= station.format_date %></p>
+<% end %>
