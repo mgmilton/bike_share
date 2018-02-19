@@ -10,7 +10,7 @@ stations = CSV.open("data/station.csv", headers: true, header_converters: :symbo
 trips = CSV.open("data/trip.csv", headers: true, header_converters: :symbol)
 
 
-contitions.each do |row|
+conditions.each do |row|
   Condition.create(id:                    row[:id],
                    date:                  Date.strptime(row[:date], '%m/%d/%Y'),
                    max_temperature:       row[:max_temperature_f],
