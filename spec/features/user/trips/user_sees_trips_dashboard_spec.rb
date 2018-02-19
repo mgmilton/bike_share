@@ -47,11 +47,18 @@ describe "as a registered user or admin" do
 
       expect(page).to have_content("Least Ridden Bike: #{@trip3.bike_id} With 1 Ride")
     end
+
+    it "shows user types with number and percentage" do
+      visit trips_dashboard_path
+
+      expect(page).to have_content("2 Subscribers Make Up 66.67% of Total Users")
+      expect(page).to have_content("1 Customers Make Up 33.33% of Total Users ")
+    end
   end
 end
 
 
-# I see the User subscription type breakout with both count and percentage,
+
 
 
 # I see the Station with the most rides as a starting place,
