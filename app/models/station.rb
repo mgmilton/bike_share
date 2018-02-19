@@ -12,4 +12,8 @@ class Station < ApplicationRecord
   def format_date
     installation_date.strftime('%B %d, %Y')
   end
+
+  def self.average_bikes
+    average(:dock_count)
+  end
 end
