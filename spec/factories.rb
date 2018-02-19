@@ -31,7 +31,11 @@ FactoryBot.define do
     zip_code 94965
   end
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> fix seed files
   factory :station do
     sequence(:name) { |n| "Station #{n}" }
     dock_count 25

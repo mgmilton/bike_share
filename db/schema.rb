@@ -11,10 +11,14 @@
 # It's strongly recommended that you check this file into your version control system.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180218205605) do
 =======
 ActiveRecord::Schema.define(version: 20180218183637) do
 >>>>>>> add passing trip model, show tests
+=======
+ActiveRecord::Schema.define(version: 20180218211323) do
+>>>>>>> fix seed files
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +36,7 @@ ActiveRecord::Schema.define(version: 20180218183637) do
     t.integer "zip_code"
   end
 
+<<<<<<< HEAD
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -55,6 +60,8 @@ ActiveRecord::Schema.define(version: 20180218183637) do
   end
 <<<<<<< HEAD
   
+=======
+>>>>>>> fix seed files
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -77,7 +84,31 @@ ActiveRecord::Schema.define(version: 20180218183637) do
     t.string "slug"
     t.index ["slug"], name: "index_stations_on_slug", unique: true
   end
+<<<<<<< HEAD
 =======
 
 >>>>>>> add passing trip model, show tests
+=======
+
+  create_table "trips", force: :cascade do |t|
+    t.integer "duration"
+    t.datetime "start_date"
+    t.integer "start_station_id"
+    t.datetime "end_date"
+    t.integer "end_station_id"
+    t.integer "bike_id"
+    t.string "subscription_type"
+    t.integer "zip_code"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "role", default: 0
+  end
+
+>>>>>>> fix seed files
 end
