@@ -6,4 +6,8 @@ class StationsController < ApplicationController
   def show
     @station = Station.friendly.find(params[:name])
   end
+
+  def dashboard
+    
+  end
 end
