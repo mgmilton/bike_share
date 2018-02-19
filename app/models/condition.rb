@@ -112,10 +112,10 @@ class Condition < ApplicationRecord
     (ride_range.sum)/(ride_range.count)
   end
 
-  def self.rides_by_temp
+  def self.rides_by_temperature
     temperature_range.reduce({}) do |result, (min, max)|
       rides = rides_by_temperature_range(min, max)
-      result["#{min}-#{max}"] = {"min"=> Condition.min(rides), "max" => Condition.max(rides), "average" => Condition.average(rides)}
+      result["#{min} - #{max}"] = {"Lowest"=> Condition.min(rides), "Highest" => Condition.max(rides), "Average" => Condition.average(rides)}
       result
     end
   end
@@ -123,7 +123,7 @@ class Condition < ApplicationRecord
   def self.rides_by_precipitation
     precipitation_range.reduce({}) do |result, (min, max)|
       rides = rides_by_precipitation_range(min, max)
-      result["#{min}-#{max}"] = {"min"=> Condition.min(rides), "max" => Condition.max(rides), "average" => Condition.average(rides)}
+      result["#{min} - #{max}"] = {"Lowest"=> Condition.min(rides), "Highest" => Condition.max(rides), "Average" => Condition.average(rides)}
       result
     end
   end
@@ -131,7 +131,7 @@ class Condition < ApplicationRecord
   def self.rides_by_wind
     wind_range.reduce({}) do |result, (min, max)|
       rides = rides_by_wind_range(min, max)
-      result["#{min}-#{max}"] = {"min"=> Condition.min(rides), "max" => Condition.max(rides), "average" => Condition.average(rides)}
+      result["#{min} - #{max}"] = {"Lowest"=> Condition.min(rides), "Highest" => Condition.max(rides), "Average" => Condition.average(rides)}
       result
     end
   end
@@ -139,7 +139,7 @@ class Condition < ApplicationRecord
   def self.rides_by_visibility
     visibility_range.reduce({}) do |result, (min, max)|
       rides = rides_by_visibility_range(min, max)
-      result["#{min}-#{max}"] = {"min"=> Condition.min(rides), "max" => Condition.max(rides), "average" => Condition.average(rides)}
+      result["#{min} - #{max}"] = {"Lowest"=> Condition.min(rides), "Highest" => Condition.max(rides), "Average" => Condition.average(rides)}
       result
     end
   end
