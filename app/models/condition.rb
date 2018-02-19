@@ -1,8 +1,5 @@
 class Condition < ApplicationRecord
   has_many :trips
-  # validates_presence_of :date, :max_temperature, :mean_temperature, :min_temperature, :mean_humidity, :zip_code
-<<<<<<< HEAD
-  has_many :trips
   before_validation :check_zip_code
 
   def check_zip_code
@@ -10,8 +7,7 @@ class Condition < ApplicationRecord
       self.zip_code = zip_codes["San Francisco"]
     end
   end
-=======
-
+  
   def self.max_temperature
     maximum(:max_temperature)
   end
@@ -53,6 +49,4 @@ class Condition < ApplicationRecord
       [(floor + num * increment).round(1), (floor + (num+1) * increment).round(1)]
     end
   end
-
->>>>>>> adds databse relations
 end

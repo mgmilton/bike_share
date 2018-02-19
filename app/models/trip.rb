@@ -24,7 +24,11 @@ class Trip < ApplicationRecord
 
 =======
   belongs_to :conditions
+<<<<<<< HEAD
 >>>>>>> adds databse relations
+=======
+  
+>>>>>>> adds database relations
   def self.average_duration
     average(:duration)
   end
