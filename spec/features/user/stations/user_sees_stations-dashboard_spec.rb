@@ -8,18 +8,19 @@ context 'As a registered user and admin' do
       station_1 = create(:station, dock_count: 20)
       station_2 = create(:station, dock_count: 25)
       station_3 = create(:station, dock_count: 10)
-      @stations = [station_1, station_2, station_3]
+      station_4 = create(:station, dock_count: 10)
+      @stations = [station_1, station_2, station_3, station_4]
     end
     scenario 'I see the Total count of stations' do
       visit '/stations-dashboard'
 
-      expect(page).to have_content("Stations: #{@stations.count}")
+      expect(page).to have_content("#{@stations.count} Total Stations")
     end
 
     scenario 'I see the Average bikes available per station (based on docks)' do
       visit '/stations-dashboard'
 
-      expect(page).to have_content('Average Bikes Available Per Station: ')
+      expect(page).to have_content('Average Bikes Available Per Station: 15')
     end
   end
 end
