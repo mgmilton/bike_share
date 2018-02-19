@@ -17,6 +17,13 @@ FactoryBot.define do
     sequence(:password) {|n| "Password#{n}"}
   end
 
+  factory :admin, class: User do
+    name "Admin"
+    email "admin@gmail.com"
+    password "Admin"
+    role 1
+  end
+
   factory :trip do
     duration 10
     start_date Time.now

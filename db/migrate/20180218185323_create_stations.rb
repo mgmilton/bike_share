@@ -5,8 +5,8 @@ class CreateStations < ActiveRecord::Migration[5.1]
       t.integer :dock_count
       t.string :city
       t.date :installation_date
-      t.decimal :latitude
-      t.decimal :longitude
+      t.decimal :latitude, limit: 8
+      t.decimal :longitude, limit: 8
     end
   end
 end

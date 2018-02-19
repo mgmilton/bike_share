@@ -11,12 +11,12 @@
 <% end %>
 
 <% @trips.each do |trip| %>
-  <%= trip.duration %>
-  <%= trip.start_date %>
-  <%= trip.start_station_id %>
-  <%= trip.end_date %>
-  <%= trip.end_station_id %>
-  <%= trip.bike_id %>
-  <%= trip.subscription_type %>
-  <%= trip.zip_code %> <br>
+  Trip Duration: <%= trip.duration %>
+  Trip Start Date: <%= trip.start_date %>
+  Trip Starting Station: <%= trip.start_station_id %>
+  Trip End Date: <%= trip.end_date %>
+  Trip Ending Station: <%= trip.end_station_id %>
+  Bike Used: <%= trip.bike_id %>
+  Subcriber Type: <%= trip.subscription_type %>
+  Trip Zip Code: <%= trip.zip_code %> <br>
 <% end %>

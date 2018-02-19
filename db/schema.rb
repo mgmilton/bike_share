@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180218205605) do
+ActiveRecord::Schema.define(version: 20180219042629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,27 +24,7 @@ ActiveRecord::Schema.define(version: 20180218205605) do
     t.decimal "mean_visibility"
     t.decimal "mean_wind_speed"
     t.decimal "mean_precipitation"
-    t.integer "zip_code"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "role", default: 0
-  end
-
-  create_table "trips", force: :cascade do |t|
-    t.integer "duration"
-    t.datetime "start_date"
-    t.integer "start_station_id"
-    t.datetime "end_date"
-    t.integer "end_station_id"
-    t.integer "bike_id"
-    t.string "subscription_type"
-    t.integer "zip_code"
+    t.string "zip_code"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -64,9 +44,9 @@ ActiveRecord::Schema.define(version: 20180218205605) do
     t.integer "dock_count"
     t.string "city"
     t.date "installation_date"
-    t.decimal "latitude"
-    t.decimal "longitude"
     t.string "slug"
+    t.decimal "latitude", precision: 15, scale: 10
+    t.decimal "longitude", precision: 15, scale: 10
     t.index ["slug"], name: "index_stations_on_slug", unique: true
   end
 
@@ -78,7 +58,7 @@ ActiveRecord::Schema.define(version: 20180218205605) do
     t.integer "end_station_id"
     t.integer "bike_id"
     t.string "subscription_type"
-    t.integer "zip_code"
+    t.string "zip_code"
   end
 
   create_table "users", force: :cascade do |t|
@@ -89,4 +69,5 @@ ActiveRecord::Schema.define(version: 20180218205605) do
     t.datetime "updated_at", null: false
     t.integer "role", default: 0
   end
+
 end
