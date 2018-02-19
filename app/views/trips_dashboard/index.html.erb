@@ -2,7 +2,10 @@ Average Trip Duration: <%= @trips.average_duration %> <br>
 Longest Trip Duration: <%= @trips.longest_duration %> <br>
 Shortest Trip Duration: <%= @trips.shortest_duration %> <br>
 Most Ridden Bike: <%= @trips.most_ridden.keys[0] %> With <%= @trips.most_ridden.values[0] %> Rides <br>
-Least Ridden Bike: <%= @trips.least_ridden.keys[0] %> With <%= @trips.least_ridden.values[0] %> Rides <br>
+Least Ridden Bike: <%= @trips.least_ridden.keys[0] %> With <%= @trips.least_ridden.values[0] %> Ride <br>
+User Type By Percentage: <br>
+<%= @trips.user_types.values[1] %> <%= @trips.user_types.keys[1] %> Make Up <%= (((@trips.user_types.values[1]).to_f / (@trips.count).to_f) * 100).round(2) %>% of Total Users <br>
+<%= @trips.user_types.values[0] %> <%= @trips.user_types.keys[0] %> Make Up <%= (((@trips.user_types.values[0]).to_f / (@trips.count).to_f) * 100).round(2) %>% of Total Users <br>
 
 
 

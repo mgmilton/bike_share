@@ -45,17 +45,16 @@ describe "as a registered user or admin" do
     it "shows least ridden bike with number of rides" do
       visit trips_dashboard_path
 
-      expect(page).to have_content("Least Ridden Bike: #{@trip3.bike_id} With 1 Rides")
+      expect(page).to have_content("Least Ridden Bike: #{@trip3.bike_id} With 1 Ride")
     end
   end
 end
 
 
-# I see the Least ridden bike with total number of rides for that bike,
+# I see the User subscription type breakout with both count and percentage,
 
 
 # I see the Station with the most rides as a starting place,
 # I see the Station with the most rides as an ending place,
-# I see the User subscription type breakout with both count and percentage,
 # I see the Single date with the highest number of trips with a count of those trips,
 # I see the Single date with the lowest number of trips with a count of those trips.
