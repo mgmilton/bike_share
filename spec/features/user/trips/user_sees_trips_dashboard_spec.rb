@@ -27,24 +27,35 @@ describe "as a registered user or admin" do
 
       expect(page).to have_content("Shortest Trip Duration: 3")
     end
+
+    it "shows monthly breakdown" do
+      visit trips_dashboard_path
+      # I see Month by Month breakdown of number of rides with subtotals for each year,
+      # needs to be tweaked
+      expect(page).to have_content("Total Rides By Month")
+      expect(page).to have_content("3")
+    end
+
+    it "shows most ridden bike with number of rides" do
+      visit trips_dashboard_path
+
+      expect(page).to have_content("Most Ridden Bike: #{@trip1.bike_id} With 2 Rides")
+    end
+
+    it "shows least ridden bike with number of rides" do
+      visit trips_dashboard_path
+
+      expect(page).to have_content("Least Ridden Bike: #{@trip3.bike_id} With 1 Rides")
+    end
   end
 end
 
 
+# I see the Least ridden bike with total number of rides for that bike,
 
 
-
-
-
-
-
-# I see the Longest ride,
-# I see the Shortest ride,
 # I see the Station with the most rides as a starting place,
 # I see the Station with the most rides as an ending place,
-# I see Month by Month breakdown of number of rides with subtotals for each year,
-# I see the Most ridden bike with total number of rides for that bike,
-# I see the Least ridden bike with total number of rides for that bike,
 # I see the User subscription type breakout with both count and percentage,
 # I see the Single date with the highest number of trips with a count of those trips,
 # I see the Single date with the lowest number of trips with a count of those trips.

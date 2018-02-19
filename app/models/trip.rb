@@ -32,4 +32,16 @@ class Trip < ApplicationRecord
   def self.shortest_duration
     minimum(:duration)
   end
+
+  def self.monthly
+    group("DATE_TRUNC('month', start_date)").count
+  end
+
+  def self.most_ridden
+    group(:bike_id).order('count_id DESC').limit(1).count(:id)
+  end
+
+  def self.least_ridden
+    group(:bike_id).order('count_id').limit(1).count(:id)
+  end
 end

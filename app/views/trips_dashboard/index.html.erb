@@ -1,3 +1,35 @@
 Average Trip Duration: <%= @trips.average_duration %> <br>
 Longest Trip Duration: <%= @trips.longest_duration %> <br>
 Shortest Trip Duration: <%= @trips.shortest_duration %> <br>
+Most Ridden Bike: <%= @trips.most_ridden.keys[0] %> With <%= @trips.most_ridden.values[0] %> Rides <br>
+Least Ridden Bike: <%= @trips.least_ridden.keys[0] %> With <%= @trips.least_ridden.values[0] %> Rides <br>
+
+
+
+
+Total Rides By Month <br>
+January: <br>
+2015: <%= @trips.monthly.values[5] %> <br>
+February: <br>
+2015: <%= @trips.monthly.values[6] %> <br>
+March: <br>
+2014: <%= @trips.monthly.values[0] %> <br>
+2014: <%= @trips.monthly.values[7] %> <br>
+April: <br>
+2015: <%= @trips.monthly.values[8] %> <br>
+May: <br>
+2015: <%= @trips.monthly.values[9] %> <br>
+June: <br>
+2015: <%= @trips.monthly.values[10] %> <br>
+July: <br>
+2015: <%= @trips.monthly.values[11] %> <br>
+August: <br>
+2015: <%= @trips.monthly.values[12] %> <br>
+September: <br>
+2014: <%= @trips.monthly.values[1] %> <br>
+October: <br>
+2014: <%= @trips.monthly.values[2] %> <br>
+Novemer: <br>
+2014: <%= @trips.monthly.values[3] %> <br>
+December: <br>
+2014: <%= @trips.monthly.values[4] %> <br>
