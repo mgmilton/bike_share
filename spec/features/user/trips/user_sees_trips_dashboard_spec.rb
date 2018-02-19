@@ -45,7 +45,7 @@ describe "as a registered user or admin" do
     it "shows least ridden bike with number of rides" do
       visit trips_dashboard_path
 
-      expect(page).to have_content("Least Ridden Bike: #{@trip3.bike_id} With 1 Ride")
+      expect(page).to have_content("Least Ridden Bike: #{@trip3.bike_id} With 1 Rides")
     end
 
     it "shows user types with number and percentage" do
@@ -54,14 +54,18 @@ describe "as a registered user or admin" do
       expect(page).to have_content("2 Subscribers Make Up 66.67% of Total Users")
       expect(page).to have_content("1 Customers Make Up 33.33% of Total Users ")
     end
+
+    it "shows the highest trip date with number of trips" do
+      visit trips_dashboard_path
+
+      expect(page).to have_content
+    end
   end
 end
 
 
-
-
+# I see the Single date with the highest number of trips with a count of those trips,
+# I see the Single date with the lowest number of trips with a count of those trips.
 
 # I see the Station with the most rides as a starting place,
 # I see the Station with the most rides as an ending place,
-# I see the Single date with the highest number of trips with a count of those trips,
-# I see the Single date with the lowest number of trips with a count of those trips.

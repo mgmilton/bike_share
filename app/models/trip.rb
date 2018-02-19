@@ -38,14 +38,14 @@ class Trip < ApplicationRecord
   end
 
   def self.most_ridden
-    group(:bike_id).order('count_id DESC').limit(1).count(:id)
+    group(:bike_id).order('bike_id DESC').limit(1).count(:id)
   end
 
   def self.least_ridden
-    group(:bike_id).order('count_id').limit(1).count(:id)
+    group(:bike_id).order('bike_id').limit(1).count(:id)
   end
 
   def self.user_types
-    group(:subscription_type).order('count_id').limit(100).count(:id)
+    group(:subscription_type).order('subscription_type DESC').count(:id)
   end
 end

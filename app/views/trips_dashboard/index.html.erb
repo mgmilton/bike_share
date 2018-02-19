@@ -1,38 +1,38 @@
-Average Trip Duration: <%= @trips.average_duration %> <br>
-Longest Trip Duration: <%= @trips.longest_duration %> <br>
-Shortest Trip Duration: <%= @trips.shortest_duration %> <br>
-Most Ridden Bike: <%= @trips.most_ridden.keys[0] %> With <%= @trips.most_ridden.values[0] %> Rides <br>
-Least Ridden Bike: <%= @trips.least_ridden.keys[0] %> With <%= @trips.least_ridden.values[0] %> Ride <br>
-User Type By Percentage: <br>
-<%= @trips.user_types.values[1] %> <%= @trips.user_types.keys[1] %>s Make Up <%= (((@trips.user_types.values[1]).to_f / (@trips.count).to_f) * 100).round(2) %>% of Total Users <br>
+<strong>Average Trip Duration:</strong> <%= @trips.average_duration %> <br>
+<strong>Longest Trip Duration:</strong> <%= @trips.longest_duration %> <br>
+<strong>Shortest Trip Duration:</strong> <%= @trips.shortest_duration %> <br>
+<strong>Most Ridden Bike:</strong> <%= @trips.most_ridden.keys[0] %> With <%= @trips.most_ridden.values[0] %> Rides <br>
+<strong>Least Ridden Bike:</strong> <%= @trips.least_ridden.keys[0] %> With <%= @trips.least_ridden.values[0] %> Rides <br>
+<strong>User Type By Percentage:</strong> <br>
 <%= @trips.user_types.values[0] %> <%= @trips.user_types.keys[0] %>s Make Up <%= (((@trips.user_types.values[0]).to_f / (@trips.count).to_f) * 100).round(2) %>% of Total Users <br>
+<%= @trips.user_types.values[1] %> <%= @trips.user_types.keys[1] %>s Make Up <%= (((@trips.user_types.values[1]).to_f / (@trips.count).to_f) * 100).round(2) %>% of Total Users <br>
 
 
 
 
-Total Rides By Month <br>
-January: <br>
+<strong>Total Rides By Month</strong> <br>
+<strong>January:</strong> <br>
 2015: <%= @trips.monthly.values[5] %> <br>
-February: <br>
+<strong>February:</strong> <br>
 2015: <%= @trips.monthly.values[6] %> <br>
-March: <br>
+<strong>March:</strong> <br>
 2014: <%= @trips.monthly.values[0] %> <br>
 2015: <%= @trips.monthly.values[7] %> <br>
-April: <br>
+<strong>April:</strong> <br>
 2015: <%= @trips.monthly.values[8] %> <br>
-May: <br>
+<strong>May:</strong> <br>
 2015: <%= @trips.monthly.values[9] %> <br>
-June: <br>
+<strong>June:</strong> <br>
 2015: <%= @trips.monthly.values[10] %> <br>
-July: <br>
+<strong>July:</strong> <br>
 2015: <%= @trips.monthly.values[11] %> <br>
-August: <br>
+<strong>August:</strong> <br>
 2015: <%= @trips.monthly.values[12] %> <br>
-September: <br>
+<strong>September:</strong> <br>
 2014: <%= @trips.monthly.values[1] %> <br>
-October: <br>
+<strong>October:</strong> <br>
 2014: <%= @trips.monthly.values[2] %> <br>
-Novemer: <br>
+<strong>Novemer:</strong> <br>
 2014: <%= @trips.monthly.values[3] %> <br>
-December: <br>
+<strong>December:</strong> <br>
 2014: <%= @trips.monthly.values[4] %> <br>
