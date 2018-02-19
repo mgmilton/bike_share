@@ -61,7 +61,7 @@ class Condition < ApplicationRecord
     set_range(min, max, 4)
   end
 
-  def self.rides_by_temp_range(floor, ceiling)
+  def self.rides_by_temperature_range(floor, ceiling)
     where("max_temperature > #{floor} AND max_temperature <= #{ceiling}")
     .joins(:trips)
     .group(:date)
@@ -97,4 +97,50 @@ class Condition < ApplicationRecord
     .values
   end
 
+  def self.min(ride_range)
+    return 0 if ride_range.empty?
+    ride_range.last
+  end
+
+  def self.max(ride_range)
+    return 0 if ride_range.empty?
+    ride_range.first
+  end
+
+  def self.average(ride_range)
+    return 0 if ride_range.empty?
+    (ride_range.sum)/(ride_range.count)
+  end
+
+  def self.rides_by_temp
+    temperature_range.reduce({}) do |result, (min, max)|
+      rides = rides_by_temperature_range(min, max)
+      result["#{min}-#{max}"] = {"min"=> Condition.min(rides), "max" => Condition.max(rides), "average" => Condition.average(rides)}
+      result
+    end
+  end
+
+  def self.rides_by_precipitation
+    precipitation_range.reduce({}) do |result, (min, max)|
+      rides = rides_by_precipitation_range(min, max)
+      result["#{min}-#{max}"] = {"min"=> Condition.min(rides), "max" => Condition.max(rides), "average" => Condition.average(rides)}
+      result
+    end
+  end
+
+  def self.rides_by_wind
+    wind_range.reduce({}) do |result, (min, max)|
+      rides = rides_by_wind_range(min, max)
+      result["#{min}-#{max}"] = {"min"=> Condition.min(rides), "max" => Condition.max(rides), "average" => Condition.average(rides)}
+      result
+    end
+  end
+
+  def self.rides_by_visibility
+    visibility_range.reduce({}) do |result, (min, max)|
+      rides = rides_by_visibility_range(min, max)
+      result["#{min}-#{max}"] = {"min"=> Condition.min(rides), "max" => Condition.max(rides), "average" => Condition.average(rides)}
+      result
+    end
+  end
 end
