@@ -7,7 +7,7 @@ class Condition < ApplicationRecord
       self.zip_code = zip_codes["San Francisco"]
     end
   end
-  
+
   def self.max_temperature
     maximum(:max_temperature)
   end
@@ -26,19 +26,6 @@ class Condition < ApplicationRecord
 
   def self.min_wind_speed
     minimum(:mean_wind_speed)
-  end
-
-  def self.max_wind_speed
-    maximum(:mean_wind_speed)
-  end
-
-  def self.max_visibility
-    maximum(:mean_visibility)
-  end
-
-  def self.min_visibility
-    minimum(:mean_visibility)
-  end
 
   def self.set_divisions(floor,ceiling, increment)
     ((ceiling-floor)/increment).ceil
@@ -48,5 +35,29 @@ class Condition < ApplicationRecord
     (0..set_divisions(floor, ceiling, increment)).map do |num|
       [(floor + num * increment).round(1), (floor + (num+1) * increment).round(1)]
     end
+  end
+
+  def self.temp_range
+    min = minimum(:max_temperature)
+    max = maximum(:max_temperature)
+    set_range(min, max, 10)
+  end
+
+  def self.precipitation_range
+    min = minimum(:mean_precipitation)
+    max = maximum(:mean_precipitation)
+    set_range(min, max, 0.5)
+  end
+
+  def self.wind_range
+    min = minimum(:mean_wind_speed)
+    max = maximum(:mean_wind_speed)
+    set_range(min, max, 4)
+  end
+
+  def self.visibility_range
+    min = minimum(:mean_visibility)
+    max = maximum(:mean_visibility)
+    set_range(min, max, 4)
   end
 end
