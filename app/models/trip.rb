@@ -5,6 +5,6 @@ class Trip < ApplicationRecord
                         :end_date,
                         :end_station_id,
                         :bike_id,
-                        :subscription_type,
-                        :zip_code
+                        :subscription_type
+                        # :zip_code
 end
