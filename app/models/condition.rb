@@ -60,8 +60,6 @@ class Condition < ApplicationRecord
     max = maximum(:mean_visibility)
     set_range(min, max, 4)
   end
-<<<<<<< HEAD
-=======
 
   def self.rides_by_temp_range(floor, ceiling)
     where("max_temperature > #{floor} AND max_temperature <= #{ceiling}")
@@ -98,5 +96,5 @@ class Condition < ApplicationRecord
     .count
     .values
   end
->>>>>>> adds rides by ranges methods in condtion controller
+
 end

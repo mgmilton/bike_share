@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
   get "/trips-dashboard", to: "trips_dashboard#index"
+  get "/weather-dashboard", to: "weather_dashboard#index"
 
   resources :trips, only: [:index, :show]
 

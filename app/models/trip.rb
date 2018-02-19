@@ -7,7 +7,6 @@ class Trip < ApplicationRecord
                         :bike_id,
                         :subscription_type
                         # :zip_code
-<<<<<<< HEAD
   belongs_to :condition, optional: true
   belongs_to :station
   before_validation :check_zip_code, :set_condition
@@ -21,14 +20,7 @@ class Trip < ApplicationRecord
       self.zip_code = self.station.zip_code
     end
   end
-
-=======
-  belongs_to :conditions
-<<<<<<< HEAD
->>>>>>> adds databse relations
-=======
   
->>>>>>> adds database relations
   def self.average_duration
     average(:duration)
   end
