@@ -8,6 +8,7 @@ class Station < ApplicationRecord
                           :latitude,
                           :longitude
   validates_uniqueness_of :name
+  has_many :trips
 
   def format_date
     installation_date.strftime('%B %d, %Y')

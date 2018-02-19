@@ -9,6 +9,9 @@ conditions = CSV.open("data/weather.csv", headers: true, header_converters: :sym
 stations = CSV.open("data/station.csv", headers: true, header_converters: :symbol)
 trips = CSV.open("data/trip.csv", headers: true, header_converters: :symbol)
 
+def format_date_time(datetime)
+  DateTime.strptime(datetime, '%m/%d/%y %H:%M')
+end
 
 conditions.each do |row|
   Condition.create(id:                    row[:id],
@@ -17,14 +20,14 @@ conditions.each do |row|
                    mean_temperature:      row[:mean_temperature_f],
                    min_temperature:       row[:min_temperature_f],
                    mean_humidity:         row[:mean_humidity],
-                   mean_visibility:       row[:mean_visibility_miles],
-                   mean_wind_speed:       row[:mean_wind_speed_mph],
+                   mean_visibility:       row[:mean_visibility],
+                   mean_wind_speed:       row[:mean_wind_speed],
                    mean_precipitation:    row[:mean_precipitation],
                    zip_code:              row[:zip_code].to_s.rjust(5,"0")[0..4]
                  )
 end
 
-stations.each do |row|
+CSV.foreach("data/station.csv", headers: true, header_converters: :symbol) do |row|
   Station.create!(id:                     row[:id],
                  name:                    row[:name],
                  latitude:                row[:lat],
@@ -35,7 +38,8 @@ stations.each do |row|
                 )
 end
 
-trips.each do |row|
+CSV.foreach("data/trip.csv", headers: true, header_converters: :symbol) do |row|
+  begin
   Trip.create!(id:                         row[:id],
               duration:                    row[:duration],
               start_date:                  DateTime.strptime(row[:start_date], '%m/%d/%y %H:%M'),
@@ -46,4 +50,7 @@ trips.each do |row|
               subscription_type:           row[:subscription_type],
               zip_code:                    row[:zip_code].to_s.rjust(5,"0")[0..4]
             )
+  rescue
+    binding.pry
+  end
 end

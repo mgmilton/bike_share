@@ -20,7 +20,7 @@ context 'As a registered user and admin' do
     scenario 'I see the Average bikes available per station (based on docks)' do
       visit '/stations-dashboard'
 
-      expect(page).to have_content('Average Bikes Available Per Station: 15')
+      expect(page).to have_content('Average Bikes Available Per Station: 16.25')
     end
   end
 end

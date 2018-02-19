@@ -8,6 +8,6 @@ class StationsController < ApplicationController
   end
 
   def dashboard
-    
+    @stations = Station.all
   end
 end
