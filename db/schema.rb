@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20180218205605) do
     t.string "subscription_type"
     t.integer "zip_code"
   end
-  
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -68,5 +68,25 @@ ActiveRecord::Schema.define(version: 20180218205605) do
     t.decimal "longitude"
     t.string "slug"
     t.index ["slug"], name: "index_stations_on_slug", unique: true
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.integer "duration"
+    t.datetime "start_date"
+    t.integer "start_station_id"
+    t.datetime "end_date"
+    t.integer "end_station_id"
+    t.integer "bike_id"
+    t.string "subscription_type"
+    t.integer "zip_code"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "role", default: 0
   end
 end

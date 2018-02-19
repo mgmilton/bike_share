@@ -2,7 +2,6 @@ class TripsController < ApplicationController
 
   def index
     @trips = Trip.order(:end_date).reverse_order.offset(params[:offset]).first(30)
-    
   end
 
   def show
