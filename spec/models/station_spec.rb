@@ -24,4 +24,16 @@ describe Station, type: :model do
       end
     end
   end
+
+  context 'class methods' do
+    describe '.average_bikes' do
+      it 'returns the average bikes for all stations' do
+        create(:station, dock_count: 20)
+        create(:station, dock_count: 10)
+        create(:station, dock_count: 30)
+
+        expect(Station.average_bikes).to eq(20)
+      end
+    end
+  end
 end
