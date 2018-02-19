@@ -23,7 +23,7 @@ describe "as a visitor" do
     end
 
     it "shows a link to a page with more trips" do
-      trips = create_list(:trip, 90)
+      create_list(:trip, 90)
 
       visit trips_path
 
