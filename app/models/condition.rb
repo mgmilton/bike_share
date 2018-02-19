@@ -37,7 +37,7 @@ class Condition < ApplicationRecord
     end
   end
 
-  def self.temp_range
+  def self.temperature_range
     min = minimum(:max_temperature)
     max = maximum(:max_temperature)
     set_range(min, max, 10)
@@ -60,4 +60,43 @@ class Condition < ApplicationRecord
     max = maximum(:mean_visibility)
     set_range(min, max, 4)
   end
+<<<<<<< HEAD
+=======
+
+  def self.rides_by_temp_range(floor, ceiling)
+    where("max_temperature > #{floor} AND max_temperature <= #{ceiling}")
+    .joins(:trips)
+    .group(:date)
+    .order("count_all DESC")
+    .count
+    .values
+  end
+
+  def self.rides_by_precipitation_range(floor, ceiling)
+    where("mean_precipitation > #{floor} AND mean_precipitation <= #{ceiling}")
+    .joins(:trips)
+    .group(:date)
+    .order("count_all DESC")
+    .count
+    .values
+  end
+
+  def self.rides_by_wind_range(floor, ceiling)
+    where("mean_wind_speed > #{floor} AND mean_wind_speed <= #{ceiling}")
+    .joins(:trips)
+    .group(:date)
+    .order("count_all DESC")
+    .count
+    .values
+  end
+
+  def self.rides_by_visibility_range(floor, ceiling)
+    where("mean_visibility > #{floor} AND mean_visibility <= #{ceiling}")
+    .joins(:trips)
+    .group(:date)
+    .order("count_all DESC")
+    .count
+    .values
+  end
+>>>>>>> adds rides by ranges methods in condtion controller
 end
