@@ -65,10 +65,39 @@ class Trip < ApplicationRecord
     (trips_by_day.values).min
   end
 
+  def self.weather_for_busiest_day
+    Condition.find_by(date: busiest_day)
+  end
+  # <!-- <strong>Weather For Busiest Day:</strong> High Temperature: <%= @trips.weather_for_busiest_day.max_temperature %> Lowest Temperature: <%= @trips.weather_for_busiest_day.min_temperature %> Precipitation: <%= @trips.weather_for_busiest_day.mean_precipitation %><br> -->
+
+
+  def self.weather_for_slowest_day
+    Condition.find_by(date: slowest_day)
+  end
+  # <!-- <strong>Weather For Slowest Day:</strong> High Temperature: <%= @trips.weather_for_slowest_day.max_temperature %> Lowest Temperature: <%= @trips.weather_for_slowest_day.min_temperature %> Precipitation: <%= @trips.weather_for_slowest_day.mean_precipitation %><br> -->
+
+  def self.station_with_most_starts_name
+    Station.find_by(id: station_with_most_starts).name
+  end
+
+  def self.station_with_most_ends_name
+    Station.find_by(id: station_with_most_ends).name
+  end
+
+
+
   private
 
     def self.trips_by_day
       group("DATE(start_date)").count
+    end
+
+    def self.station_with_most_starts
+      group(:start_station_id).order('count(id) DESC').count.first.first
+    end
+
+    def self.station_with_most_ends
+      group(:end_station_id).order('count(id) DESC').count.first.first
     end
 
 end

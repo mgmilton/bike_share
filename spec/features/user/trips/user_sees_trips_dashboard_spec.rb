@@ -4,9 +4,13 @@ describe "as a registered user or admin" do
   before :each do
     @admin = create(:admin)
     @user = create(:user)
-    @trip1 = create(:trip, duration: 10)
-    @trip2 = create(:trip, duration: 20, zip_code: 95113)
-    @trip3 = create(:trip, duration: 3, bike_id: 10, subscription_type: "Customer", zip_code: 94041)
+    @station1 = create(:station, name: "station 1")
+    @station2 = create(:station, name: "station 2")
+    # @condition_1 = create(:condition, date: Date.strptime("03/21/2017", "%m/%e/%y"))
+    # @condition_2 = create(:condition, date: Date.strptime("12/25/2017", "%m/%e/%y"))
+    @trip1 = create(:trip, duration: 10, start_station_id: @station1.id, end_station_id: @station1.id)#, condition: @condition2)
+    @trip2 = create(:trip, duration: 20, zip_code: 95113, bike_id: @trip1.bike_id, start_station_id: @station1.id, end_station_id: @station2.id)#, condition: @condition1)
+    @trip3 = create(:trip, duration: 3, bike_id: 10, subscription_type: "Customer", zip_code: 94041, start_station_id: @station1.id, end_station_id: @station2.id)#, condition: @condition1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end
   describe "when i visit the trips_dashboard_path" do
@@ -61,10 +65,36 @@ describe "as a registered user or admin" do
       expect(page).to have_content("Busiest Day: 3 rides on 2018-02-20")
       expect(page).to have_content("Slowest Day: 3 rides on 2018-02-20")
     end
+
+    it "shows the station with the most starting rides" do
+      visit trips_dashboard_path
+
+      expect(page).to have_content("Station With Most Starting Rides: #{@station1.name}")
+    end
+
+    it "shows the station with the most ending rides" do
+      visit trips_dashboard_path
+
+      expect(page).to have_content("Station With Most Ending Rides: #{@station2.name}")
+    end
+
+    # it "shows the weather for the busiest day" do
+    #   visit trips_dashboard_path
+    #
+    #
+    # end
+    #
+    # it "shows the weather for the slowest day" do
+    #   visit trips_dashboard_path
+    #
+    #
+    # end
   end
 end
 
 
+# I see the Weather on the day with the highest rides.
+# I see the Weather on the day with the lowest rides.
 
 # I see the Station with the most rides as a starting place,
 # I see the Station with the most rides as an ending place,
