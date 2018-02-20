@@ -1,14 +1,22 @@
+<h1>Trips Dashboard</h1>
+<br>
+
 <strong>Average Trip Duration:</strong> <%= (@trips.average_duration / 60).round(2) %> Hours <br>
 <strong>Longest Trip Duration:</strong> <%= @trips.longest_duration / 60 %> Hours <br>
 <strong>Shortest Trip Duration:</strong> <%= @trips.shortest_duration / 60 %> Hours <br>
+<br>
 <strong>Most Ridden Bike:</strong> <%= @trips.most_ridden.keys[0] %> with <%= @trips.most_ridden.values[0] %> rides <br>
 <strong>Least Ridden Bike:</strong> <%= @trips.least_ridden.keys[0] %> with <%= @trips.least_ridden.values[0] %> rides <br>
+<br>
 <strong>User Type By Percentage:</strong> <br>
-<%= @trips.user_types.values[0] %> <%= @trips.user_types.keys[0] %>s make up <%= (((@trips.user_types.values[0]).to_f / (@trips.count).to_f) * 100).round(2) %>% of Total Users <br>
-<%= @trips.user_types.values[1] %> <%= @trips.user_types.keys[1] %>s make up <%= (((@trips.user_types.values[1]).to_f / (@trips.count).to_f) * 100).round(2) %>% of Total Users <br>
+<ul>
+<li>  <%= @trips.user_types.values[0] %> <%= @trips.user_types.keys[0] %>s make up <%= (((@trips.user_types.values[0]).to_f / (@trips.count).to_f) * 100).round(2) %>% of Total Users <br></li>
+<li><%= @trips.user_types.values[1] %> <%= @trips.user_types.keys[1] %>s make up <%= (((@trips.user_types.values[1]).to_f / (@trips.count).to_f) * 100).round(2) %>% of Total Users <br></li>
+</ul>
+<br>
 <strong>Busiest Day:</strong> <%= @trips.highest_number_of_rides %> rides on <%= @trips.busiest_day %> <br>
 <strong>Slowest Day:</strong> <%= @trips.least_number_of_rides %> rides on <%= @trips.slowest_day %> <br>
-
+<br>
 
 <strong>Total Rides By Month</strong> <br>
 <strong>January:</strong> <br>
