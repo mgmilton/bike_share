@@ -1,13 +1,14 @@
-<strong>Average Trip Duration:</strong> <%= @trips.average_duration %> <br>
-<strong>Longest Trip Duration:</strong> <%= @trips.longest_duration %> <br>
-<strong>Shortest Trip Duration:</strong> <%= @trips.shortest_duration %> <br>
-<strong>Most Ridden Bike:</strong> <%= @trips.most_ridden.keys[0] %> With <%= @trips.most_ridden.values[0] %> Rides <br>
-<strong>Least Ridden Bike:</strong> <%= @trips.least_ridden.keys[0] %> With <%= @trips.least_ridden.values[0] %> Rides <br>
+<strong>Average Trip Duration:</strong> <%= (@trips.average_duration / 60).round(2) %> Hours <br>
+<strong>Longest Trip Duration:</strong> <%= @trips.longest_duration / 60 %> Hours <br>
+<strong>Shortest Trip Duration:</strong> <%= @trips.shortest_duration / 60 %> Hours <br>
+<strong>Most Ridden Bike:</strong> <%= @trips.most_ridden.keys[0] %> with <%= @trips.most_ridden.values[0] %> rides <br>
+<strong>Least Ridden Bike:</strong> <%= @trips.least_ridden.keys[0] %> with <%= @trips.least_ridden.values[0] %> rides <br>
 <strong>User Type By Percentage:</strong> <br>
-<%= @trips.user_types.values[0] %> <%= @trips.user_types.keys[0] %>s Make Up <%= (((@trips.user_types.values[0]).to_f / (@trips.count).to_f) * 100).round(2) %>% of Total Users <br>
-<%= @trips.user_types.values[1] %> <%= @trips.user_types.keys[1] %>s Make Up <%= (((@trips.user_types.values[1]).to_f / (@trips.count).to_f) * 100).round(2) %>% of Total Users <br>
-<%= @trips.trips_by_day %> <br>
-<%= @trips.highest_number_of_rides %> <br>
+<%= @trips.user_types.values[0] %> <%= @trips.user_types.keys[0] %>s make up <%= (((@trips.user_types.values[0]).to_f / (@trips.count).to_f) * 100).round(2) %>% of Total Users <br>
+<%= @trips.user_types.values[1] %> <%= @trips.user_types.keys[1] %>s make up <%= (((@trips.user_types.values[1]).to_f / (@trips.count).to_f) * 100).round(2) %>% of Total Users <br>
+<strong>Busiest Day:</strong> <%= @trips.highest_number_of_rides %> rides on <%= @trips.busiest_day %> <br>
+<strong>Slowest Day:</strong> <%= @trips.least_number_of_rides %> rides on <%= @trips.slowest_day %> <br>
+
 
 <strong>Total Rides By Month</strong> <br>
 <strong>January:</strong> <br>

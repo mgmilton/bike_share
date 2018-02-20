@@ -49,13 +49,26 @@ class Trip < ApplicationRecord
     group(:subscription_type).order('subscription_type DESC').count(:id)
   end
 
+  def self.busiest_day
+    trips_by_day.key(highest_number_of_rides)
+  end
+
+  def self.slowest_day
+    trips_by_day.key(least_number_of_rides)
+  end
+
+  def self.highest_number_of_rides
+    (trips_by_day.values).max
+  end
+
+  def self.least_number_of_rides
+    (trips_by_day.values).min
+  end
+
   private
 
     def self.trips_by_day
       group("DATE(start_date)").count
     end
 
-    def self.highest_number_of_rides
-      (trips_by_day.values).max
-    end
 end
