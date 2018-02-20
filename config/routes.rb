@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :conditions, only: [:index, :show]
 
   namespace :admin do
-  	resources :conditions, only: [:edit, :update, :destroy]
+  	resources :conditions, only: [:new, :create, :edit, :update, :destroy]
   end
 
   resources :users, only: [:new, :create]
