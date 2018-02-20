@@ -22,9 +22,9 @@ describe Station, type: :model do
 
   context 'class methods' do
     before(:each) do
-      create(:station, dock_count: 20)
-      @station_2 = create(:station, dock_count: 10)
-      @station_3 = create(:station, dock_count: 30)
+      @station_1 = create(:station, dock_count: 20, installation_date: Time.strptime('2/8/18', '%m/%d/%y'))
+      @station_2 = create(:station, dock_count: 10, installation_date: Time.strptime('4/7/14', '%m/%d/%y'))
+      @station_3 = create(:station, dock_count: 30, installation_date: Time.strptime('6/8/14', '%m/%d/%y'))
     end
 
     describe '.average_bikes' do
@@ -54,6 +54,12 @@ describe Station, type: :model do
     describe '.lowest_dock_count' do
       it 'returns the stations with the lowest dock counts' do
         expect(Station.lowest_dock_count).to eq([@station_2])
+      end
+    end
+
+    describe '.most_recent' do
+      it 'returns the station most recently installed' do
+        expect(Station.most_recent).to eq(@station_1)
       end
     end
   end

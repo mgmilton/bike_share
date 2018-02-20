@@ -5,10 +5,10 @@ context 'As a registered user and admin' do
     before(:each) do
       user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-      @station_1 = create(:station, dock_count: 20)
-      @station_2 = create(:station, dock_count: 25)
-      @station_3 = create(:station, dock_count: 10)
-      @station_4 = create(:station, dock_count: 25)
+      @station_1 = create(:station, dock_count: 20, installation_date: Time.strptime('2/8/18', '%m/%d/%y'))
+      @station_2 = create(:station, dock_count: 25, installation_date: Time.strptime('4/7/14', '%m/%d/%y'))
+      @station_3 = create(:station, dock_count: 10, installation_date: Time.strptime('6/8/14', '%m/%d/%y'))
+      @station_4 = create(:station, dock_count: 25, installation_date: Time.now)
       @stations = [@station_1, @station_2, @station_3, @station_4]
     end
     scenario 'I see the Total count of stations' do
@@ -46,8 +46,15 @@ context 'As a registered user and admin' do
 
       expect(page).to have_content("Stations with 10 Bikes Available: #{@station_3.name}")
     end
+
+    scenario 'I see the Most recently installed station' do
+      visit '/stations-dashboard'
+
+      expect(page).to have_content("Most Recently Installed Station: #{@station_4.name}")
+    end
+
+    scenario 'I also see the Oldest station' do
+
+    end
   end
 end
-
-# I see the Most recently installed station,
-# I also see the Oldest station.

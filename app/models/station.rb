@@ -35,4 +35,8 @@ class Station < ApplicationRecord
   def self.lowest_dock_count
     where(dock_count: fewest_bikes_available)
   end
+
+  def self.most_recent
+    order(:installation_date).last
+  end
 end
