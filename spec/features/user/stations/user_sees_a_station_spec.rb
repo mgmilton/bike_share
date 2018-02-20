@@ -28,9 +28,14 @@ context 'As a registered user and admin' do
 
       expect(page).to have_content("Most Frequent Destination Station: #{@station_2.name}")
     end
+
+    scenario 'I see the Most frequent origination station (for rides that ended at this station)' do
+      visit station_path(@station_1)
+
+      expect(page).to have_content("Most Frequent Origination Station: #{@station_1.name}")
+    end
   end
 end
-# I see the Most freuqnet origination station (for rides that ended at this station),
 # I see the Date with the highest number of trips started at this station,
 # I see the Most frequent zip code for users starting trips at this station,
 # I see the Bike ID most frequently starting a trip at this station.

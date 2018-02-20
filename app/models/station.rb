@@ -55,4 +55,8 @@ class Station < ApplicationRecord
   def most_frequent_destination
     Station.find(trips.group(:end_station_id).order('count_all').count.keys.last).name
   end
+
+  def most_frequent_origination
+    Trip.where(end_station_id: self.id).order(:start_station_id).last.station.name
+  end
 end
