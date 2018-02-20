@@ -70,6 +70,15 @@ describe Station, type: :model do
         expect(@station_3.busiest_date).to eq(Time.parse('3/7/17'))
       end
     end
+
+    describe '#most_frequent_zip_code' do
+      it 'returns the Most frequent zip code for users starting trips at this station' do
+        create_list(:trip, 3, station: @station_1, start_station_id: @station_1.id, zip_code: 91407)
+        create_list(:trip, 4, station: @station_3, start_station_id: @station_3.id, zip_code: 94301)
+
+        expect(@station_3.most_frequent_zip_code).to eq(94301)
+      end
+    end
   end
 
   context 'class methods' do

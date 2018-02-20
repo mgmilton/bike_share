@@ -63,4 +63,8 @@ class Station < ApplicationRecord
   def busiest_date
     trips.group(:start_date).order('count_all').count.keys.last
   end
+
+  def most_frequent_zip_code
+    trips.group(:zip_code).order('count_all').count.keys.last
+  end
 end
