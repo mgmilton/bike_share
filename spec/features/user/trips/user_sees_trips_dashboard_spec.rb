@@ -65,8 +65,6 @@ describe "as a registered user or admin" do
 end
 
 
-# I see the Single date with the highest number of trips with a count of those trips,
-# I see the Single date with the lowest number of trips with a count of those trips.
 
 # I see the Station with the most rides as a starting place,
 # I see the Station with the most rides as an ending place,
