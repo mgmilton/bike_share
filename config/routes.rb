@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "welcome#index"
 
-  resources :conditions, only: [:index, :show]
+  resources :conditions
 
   resources :users, only: [:new, :create]
   get "/dashboard", to: "users#show"
