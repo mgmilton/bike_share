@@ -22,10 +22,15 @@ context 'As a registered user and admin' do
 
       expect(page).to have_content('Average Bikes Available Per Station: 16.25')
     end
+
+    scenario 'I see the Most bikes available at a station (based on docks)' do
+      visit '/stations-dashboard'
+
+      expect(page).to have_content('Most bikes available at a station: 25')
+    end
   end
 end
 
-# I see the Most bikes available at a station (based on docks),
 # I see the Station(s) where the most bikes are available (based on docks),
 # I see the Fewest bikes available at a station (based on docks),
 # I see the Station(s) where the fewest bikes are available (based on docks),
