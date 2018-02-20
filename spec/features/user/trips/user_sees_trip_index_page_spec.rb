@@ -19,7 +19,7 @@ describe "as a visitor" do
         expect(page).to have_content(trip.zip_code)
       end
       expect(page).to have_content("30 Most Recent Trips")
-      expect(page).to_not have_content(t"Bike Used: #{trip_31.bike_id}")
+      expect(page).to_not have_content("Bike Used: #{trip_31.bike_id}")
     end
 
     it "shows a link to a page with more trips" do
