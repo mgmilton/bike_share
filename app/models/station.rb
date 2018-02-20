@@ -47,4 +47,8 @@ class Station < ApplicationRecord
   def trip_start_count
     trips.count
   end
+
+  def trip_end_count
+    Trip.where(end_station_id: self.id).count
+  end
 end

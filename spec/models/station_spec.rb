@@ -33,6 +33,16 @@ describe Station, type: :model do
         expect(@station_2.trip_start_count).to eq(5)
       end
     end
+
+    describe '#trip_end_count' do
+      it 'returns the number of trips ended at the station' do
+        create_list(:trip, 4, end_station_id: @station_3.id)
+        create_list(:trip, 2, end_station_id: @station_2.id)
+
+        expect(@station_3.trip_end_count).to eq(4)
+        expect(@station_2.trip_end_count).to eq(2)
+      end
+    end
   end
 
   context 'class methods' do
