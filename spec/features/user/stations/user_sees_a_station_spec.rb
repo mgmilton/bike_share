@@ -7,8 +7,8 @@ context 'As a registered user and admin' do
        @station_2 = create(:station)
        @admin = create(:admin)
        @date = Time.strptime('3/7/17', '%m/%d/%y')
-       create_list(:trip, 2, station: @station_1, start_station_id: @station_1.id, end_station_id: @station_1.id, zip_code: 91407)
-       create_list(:trip, 3, station: @station_1, start_station_id: @station_1.id, end_station_id: @station_2.id, start_date: @date, zip_code: 94301)
+       create_list(:trip, 2, station: @station_1, start_station_id: @station_1.id, end_station_id: @station_1.id, zip_code: 91407, bike_id: 47)
+       create_list(:trip, 3, station: @station_1, start_station_id: @station_1.id, end_station_id: @station_2.id, start_date: @date, zip_code: 94301, bike_id: 8)
        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
      end
 
@@ -47,6 +47,10 @@ context 'As a registered user and admin' do
 
       expect(page).to have_content("Most Frequent Zip Code for Users Starting Trips at this Station: 94301")
     end
+    scenario 'I see the Bike ID most frequently starting a trip at this station' do
+      visit station_path(@station_1)
+
+      expect(page).to have_content("Bike ID Most Frequently Starting a Trip at This Station: 8")
+    end
   end
 end
-# I see the Bike ID most frequently starting a trip at this station.

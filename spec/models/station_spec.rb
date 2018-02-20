@@ -20,10 +20,6 @@ describe Station, type: :model do
     @station_3 = create(:station, dock_count: 30, installation_date: Time.strptime('6/8/14', '%m/%d/%y'))
   end
   context 'instance methods' do
-    describe '#zip_code' do
-
-    end
-
     describe '#trip_start_count' do
       it 'returns the number of trips started at the station' do
         create_list(:trip, 3, station: @station_1, start_station_id: @station_1.id)
@@ -79,10 +75,18 @@ describe Station, type: :model do
         expect(@station_3.most_frequent_zip_code).to eq(94301)
       end
     end
+
+    describe '#most_frequent_bike_id' do
+      it 'returns the bike ID most frequently starting a trip at the station' do
+        create_list(:trip, 3, station: @station_1, start_station_id: @station_1.id, bike_id: 5)
+        create_list(:trip, 4, station: @station_1, start_station_id: @station_1.id, bike_id: 10)
+
+        expect(@station_1.most_frequent_bike_id).to eq(10)
+      end
+    end
   end
 
   context 'class methods' do
-
     describe '.average_bikes' do
       it 'returns the average bikes for all stations' do
         expect(Station.average_bikes).to eq(20)
