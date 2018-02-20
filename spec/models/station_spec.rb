@@ -24,7 +24,7 @@ describe Station, type: :model do
     before(:each) do
       create(:station, dock_count: 20)
       create(:station, dock_count: 10)
-      create(:station, dock_count: 30)
+      @station = create(:station, dock_count: 30)
     end
 
     describe '.average_bikes' do
@@ -36,6 +36,12 @@ describe Station, type: :model do
     describe '.most_bikes_available' do
       it 'returns the highest dock count of all stations' do
         expect(Station.most_bikes_available).to eq(30)
+      end
+    end
+
+    describe '.highest_dock_count' do
+      it 'returns the stations with the highest dock counts' do
+        expect(Station.highest_dock_count).to eq([@station])
       end
     end
   end
