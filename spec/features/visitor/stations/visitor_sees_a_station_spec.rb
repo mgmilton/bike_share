@@ -6,10 +6,9 @@ context 'As a visitor' do
     scenario "I see the url '/:station-name' with that station's name instead of :id" do
       visit station_path(@station)
 
-      name_param = @station.name.downcase.sub(/[[:blank:]]/, '-')
-
-      expect(current_path).to eq("/stations/#{name_param}")
+      expect(current_path).to eq("/stations/#{@station.slug}")
     end
+    
     scenario 'I see all attributes for that station.' do
       visit station_path(@station)
 

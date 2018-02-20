@@ -37,6 +37,8 @@ CSV.foreach "data/trip.csv", OPTIONS do |row|
                start_station_id:  row[:start_station_id],
                start_date:        Time.strptime(row[:start_date], '%m/%d/%y %H:%M'),
                end_station_id:    row[:end_station_id],
-               end_date:          Time.strptime(row[:end_date], '%m/%d/%y %H:%M')
+               end_date:          Time.strptime(row[:end_date], '%m/%d/%y %H:%M'),
+               station:           Station.find(row[:start_station_id]),
+               zip_code:          row[:zip_code]
              )
 end

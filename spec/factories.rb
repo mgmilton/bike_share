@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :condition do
-    sequence(:date) {|n| "#{n}/#{n}/#{n}"}
+    sequence(:date) { |n| "n/n/n" }
     sequence(:max_temperature) {|n| "Max Temp #{n}"}
     sequence(:mean_temperature) {|n| "Mean Temp #{n}"}
     sequence(:min_temperature) {|n| "Min Temp #{n}"}
@@ -27,12 +27,13 @@ FactoryBot.define do
   factory :trip do
     duration 10
     start_date Time.now
-    start_station_id 55
+    start_station_id 1
     end_date Time.now
-    end_station_id 56
+    end_station_id 1
     sequence(:bike_id) { |n| n }
     subscription_type "Subscriber"
-    zip_code 94965
+    zip_code 91407
+    station
   end
 
   factory :station do

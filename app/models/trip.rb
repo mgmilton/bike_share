@@ -8,18 +8,17 @@ class Trip < ApplicationRecord
                         :subscription_type
                         # :zip_code
   belongs_to :condition, optional: true
-  before_validation :set_zip_code, :set_condition
+  belongs_to :station
+  before_validation :check_zip_code, :set_condition
 
   def set_condition
     self.condition = Condition.find_by(zip_code: self.zip_code, date: self.start_date)
   end
 
-  def set_zip_code
-    self.zip_code = Station.find(self.start_station_id).zip_code
-  end
-
-  def start_station
-    Station.find(start_station_id)
+  def check_zip_code
+    unless zip_codes.values.include?(self.zip_code)
+      self.zip_code = self.station.zip_code
+    end
   end
 
   def self.average_duration

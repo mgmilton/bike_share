@@ -1,6 +1,10 @@
 require "rails_helper"
 
 describe Trip do
+  before(:each) do
+    station = create(:station)
+    allow_any_instance_of(Trip).to receive(:station).and_return(station)
+  end
   describe "validations" do
     it { should validate_presence_of :duration }
     it { should validate_presence_of :start_date }

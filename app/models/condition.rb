@@ -3,11 +3,9 @@ class Condition < ApplicationRecord
   has_many :trips
   before_validation :check_zip_code
 
-  def zip_codes
-    [91407, 95113, 94063, 94041, 94301]
-  end
-
   def check_zip_code
-    self.zip_code = zip_codes.first unless zip_codes.include?(self.zip_code)
+    unless zip_codes.values.include?(self.zip_code)
+      self.zip_code = zip_codes["San Francisco"]
+    end
   end
 end
