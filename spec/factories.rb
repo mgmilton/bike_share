@@ -8,7 +8,7 @@ FactoryBot.define do
     mean_wind_speed 3.0
     mean_visibility 3.0
     mean_precipitation 0.0
-    zip_code  "91407"
+    zip_code  91407
   end
 
   factory :user do

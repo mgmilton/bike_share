@@ -14,18 +14,28 @@ describe Station, type: :model do
     it { should validate_uniqueness_of :name }
   end
 
+  before(:each) do
+    @station_1 = create(:station, dock_count: 20, installation_date: Time.strptime('2/8/18', '%m/%d/%y'))
+    @station_2 = create(:station, dock_count: 10, installation_date: Time.strptime('4/7/14', '%m/%d/%y'))
+    @station_3 = create(:station, dock_count: 30, installation_date: Time.strptime('6/8/14', '%m/%d/%y'))
+  end
   context 'instance methods' do
     describe '#zip_code' do
 
     end
+
+    describe '#trip_start_count' do
+      it 'returns the number of trips started at the station' do
+        create_list(:trip, 3, station: @station_1, start_station_id: @station_1.id)
+        create_list(:trip, 5, station: @station_2, start_station_id: @station_2.id)
+
+        expect(@station_1.trip_start_count).to eq(3)
+        expect(@station_2.trip_start_count).to eq(5)
+      end
+    end
   end
 
   context 'class methods' do
-    before(:each) do
-      @station_1 = create(:station, dock_count: 20, installation_date: Time.strptime('2/8/18', '%m/%d/%y'))
-      @station_2 = create(:station, dock_count: 10, installation_date: Time.strptime('4/7/14', '%m/%d/%y'))
-      @station_3 = create(:station, dock_count: 30, installation_date: Time.strptime('6/8/14', '%m/%d/%y'))
-    end
 
     describe '.average_bikes' do
       it 'returns the average bikes for all stations' do

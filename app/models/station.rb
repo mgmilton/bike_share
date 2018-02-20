@@ -43,4 +43,8 @@ class Station < ApplicationRecord
   def self.oldest
     order(:installation_date).first.name
   end
+
+  def trip_start_count
+    trips.count
+  end
 end
