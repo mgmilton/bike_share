@@ -52,5 +52,29 @@ describe Condition, type: :model do
         expect(Condition.visibility_range).to eq([[0.3e1, 0.7e1]])
       end
     end
+
+    describe ".min" do
+      it "returns the minimum from a descending array of ride counts" do
+        expect(Condition.min([])).to eq(0)
+        expect(Condition.min([3,2,1])).to eq(1)
+        expect(Condition.min([100,20,3])).to eq(3)
+      end
+    end
+
+    describe ".max" do
+      it "returns the maximum from a descending array of ride counts" do
+        expect(Condition.max([])).to eq(0)
+        expect(Condition.max([3,2,1])).to eq(3)
+        expect(Condition.max([100,20,3])).to eq(100)
+      end
+    end
+
+    describe ".average" do
+      it "returns the average from a descending array of ride counts" do
+        expect(Condition.average([])).to eq(0)
+        expect(Condition.average([3,2,1])).to eq(2)
+        expect(Condition.average([100,20,3])).to eq(41)
+      end
+    end
   end
 end
