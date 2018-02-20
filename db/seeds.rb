@@ -1,49 +1,44 @@
 require 'csv'
 require 'date'
+require 'time'
 
-Condition.destroy_all
-Station.destroy_all
-Trip.destroy_all
+OPTIONS = {headers: true, header_converters: :symbol}
 
-conditions = CSV.open("data/weather.csv", headers: true, header_converters: :symbol)
-stations = CSV.open("data/station.csv", headers: true, header_converters: :symbol)
-trips = CSV.open("data/trip.csv", headers: true, header_converters: :symbol)
-
-
-conditions.each do |row|
+CSV.foreach "data/weather.csv", OPTIONS do |row|
   Condition.create(id:                    row[:id],
                    date:                  Date.strptime(row[:date], '%m/%d/%y'),
-                   max_temperature:       row[:max_temperature_f],
-                   mean_temperature:      row[:mean_temperature_f],
-                   min_temperature:       row[:min_temperature_f],
+                   max_temperature:       row[:max_temperature],
+                   mean_temperature:      row[:mean_temperature],
+                   min_temperature:       row[:min_temperature],
                    mean_humidity:         row[:mean_humidity],
                    mean_visibility:       row[:mean_visibility_miles],
-                   mean_wind_speed:       row[:mean_wind_speed_mph],
+                   mean_wind_speed:       row[:mean_wind_speed],
                    mean_precipitation:    row[:mean_precipitation],
-                   zip_code:              row[:zip_code].to_s.rjust(5,"0")[0..4]
+                   zip_code:              row[:zip_code]
                  )
 end
 
-stations.each do |row|
+CSV.foreach "data/station.csv", OPTIONS do |row|
   Station.create!(id:                     row[:id],
                  name:                    row[:name],
                  latitude:                row[:lat],
                  longitude:               row[:long],
                  dock_count:              row[:dock_count],
                  city:                    row[:city],
-                 installation_date:       Date.strptime(row[:installation_date],'%m/%d/%y')
+                 installation_date:       Date.strptime(row[:installation_date], '%m/%d/%y')
                 )
 end
 
-trips.each do |row|
-  Trip.create!(id:                         row[:id],
-              duration:                    row[:duration],
-              start_date:                  DateTime.strptime(row[:start_date], '%m/%d/%y %H:%M'),
-              start_station_id:            row[:start_station_id],
-              end_date:                    DateTime.strptime(row[:end_date], '%m/%d/%y %H:%M'),
-              end_station_id:              row[:end_station_id],
-              bike_id:                     row[:bike_id],
-              subscription_type:           row[:subscription_type],
-              zip_code:                    row[:zip_code].to_s.rjust(5,"0")[0..4]
-            )
+CSV.foreach "data/trip.csv", OPTIONS do |row|
+  Trip.create!(id:                row[:id],
+               duration:          row[:duration],
+               bike_id:           row[:bike_id],
+               subscription_type: row[:subscription_type],
+               start_station_id:  row[:start_station_id],
+               start_date:        Time.strptime(row[:start_date], '%m/%d/%y %H:%M'),
+               end_station_id:    row[:end_station_id],
+               end_date:          Time.strptime(row[:end_date], '%m/%d/%y %H:%M'),
+               station:           Station.find(row[:start_station_id]),
+               zip_code:          row[:zip_code]
+             )
 end

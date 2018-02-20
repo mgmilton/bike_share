@@ -7,6 +7,19 @@ class Trip < ApplicationRecord
                         :bike_id,
                         :subscription_type
                         # :zip_code
+  belongs_to :condition, optional: true
+  belongs_to :station
+  before_validation :check_zip_code, :set_condition
+
+  def set_condition
+    self.condition = Condition.find_by(zip_code: self.zip_code, date: self.start_date)
+  end
+
+  def check_zip_code
+    unless zip_codes.values.include?(self.zip_code)
+      self.zip_code = self.station.zip_code
+    end
+  end
 
   def self.average_duration
     average(:duration)

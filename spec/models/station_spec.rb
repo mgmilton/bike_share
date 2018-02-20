@@ -15,12 +15,57 @@ describe Station, type: :model do
   end
 
   context 'instance methods' do
-    describe '#format_date' do
-      it 'formats the installation date' do
-        date = Date.new(2013,8,20)
-        station = create(:station, installation_date: date)
+    describe '#zip_code' do
 
-        expect(station.format_date).to eq('August 20, 2013')
+    end
+  end
+
+  context 'class methods' do
+    before(:each) do
+      @station_1 = create(:station, dock_count: 20, installation_date: Time.strptime('2/8/18', '%m/%d/%y'))
+      @station_2 = create(:station, dock_count: 10, installation_date: Time.strptime('4/7/14', '%m/%d/%y'))
+      @station_3 = create(:station, dock_count: 30, installation_date: Time.strptime('6/8/14', '%m/%d/%y'))
+    end
+
+    describe '.average_bikes' do
+      it 'returns the average bikes for all stations' do
+        expect(Station.average_bikes).to eq(20)
+      end
+    end
+
+    describe '.most_bikes_available' do
+      it 'returns the highest dock count of all stations' do
+        expect(Station.most_bikes_available).to eq(@station_3.dock_count)
+      end
+    end
+
+    describe '.highest_dock_count' do
+      it 'returns the stations with the highest dock counts' do
+        expect(Station.highest_dock_count).to eq([@station_3.name])
+      end
+    end
+
+    describe '.fewest_bikes_available' do
+      it 'returns the lowest dock count of all stations' do
+        expect(Station.fewest_bikes_available).to eq(@station_2.dock_count)
+      end
+    end
+
+    describe '.lowest_dock_count' do
+      it 'returns the stations with the lowest dock counts' do
+        expect(Station.lowest_dock_count).to eq([@station_2.name])
+      end
+    end
+
+    describe '.most_recent' do
+      it 'returns the station most recently installed' do
+        expect(Station.most_recent).to eq(@station_1.name)
+      end
+    end
+
+    describe '.oldest' do
+      it 'returns the station least recently installed' do
+        expect(Station.oldest).to eq(@station_2.name)
       end
     end
   end

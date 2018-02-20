@@ -10,7 +10,7 @@ context 'As a visitor' do
         expect(page).to have_content(station.name)
         expect(page).to have_content(station.dock_count)
         expect(page).to have_content(station.city)
-        expect(page).to have_content(station.format_date)
+        expect(page).to have_content(station.installation_date)
       end
     end
   end

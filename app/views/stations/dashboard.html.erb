@@ -1,0 +1,15 @@
+<h1>Stations Dashboard</h1>
+<p><%= @stations.count %> Total Stations</p>
+<p>Average Bikes Available Per Station: <%= @stations.average_bikes %></p>
+<p>Most Bikes Available at a Station: <%= @stations.most_bikes_available %></p>
+<p>Stations with <%= @stations.most_bikes_available %> Bikes Available:</p>
+<% @stations.highest_dock_count.each do |station| %>
+<li><%= station %></li>
+<% end %>
+<p>Fewest Bikes Available at a Station: <%= @stations.fewest_bikes_available %></p>
+<p>Stations with <%= @stations.fewest_bikes_available %> Bikes Available:</p>
+<% @stations.lowest_dock_count.each do |station| %>
+<li><%= station %></li>
+<% end %>
+<p>Most Recently Installed Station: <%= @stations.most_recent %></p>
+<p>Oldest Station: <%= @stations.oldest %></p>
