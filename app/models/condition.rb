@@ -26,6 +26,7 @@ class Condition < ApplicationRecord
 
   def self.min_wind_speed
     minimum(:mean_wind_speed)
+  end
 
   def self.set_divisions(floor,ceiling, increment)
     ((ceiling-floor)/increment).ceil
