@@ -24,6 +24,7 @@ class Station < ApplicationRecord
 
   def self.average_bikes
     average(:dock_count)
+  end
 
   def zip_code
     zip_codes[self.city]
