@@ -6,3 +6,8 @@
 <% @stations.highest_dock_count.each do |station| %>
 <li><%= station.name %></li>
 <% end %>
+<p>Fewest Bikes Available at a Station: <%= @stations.fewest_bikes_available %></p>
+<p>Stations with <%= @stations.fewest_bikes_available %> Bikes Available:</p>
+<% @stations.lowest_dock_count.each do |station| %>
+<li><%= station.name %></li>
+<% end %>

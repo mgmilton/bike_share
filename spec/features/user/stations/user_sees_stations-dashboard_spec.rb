@@ -34,10 +34,20 @@ context 'As a registered user and admin' do
 
       expect(page).to have_content("Stations with 25 Bikes Available: #{@station_2.name} #{@station_4.name}")
     end
+
+    scenario 'I see the Fewest bikes available at a station (based on docks)' do
+      visit '/stations-dashboard'
+
+      expect(page).to have_content("Fewest Bikes Available at a Station: #{@station_3.dock_count}")
+    end
+
+    scenario 'I see the Station(s) where the fewest bikes are available (based on docks)' do
+      visit '/stations-dashboard'
+
+      expect(page).to have_content("Stations with 10 Bikes Available: #{@station_3.name}")
+    end
   end
 end
 
-# I see the Fewest bikes available at a station (based on docks),
-# I see the Station(s) where the fewest bikes are available (based on docks),
 # I see the Most recently installed station,
 # I also see the Oldest station.
