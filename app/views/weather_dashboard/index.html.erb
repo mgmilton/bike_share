@@ -1,0 +1,31 @@
+<html>
+  <% @rides_by_temp.each do |key, value| %>
+    <h5>Amount of Bike Rides when High Temperature was between <%=key%> (F) </h5>
+      <% value.each do |key, value| %>
+          <li><%=key%> Number of Rides: <%=value%> </li>
+        <% end %> </br>
+    <% end %></br>
+
+  <% @rides_by_precipitation.each do |key, value| %>
+    <h5>Amount of Bike Rides when Precipitation was between <%=key%> (Inches) </h5>
+      <% value.each do |key, value| %>
+          <li><%=key%> Number of Rides: <%=value%> </li>
+        <% end %> </br>
+    <% end %></br>
+
+  <% @rides_by_wind.each do |key, value| %>
+    <h5>Amount of Bike Rides when Wind Speed was between <%=key%> (MPH) </h5>
+      <% value.each do |key, value| %>
+          <li><%=key%> Number of Rides: <%=value%> </li>
+        <% end %> </br>
+    <% end %></br>
+
+  <% @rides_by_visibility.each do |key, value| %>
+    <h5>Amount of Bike Rides when Visibility was between <%=key%> (Miles) </h5>
+      <% value.each do |key, value| %>
+          <li><%=key%> Number of Rides: <%=value%> </li>
+        <% end %> </br>
+    <% end %></br>
+
+
+</html>

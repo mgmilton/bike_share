@@ -20,7 +20,7 @@ class Trip < ApplicationRecord
       self.zip_code = self.station.zip_code
     end
   end
-
+  
   def self.average_duration
     average(:duration)
   end
