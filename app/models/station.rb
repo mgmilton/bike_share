@@ -12,11 +12,15 @@ class Station < ApplicationRecord
 
   has_many :trips
 
+  def zip_code
+    zip_codes[self.city]
+  end
+
   def self.average_bikes
     average(:dock_count)
   end
 
-  def zip_code
-    zip_codes[self.city]
+  def self.most_bikes_available
+    maximum(:dock_count)
   end
 end

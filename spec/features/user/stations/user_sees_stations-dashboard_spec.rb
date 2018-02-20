@@ -26,7 +26,7 @@ context 'As a registered user and admin' do
     scenario 'I see the Most bikes available at a station (based on docks)' do
       visit '/stations-dashboard'
 
-      expect(page).to have_content('Most bikes available at a station: 25')
+      expect(page).to have_content('Most Bikes Available at a Station: 25')
     end
   end
 end
