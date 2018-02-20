@@ -6,9 +6,8 @@
 <strong>User Type By Percentage:</strong> <br>
 <%= @trips.user_types.values[0] %> <%= @trips.user_types.keys[0] %>s Make Up <%= (((@trips.user_types.values[0]).to_f / (@trips.count).to_f) * 100).round(2) %>% of Total Users <br>
 <%= @trips.user_types.values[1] %> <%= @trips.user_types.keys[1] %>s Make Up <%= (((@trips.user_types.values[1]).to_f / (@trips.count).to_f) * 100).round(2) %>% of Total Users <br>
-
-
-
+<%= @trips.trips_by_day %> <br>
+<%= @trips.highest_number_of_rides %> <br>
 
 <strong>Total Rides By Month</strong> <br>
 <strong>January:</strong> <br>
