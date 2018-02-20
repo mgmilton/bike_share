@@ -13,19 +13,19 @@ describe "as a registered user or admin" do
     it "shows the average duration of a ride" do
       visit trips_dashboard_path
 
-      expect(page).to have_content("Average Trip Duration: 11")
+      expect(page).to have_content("Average Trip Duration: 0.18 Hours")
     end
 
     it "shows the longest ride" do
       visit trips_dashboard_path
 
-      expect(page).to have_content("Longest Trip Duration: 20")
+      expect(page).to have_content("Longest Trip Duration: 0 Hours")
     end
 
     it "shows the shortest ride" do
       visit trips_dashboard_path
 
-      expect(page).to have_content("Shortest Trip Duration: 3")
+      expect(page).to have_content("Shortest Trip Duration: 0 Hours")
     end
 
     it "shows monthly breakdown" do
@@ -39,26 +39,27 @@ describe "as a registered user or admin" do
     it "shows most ridden bike with number of rides" do
       visit trips_dashboard_path
 
-      expect(page).to have_content("Most Ridden Bike: #{@trip1.bike_id} With 2 Rides")
+      expect(page).to have_content("Most Ridden Bike: #{@trip1.bike_id} with 2 rides")
     end
 
     it "shows least ridden bike with number of rides" do
       visit trips_dashboard_path
 
-      expect(page).to have_content("Least Ridden Bike: #{@trip3.bike_id} With 1 Rides")
+      expect(page).to have_content("Least Ridden Bike: #{@trip3.bike_id} with 1 rides")
     end
 
     it "shows user types with number and percentage" do
       visit trips_dashboard_path
 
-      expect(page).to have_content("2 Subscribers Make Up 66.67% of Total Users")
-      expect(page).to have_content("1 Customers Make Up 33.33% of Total Users ")
+      expect(page).to have_content("2 Subscribers make up 66.67% of Total Users")
+      expect(page).to have_content("1 Customers make up 33.33% of Total Users ")
     end
 
     it "shows the highest trip date with number of trips" do
       visit trips_dashboard_path
 
-      # expect(page).to have_content
+      expect(page).to have_content("Busiest Day: 3 rides on 2018-02-20")
+      expect(page).to have_content("Slowest Day: 3 rides on 2018-02-20")
     end
   end
 end
