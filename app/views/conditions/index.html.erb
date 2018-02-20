@@ -4,9 +4,13 @@
     <li>Max Temperature (F): <%= condition.max_temperature%>  </li>
     <li>Mean Temperature (F): <%= condition.mean_temperature%> </li>
     <li>Min Temperature (F): <%= condition.min_temperature%></li>
-    <li>Mean Humidity: <%= condition.mean_humidity%> </li> 
+    <li>Mean Humidity: <%= condition.mean_humidity%> </li>
     <li>Mean Visibility: <%= condition.mean_visibility%> </li>
     <li>Mean Wind Speed (MPH): <%= condition.mean_wind_speed%> </li>
     <li>Mean Precipitation (Inches): <%= condition.mean_precipitation%></li>
-    <li>Zip Code: <%= condition.zip_code%></li> </br>
+    <li>Zip Code: <%= condition.zip_code%></li>
+    <%if current_user.role == "admin" %>
+      <button type="button" class="btn btn-warning"><%= link_to "Edit", edit_condition_path(condition) %></button>
+      <button type="button" class="btn btn-danger"><%= link_to "Delete", condition_path(condition), method: :delete %></button></br></br>
+    <% end %>
 <% end %>
