@@ -11,7 +11,7 @@ class Station < ApplicationRecord
   validates_uniqueness_of :name
 
   has_many :trips
-
+  scope :started_at, ->(date) { where('start_date')}
   def zip_code
     zip_codes[self.city]
   end
@@ -58,5 +58,9 @@ class Station < ApplicationRecord
 
   def most_frequent_origination
     Trip.where(end_station_id: self.id).order(:start_station_id).last.station.name
+  end
+
+  def busiest_date
+    trips.group(:start_date).order('count_all').count.keys.last
   end
 end

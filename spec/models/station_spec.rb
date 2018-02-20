@@ -61,6 +61,15 @@ describe Station, type: :model do
         expect(@station_1.most_frequent_origination).to eq(@station_3.name)
       end
     end
+
+    describe '#busiest_date' do
+      it 'returns the date with the highest number of trips started at the station' do
+        create_list(:trip, 3, station: @station_1, start_station_id: @station_1.id, end_station_id: @station_1.id)
+        create_list(:trip, 4, station: @station_3, start_station_id: @station_3.id, end_station_id: @station_1.id, start_date: Time.parse('3/7/17'))
+
+        expect(@station_3.busiest_date).to eq(Time.parse('3/7/17'))
+      end
+    end
   end
 
   context 'class methods' do
