@@ -41,7 +41,7 @@ describe Station, type: :model do
 
     describe '.highest_dock_count' do
       it 'returns the stations with the highest dock counts' do
-        expect(Station.highest_dock_count).to eq([@station_3])
+        expect(Station.highest_dock_count).to eq([@station_3.name])
       end
     end
 
@@ -53,13 +53,19 @@ describe Station, type: :model do
 
     describe '.lowest_dock_count' do
       it 'returns the stations with the lowest dock counts' do
-        expect(Station.lowest_dock_count).to eq([@station_2])
+        expect(Station.lowest_dock_count).to eq([@station_2.name])
       end
     end
 
     describe '.most_recent' do
       it 'returns the station most recently installed' do
-        expect(Station.most_recent).to eq(@station_1)
+        expect(Station.most_recent).to eq(@station_1.name)
+      end
+    end
+
+    describe '.oldest' do
+      it 'returns the station least recently installed' do
+        expect(Station.oldest).to eq(@station_2.name)
       end
     end
   end

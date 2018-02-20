@@ -25,7 +25,7 @@ class Station < ApplicationRecord
   end
 
   def self.highest_dock_count
-    where(dock_count: most_bikes_available)
+    where(dock_count: most_bikes_available).pluck(:name)
   end
 
   def self.fewest_bikes_available
@@ -33,10 +33,14 @@ class Station < ApplicationRecord
   end
 
   def self.lowest_dock_count
-    where(dock_count: fewest_bikes_available)
+    where(dock_count: fewest_bikes_available).pluck(:name)
   end
 
   def self.most_recent
-    order(:installation_date).last
+    order(:installation_date).last.name
+  end
+
+  def self.oldest
+    order(:installation_date).first.name
   end
 end

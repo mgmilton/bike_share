@@ -54,7 +54,9 @@ context 'As a registered user and admin' do
     end
 
     scenario 'I also see the Oldest station' do
+      visit '/stations-dashboard'
 
+      expect(page).to have_content("Oldest Station: #{@station_2.name}")
     end
   end
 end
