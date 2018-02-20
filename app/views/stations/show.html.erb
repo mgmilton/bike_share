@@ -3,5 +3,8 @@
 <p><%= @station.latitude %>, <%= @station.longitude %></p>
 <p>Dock Count: <%= @station.dock_count %></p>
 <p>Installed: <%= @station.installation_date %></p>
-<p>Number of Rides Started at <%= @station.name %>: <%= @station.trip_start_count %></p>
-<p>Number of Rides Ended at <%= @station.name %>: <%= @station.trip_end_count %></p>
+<% if current_admin? %>
+  <p>Number of Rides Started at <%= @station.name %>: <%= @station.trip_start_count %></p>
+  <p>Number of Rides Ended at <%= @station.name %>: <%= @station.trip_end_count %></p>
+  <p>Most Frequent Destination Station: <%= @station.most_frequent_destination %></p>
+<% end %>

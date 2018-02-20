@@ -43,6 +43,15 @@ describe Station, type: :model do
         expect(@station_2.trip_end_count).to eq(2)
       end
     end
+
+    describe '#most_frequent_destination' do
+      it 'returns the most frequent destination station for rides that began at the station' do
+        create_list(:trip, 3, station: @station_1, start_station_id: @station_1.id, end_station_id: @station_3.id)
+        create_list(:trip, 4, station: @station_1, start_station_id: @station_1.id, end_station_id: @station_2.id)
+
+        expect(@station_1.most_frequent_destination).to eq(@station_2.name)
+      end
+    end
   end
 
   context 'class methods' do
