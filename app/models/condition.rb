@@ -8,27 +8,7 @@ class Condition < ApplicationRecord
     end
   end
 
-  def self.max_temperature
-    maximum(:max_temperature)
-  end
-
-  def self.min_temperature
-    minimum(:max_temperature)
-  end
-
-  def self.max_precipitation
-    maximum(:mean_precipitation)
-  end
-
-  def self.min_precipitation
-    minimum(:mean_precipitation)
-  end
-
-  def self.min_wind_speed
-    minimum(:mean_wind_speed)
-  end
-
-  def self.set_divisions(floor,ceiling, increment)
+  def self.set_divisions(floor, ceiling, increment)
     ((ceiling-floor)/increment).ceil
   end
 
