@@ -1,0 +1,24 @@
+<h1>Update Station</h1>
+<ul>
+  <% @station.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+<%= form_for [:admin, @station] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :dock_count %>
+  <%= f.number_field :dock_count %>
+  <%= f.select(:city) do  %>
+    <% [["San Francisco"],["San Jose"],["Redwood City"],["Mountain View"],["Palo Alto"]].each do |c| -%>
+      <%= content_tag(:option, c.first, value: c.last) %>
+    <% end %>
+  <% end %>
+  <%= f.label :installation_date %>
+  <%= f.date_field :installation_date %>
+  <%= f.label :latitude %>
+  <%= f.number_field :latitude, step: 0.00000000001 %>
+  <%= f.label :longitude %>
+  <%= f.number_field :longitude, step: 0.00000000001 %>
+  <%= f.submit %>
+<% end %>

@@ -18,6 +18,6 @@ Rails.application.routes.draw do
   get '/stations-dashboard', to: 'stations#dashboard'
 
   namespace :admin do
-    resources :stations, only: [:edit, :update, :destroy]
+    resources :stations, only: [:edit, :update, :destroy, :new, :create], param: :name
   end
 end

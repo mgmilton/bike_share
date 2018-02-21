@@ -53,11 +53,16 @@ class Station < ApplicationRecord
   end
 
   def most_frequent_destination
-    Station.find(trips.group(:end_station_id).order('count_all').count.keys.last).name
+    id = trips.group(:end_station_id).order('count_all').count.keys.last
+    Station.find(id).name
   end
 
   def most_frequent_origination
-    Trip.where(end_station_id: self.id).order(:start_station_id).last.station.name
+    Trip.where(end_station_id: self.id)
+    .joins(:station)
+    .group(:station)
+    .order('count_all')
+    .count.keys.last.name
   end
 
   def busiest_date
