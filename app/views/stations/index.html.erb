@@ -4,4 +4,8 @@
   <p><%= station.city %></p>
   <p>Dock Count: <%= station.dock_count %></p>
   <p>Installation Date: <%= station.installation_date %></p>
+  <% if current_admin? %>
+    <%= link_to 'Edit', edit_admin_station_path(station) %>
+    <%= link_to 'Delete', admin_station_path(station), method: :delete %>
+  <% end %>
 <% end %>

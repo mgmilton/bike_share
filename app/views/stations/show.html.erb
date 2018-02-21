@@ -11,4 +11,6 @@
   <p>Date with Highest Number of Trips Started at this Station: <%= @station.busiest_date %></p>
   <p>Most Frequent Zip Code for Users Starting Trips at this Station: <%= @station.most_frequent_zip_code %></p>
   <p>Bike ID Most Frequently Starting a Trip at This Station: <%= @station.most_frequent_bike_id %></p>
+  <%= link_to 'Edit', edit_admin_station_path(@station) %>
+  <%= link_to 'Delete', admin_station_path(@station), method: :delete %>
 <% end %>
