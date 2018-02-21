@@ -1,4 +1,6 @@
 class Admin::StationsController < Admin::BaseController
+  before_action :set_station
+
   def edit
     @station = Station.friendly.find(params[:name])
   end
@@ -14,8 +16,19 @@ class Admin::StationsController < Admin::BaseController
     end
   end
 
+  def destroy
+    if @station.destroy
+      flash[:notice] = "#{@station.name} deleted succesfully"
+    end
+    redirect_to stations_path
+  end
+
   private
     def station_params
       params.require(:station).permit(:name, :dock_count, :city, :installation_date, :latitude, :longitude)
+    end
+
+    def set_station
+      @station = Station.friendly.find(params[:name])
     end
 end
