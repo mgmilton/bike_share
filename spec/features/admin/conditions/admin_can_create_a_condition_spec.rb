@@ -23,6 +23,7 @@ context "As an admin" do
       click_on "Create Condition"
 
       expect(current_path).to eq("/conditions/#{Condition.last.id}")
+      expect(page).to have_content("Condition was created.")
       expect(page).to have_content("20")
       expect(page).to have_content("3")
       expect(page).to have_content("10")

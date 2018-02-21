@@ -36,8 +36,8 @@ context "As an admin" do
 
       visit conditions_path
 
-      page.should have_selector(:link_or_button, "Edit")
-      page.should have_selector(:link_or_button, "Delete")
+      expect(page).to have_selector(:link_or_button, "Edit")
+      expect(page).to have_selector(:link_or_button, "Delete")
     end
 
     scenario "Default user cannot see buttons" do
