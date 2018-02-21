@@ -3,7 +3,7 @@ require "rails_helper"
 context "As an admin" do
   describe "When I visit the conditions index" do
     before(:each) do
-      @admin = create(:user, role: "admin")
+      @admin = create(:admin, role: "admin")
       @condition1 = create(:condition)
       @condition2 = create(:condition)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
