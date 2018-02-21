@@ -7,12 +7,12 @@ OPTIONS = {headers: true, header_converters: :symbol}
 CSV.foreach "data/weather.csv", OPTIONS do |row|
   Condition.create(id:                    row[:id],
                    date:                  Date.strptime(row[:date], '%m/%d/%y'),
-                   max_temperature:       row[:max_temperature],
-                   mean_temperature:      row[:mean_temperature],
-                   min_temperature:       row[:min_temperature],
+                   max_temperature:       row[:max_temperature_f],
+                   mean_temperature:      row[:mean_temperature_f],
+                   min_temperature:       row[:min_temperature_f],
                    mean_humidity:         row[:mean_humidity],
                    mean_visibility:       row[:mean_visibility_miles],
-                   mean_wind_speed:       row[:mean_wind_speed],
+                   mean_wind_speed:       row[:mean_wind_speed_mph],
                    mean_precipitation:    row[:mean_precipitation],
                    zip_code:              row[:zip_code]
                  )
