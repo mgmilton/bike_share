@@ -3,3 +3,16 @@
 <p><%= @station.latitude %>, <%= @station.longitude %></p>
 <p>Dock Count: <%= @station.dock_count %></p>
 <p>Installed: <%= @station.installation_date %></p>
+<% if current_admin? %>
+  <% if !@station.trips.empty? %>
+    <p>Number of Rides Started at <%= @station.name %>: <%= @station.trip_start_count %></p>
+    <p>Number of Rides Ended at <%= @station.name %>: <%= @station.trip_end_count %></p>
+    <p>Most Frequent Destination Station: <%= @station.most_frequent_destination %></p>
+    <p>Most Frequent Origination Station: <%= @station.most_frequent_origination %></p>
+    <p>Date with Highest Number of Trips Started at this Station: <%= @station.busiest_date %></p>
+    <p>Most Frequent Zip Code for Users Starting Trips at this Station: <%= @station.most_frequent_zip_code %></p>
+    <p>Bike ID Most Frequently Starting a Trip at This Station: <%= @station.most_frequent_bike_id %></p>
+  <% end %>
+  <%= link_to 'Edit', edit_admin_station_path(@station) %>
+  <%= link_to 'Delete', admin_station_path(@station), method: :delete %>
+<% end %>
