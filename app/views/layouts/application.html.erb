@@ -20,9 +20,19 @@
     <div id="main-container" class="container">
       <div class="row">
         <div class="col-xs-9">
-          <% flash.each do |name, msg| %>
-            <%= content_tag :div, msg, class: name %>
-          <% end %>
+          <% if flash.keys.first == "success" %>
+            <div class="flash-success">
+              <% flash.each do |name, msg| %>
+              <%= content_tag :div, msg, class: name %>
+              <% end %>
+            </div>
+          <% elsif flash.keys.first == "error" %>
+            <div class="flash-error">
+              <% flash.each do |name, msg| %>
+              <%= content_tag :div, msg, class: name %>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

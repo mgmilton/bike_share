@@ -34,7 +34,7 @@ class Admin::TripsController < Admin::BaseController
   def destroy
     @trip = Trip.find(params[:id])
     if @trip.destroy
-      flash[:success] = "Trip Deleted"
+      flash[:success] = "Trip Successfully Deleted"
       redirect_to trips_path
     else
       flash[:error] = "Something went wrong. Try again?"
