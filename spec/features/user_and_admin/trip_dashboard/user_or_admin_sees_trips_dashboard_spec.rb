@@ -42,13 +42,13 @@ describe "as a registered user or admin" do
     it "shows most ridden bike with number of rides" do
       visit trips_dashboard_path
 
-      # expect(page).to have_content("Most Ridden Bike: #{@trip2.bike_id} with 2 rides")
+      expect(page).to have_content("Most Ridden Bike: #{@trip1.bike_id} with 2 rides")
     end
 
     it "shows least ridden bike with number of rides" do
       visit trips_dashboard_path
 
-      # expect(page).to have_content("Least Ridden Bike: #{@trip3.bike_id} with 1 rides")
+      expect(page).to have_content("Least Ridden Bike: #{@trip3.bike_id} with 1 rides")
     end
 
     it "shows user types with number and percentage" do
