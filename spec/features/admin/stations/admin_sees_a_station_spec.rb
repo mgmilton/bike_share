@@ -6,7 +6,6 @@ context 'As an admin' do
       admin = create(:admin)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
       @station = create(:station)
-      create(:trip, station: @station, start_station_id: @station.id, end_station_id: @station.id)
     end
     scenario 'I see a button next to each station to edit that station' do
       visit station_path(@station)

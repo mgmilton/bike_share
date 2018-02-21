@@ -1,5 +1,5 @@
 class Admin::StationsController < Admin::BaseController
-  before_action :set_station
+  before_action :set_station, except: [:new, :create]
 
   def edit
     @station = Station.friendly.find(params[:name])
@@ -21,6 +21,20 @@ class Admin::StationsController < Admin::BaseController
       flash[:notice] = "#{@station.name} deleted succesfully"
     end
     redirect_to stations_path
+  end
+
+  def new
+    @station = Station.new
+  end
+
+  def create
+    station = Station.new(station_params)
+    if station.save
+      flash[:notice] = "#{station.name} created succesfully"
+      redirect_to station_path(station)
+    else
+      render :new
+    end
   end
 
   private
