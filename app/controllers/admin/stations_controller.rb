@@ -9,7 +9,7 @@ class Admin::StationsController < Admin::BaseController
     @station = Station.friendly.find(params[:name])
     @station.update(station_params)
     if @station.save
-      flash[:notice] = "#{@station.name} updated succesfully"
+      flash[:success] = "#{@station.name} updated succesfully"
       redirect_to station_path(@station)
     else
       render :edit
@@ -18,7 +18,7 @@ class Admin::StationsController < Admin::BaseController
 
   def destroy
     if @station.destroy
-      flash[:notice] = "#{@station.name} deleted succesfully"
+      flash[:success] = "#{@station.name} deleted succesfully"
     end
     redirect_to stations_path
   end
@@ -30,7 +30,7 @@ class Admin::StationsController < Admin::BaseController
   def create
     station = Station.new(station_params)
     if station.save
-      flash[:notice] = "#{station.name} created succesfully"
+      flash[:success] = "#{station.name} created succesfully"
       redirect_to station_path(station)
     else
       render :new

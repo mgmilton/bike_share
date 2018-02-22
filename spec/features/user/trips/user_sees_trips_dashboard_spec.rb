@@ -34,7 +34,8 @@ describe "as a registered user or admin" do
 
     it "shows monthly breakdown" do
       visit trips_dashboard_path
-
+      # I see Month by Month breakdown of number of rides with subtotals for each year,
+      # needs to be tweaked
       expect(page).to have_content("Total Rides By Month")
       expect(page).to have_content("3")
     end
@@ -42,13 +43,13 @@ describe "as a registered user or admin" do
     it "shows most ridden bike with number of rides" do
       visit trips_dashboard_path
 
-      expect(page).to have_content("Most Ridden Bike: #{@trip1.bike_id} with 2 rides")
+      expect(page).to have_content("Least Ridden Bike: #{@trip1.bike_id} with 2 rides")
     end
 
     it "shows least ridden bike with number of rides" do
       visit trips_dashboard_path
 
-      expect(page).to have_content("Least Ridden Bike: #{@trip3.bike_id} with 1 rides")
+      expect(page).to have_content("Most Ridden Bike: #{@trip3.bike_id} with 1 rides")
     end
 
     it "shows user types with number and percentage" do
@@ -90,3 +91,10 @@ describe "as a registered user or admin" do
     end
   end
 end
+
+
+# I see the Weather on the day with the highest rides.
+# I see the Weather on the day with the lowest rides.
+
+# I see the Station with the most rides as a starting place,
+# I see the Station with the most rides as an ending place,
