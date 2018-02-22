@@ -8,7 +8,7 @@ context 'As an admin' do
       @station = create(:station)
     end
     scenario "I am directed that station's show page" do
-      visit edit_admin_station_path(@station)
+      visit edit_station_path(@station)
 
       expect(page).to have_field('station[name]', with: @station.name)
       expect(page).to have_field('station[dock_count]', with: @station.dock_count)

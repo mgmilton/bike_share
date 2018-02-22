@@ -20,7 +20,7 @@ describe "as an admin" do
         click_link "Edit"
       end
 
-      expect(current_path).to eq(edit_admin_trip_path(@trip1))
+      expect(current_path).to eq(edit_trip_path(@trip1))
 
       fill_in "Duration", with: 100
       click_on "Update Trip"
