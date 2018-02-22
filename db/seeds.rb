@@ -4,7 +4,7 @@ require 'time'
 
 OPTIONS = {headers: true, header_converters: :symbol}
 
-CSV.foreach "data/weather.csv", OPTIONS do |row|
+CSV.foreach "db/fixture-data/weather.csv", OPTIONS do |row|
   Condition.create(id:                    row[:id],
                    date:                  Date.strptime(row[:date], '%m/%d/%y'),
                    max_temperature:       row[:max_temperature_f],
@@ -18,7 +18,7 @@ CSV.foreach "data/weather.csv", OPTIONS do |row|
                  )
 end
 
-CSV.foreach "data/station.csv", OPTIONS do |row|
+CSV.foreach "db/fixture-data/station.csv", OPTIONS do |row|
   Station.create!(id:                     row[:id],
                  name:                    row[:name],
                  latitude:                row[:lat],
@@ -29,7 +29,7 @@ CSV.foreach "data/station.csv", OPTIONS do |row|
                 )
 end
 
-CSV.foreach "data/trip.csv", OPTIONS do |row|
+CSV.foreach "db/fixture-data/trip.csv", OPTIONS do |row|
   Trip.create!(id:                row[:id],
                duration:          row[:duration],
                bike_id:           row[:bike_id],
