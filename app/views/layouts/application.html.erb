@@ -20,18 +20,8 @@
     <div id="main-container" class="container">
       <div class="row">
         <div class="col-xs-9">
-          <% if flash.keys.first == "success" %>
-            <div class="flash-success">
-              <% flash.each do |name, msg| %>
-              <%= content_tag :div, msg, class: name %>
-              <% end %>
-            </div>
-          <% elsif flash.keys.first == "error" %>
-            <div class="flash-error">
-              <% flash.each do |name, msg| %>
-              <%= content_tag :div, msg, class: name %>
-              <% end %>
-            </div>
+          <% flash.each do |type, message| %>
+            <%= content_tag :div, message, class: type %>
           <% end %>
         </div>
       </div>
