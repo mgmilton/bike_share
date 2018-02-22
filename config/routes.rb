@@ -15,13 +15,16 @@ Rails.application.routes.draw do
   get "/logout", to: "sessions#destroy"
   get "/trips-dashboard", to: "trips_dashboard#index"
   get "/weather-dashboard", to: "weather_dashboard#index"
+  get '/stations-dashboard', to: 'stations#dashboard'
 
   resources :trips, only: [:index, :show]
 
   resources :stations, only: [:index, :show], param: :name
+
   get '/stations-dashboard', to: 'stations#dashboard'
 
   namespace :admin do
     resources :stations, only: [:edit, :update, :destroy, :new, :create], param: :name
+    resources :trips, only: [:new, :edit, :update, :destroy]
   end
 end
