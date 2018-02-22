@@ -91,10 +91,3 @@ describe "as a registered user or admin" do
     end
   end
 end
-
-
-# I see the Weather on the day with the highest rides.
-# I see the Weather on the day with the lowest rides.
-
-# I see the Station with the most rides as a starting place,
-# I see the Station with the most rides as an ending place,
