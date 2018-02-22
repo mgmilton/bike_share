@@ -3,12 +3,15 @@ require "rails_helper"
 describe "as a registered user or admin" do
   before :each do
     @admin = create(:admin)
-    @user = create(:user)
-    @trip1 = create(:trip)
-    @trip2 = Trip.create!(duration: 20, start_date: Time.now, start_station_id: 55, end_date: Time.now, end_station_id: 56, bike_id: @trip1.bike_id, subscription_type: "Subscriber", zip_code: 94965)
-    @trip3 = Trip.create!(duration: 3, start_date: Time.now, start_station_id: 3, end_date: Time.now, end_station_id: 4, bike_id: 10, subscription_type: "Customer", zip_code: 12345)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
-  end
+      @user = create(:user)
+      @station1 = create(:station, name: "station 1")
+      @station2 = create(:station, name: "station 2")
+      @condition_1 = create(:condition, date: Date.strptime("08/27/2015", "%m/%e/%y"))
+      @condition_2 = create(:condition, date: Date.strptime("12/25/2014", "%m/%e/%y"), max_temperature: 30, min_temperature: 20, mean_precipitation: 2)
+      @trip1 = create(:trip, duration: 10, start_station_id: @station1.id, end_station_id: @station1.id, start_date: Date.strptime("08/27/2015", "%m/%e/%y"))
+      @trip2 = create(:trip, duration: 20, zip_code: 95113, bike_id: @trip1.bike_id, start_station_id: @station1.id, end_station_id: @station2.id, start_date: Date.strptime("12/25/2014", "%m/%e/%y"))
+      @trip3 = create(:trip, duration: 3, bike_id: 10, subscription_type: "Customer", zip_code: 94041, start_station_id: @station1.id, end_station_id: @station2.id, start_date: Date.strptime("08/27/2015", "%m/%e/%y"))
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)  end
   describe "when i visit the trips_dashboard_path" do
     it "shows the average duration of a ride" do
       visit trips_dashboard_path
