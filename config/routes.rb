@@ -3,28 +3,23 @@ Rails.application.routes.draw do
 
   resources :conditions, only: [:index, :show]
 
+  resources :users, only: [:new, :create]
+
+  resources :trips, only: [:index, :show]
+
+  resources :stations, only: [:index, :show], param: :name
+
   namespace :admin do
-  	resources :conditions, only: [:new, :create, :edit, :update, :destroy]
+    resources :stations, only: [:edit, :update, :destroy, :new, :create], param: :name
+    resources :trips, only: [:new, :create, :edit, :update, :destroy]
+    resources :conditions, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  resources :users, only: [:new, :create]
   get "/dashboard", to: "users#show"
-
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
   get "/trips-dashboard", to: "trips_dashboard#index"
   get "/weather-dashboard", to: "weather_dashboard#index"
   get '/stations-dashboard', to: 'stations#dashboard'
-
-  resources :trips, only: [:index, :show]
-
-  resources :stations, only: [:index, :show], param: :name
-
-  get '/stations-dashboard', to: 'stations#dashboard'
-
-  namespace :admin do
-    resources :stations, only: [:edit, :update, :destroy, :new, :create], param: :name
-    resources :trips, only: [:new, :edit, :update, :destroy]
-  end
 end
