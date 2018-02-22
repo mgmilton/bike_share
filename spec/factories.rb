@@ -44,4 +44,11 @@ FactoryBot.define do
     latitude 	37.789756
     longitude (-122.39464299999999)
   end
+
+  factory :item do
+    sequence(:title) { |n| "Item #{n}" }
+    description 'Is way cool'
+    price 20.00
+    image 'bike-light.jpg'
+  end
 end
