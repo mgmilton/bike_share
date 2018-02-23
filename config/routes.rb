@@ -21,7 +21,19 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
+
   get "/trips-dashboard", to: "trips_dashboard#index"
   get "/weather-dashboard", to: "weather_dashboard#index"
   get '/stations-dashboard', to: 'stations#dashboard'
+<<<<<<< HEAD
+=======
+  get '/stations-dashboard', to: 'stations#dashboard'
+
+  resources :trips, only: [:index, :show]
+
+  resources :stations, only: [:index]
+  get '/:name', to: 'stations#show'
+
+  get 'bike-shop/new', to: 'items#new'
+>>>>>>> add items routes and controller
 end
