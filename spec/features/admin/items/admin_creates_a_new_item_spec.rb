@@ -3,14 +3,16 @@ require 'rails_helper'
 context 'As an admin' do
   describe "When I visit '/bike-shop/new'" do
     scenario 'I can create an accessory' do
-      visit 'bike-shop/new'
+      admin = create(:admin)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit 'admin/bike-shop/new'
+      save_and_open_page
 
       fill_in 'item[title]', with: 'Sturdy Helmet'
       fill_in 'item[description]', with: 'Practical'
       fill_in 'item[price]', with: 30.59
-      # fill_in 'item[photo]', with: 30.59
-
-      click_on 'Create Item'
+      click_on 'Create Accessory'
 
       expect(current_path).to eq()
       expect(page).to have_content('Sturdy Helmet')
