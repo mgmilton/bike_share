@@ -87,11 +87,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 * [Cameron Johnson](https://github.com/slimecog) 
 * [Matt Milton](https://github.com/mgmilton)
-* Anna Royer
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* [Anna Royer](https://github.com/annaroyer)
 
 ## License
 
