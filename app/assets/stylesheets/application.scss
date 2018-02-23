@@ -12,9 +12,14 @@
  *
 
  */
+@import 'base';
+@import 'skeleton';
+@import 'components/buttons';
+@import 'components/forms';
+@import 'components/text';
+
 $success-green: #5bee7d;
 $error-red: #fd5e61;
-
 
  .success {
    background-color: $success-green;
@@ -23,6 +28,3 @@ $error-red: #fd5e61;
  .error {
    background-color: $error-red;
  }
-
- @import "bootstrap-sprockets";
- @import "bootstrap"
