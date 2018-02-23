@@ -12,9 +12,11 @@ Rails.application.routes.draw do
   resources :carts, only: [:create]
 
   namespace :admin do
-    resources :stations, only: [:edit, :update, :destroy, :new, :create], param: :name
-    resources :trips, only: [:new, :create, :edit, :update, :destroy]
-    resources :conditions, only: [:new, :create, :edit, :update, :destroy]
+  	resources :conditions, only: [:new, :create, :edit, :update, :destroy]
+    resources :stations, except: [:index, :show], param: :name
+    resources :trips, only: [:new, :edit, :update, :destroy]
+    resources :items, only: [:create]
+    get 'bike-shop/new', to: 'items#new'
   end
 
   get "/dashboard", to: "users#show"
@@ -25,15 +27,15 @@ Rails.application.routes.draw do
   get "/trips-dashboard", to: "trips_dashboard#index"
   get "/weather-dashboard", to: "weather_dashboard#index"
   get '/stations-dashboard', to: 'stations#dashboard'
-<<<<<<< HEAD
-=======
   get '/stations-dashboard', to: 'stations#dashboard'
 
   resources :trips, only: [:index, :show]
 
   resources :stations, only: [:index]
   get '/:name', to: 'stations#show'
+<<<<<<< HEAD
 
   get 'bike-shop/new', to: 'items#new'
->>>>>>> add items routes and controller
+=======
+>>>>>>> change stations show route to just name
 end
