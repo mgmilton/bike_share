@@ -75,21 +75,13 @@ Add additional notes about how to deploy this on a live system
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+Please feel free to submit pull requests and suggestions to this repository. We would love your feedback.
 
 ## Authors
 
 * [Cameron Johnson](https://github.com/slimecog) 
 * [Matt Milton](https://github.com/mgmilton)
 * [Anna Royer](https://github.com/annaroyer)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
