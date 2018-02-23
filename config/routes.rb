@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :stations, only: [:index, :show], param: :name
 
+  resources :carts, only: [:create]
+
   namespace :admin do
     resources :stations, only: [:edit, :update, :destroy, :new, :create], param: :name
     resources :trips, only: [:new, :create, :edit, :update, :destroy]

@@ -32,12 +32,3 @@ describe "ad as admin" do
     end
   end
 end
-
-
-
-  # As a admin, xx
-  # When I visit '/trips/new', xx
-  # I fill in a form with all trip attributes, xx
-  # When I click "Create Trip", xx
-  # I am directed to that trip's show page. xx
-  # I also see a flash message that I have created that trip. xx
