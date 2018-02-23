@@ -17,7 +17,7 @@
       <%= render "shared/user_navigation" %>
     <% end %>
 
-    <div id="main-container" class="container">
+    <main id="main-container" class="container">
       <div class="row">
         <div class="col-xs-9">
           <% flash.each do |type, message| %>
@@ -25,9 +25,9 @@
           <% end %>
         </div>
       </div>
-    </div>
 
     <%= yield %>
 
+  </main>
   </body>
 </html>
