@@ -1,0 +1,18 @@
+
+<%= form_for [:admin, @item] do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <%= f.label :price %>
+  <%= f.number_field :price, step: 0.01 %>
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+  <%= f.select(:status) do  %>
+    <% ['active', 'retired'].each_with_index do |c, index| -%>
+      <%= content_tag(:option, c, value: index) %>
+    <% end %>
+  <% end %>
+  <% f.submit "Create Accessory" %>
+<% end %>
