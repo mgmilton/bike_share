@@ -3,7 +3,7 @@ require 'rails_helper'
 context 'As an admin' do
   describe "When I visit '/bike-shop/new'" do
     scenario 'I can create an accessory' do
-      visit new_bike-shop_path
+      visit 'bike-shop/new'
 
       fill_in 'item[title]', with: 'Sturdy Helmet'
       fill_in 'item[description]', with: 'Practical'

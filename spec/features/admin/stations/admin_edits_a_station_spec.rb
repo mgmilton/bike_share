@@ -8,7 +8,7 @@ context 'As an admin' do
       @station = create(:station)
     end
     scenario "I am directed that station's show page" do
-      visit edit_station_path(@station)
+      visit edit_admin_station_path(@station)
 
       expect(page).to have_field('station[name]', with: @station.name)
       expect(page).to have_field('station[dock_count]', with: @station.dock_count)
@@ -25,7 +25,7 @@ context 'As an admin' do
       fill_in 'station[longitude]', with: (-114.16272341)
       click_on 'Update Station'
 
-      expect(current_path).to eq(station_path(@station))
+      expect(current_path).to eq("/#{@station.slug}")
       expect(page).to have_content('Mountain Vista')
       expect(page).to have_content(10)
       expect(page).to have_content('San Jose')

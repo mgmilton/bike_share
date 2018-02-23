@@ -8,13 +8,13 @@ context 'As an admin' do
       @station = create(:station)
     end
     scenario 'I see a button next to each station to edit that station' do
-      visit station_path(@station)
+      visit "/#{@station.slug}"
 
       expect(page).to have_link('Edit')
     end
 
     scenario 'I also see a button next to each station to delete that station' do
-      visit station_path(@station)
+      visit "/#{@station.slug}"
 
       expect(page).to have_link('Delete')
     end

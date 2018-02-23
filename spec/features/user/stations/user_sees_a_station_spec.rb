@@ -13,42 +13,42 @@ context 'As a registered user and admin' do
      end
 
     scenario 'I see the Number of rides started at this station' do
-      visit station_path(@station_1)
+      visit "/#{@station_1.slug}"
 
       expect(page).to have_content("Number of Rides Started at #{@station_1.name}: 5")
     end
 
     scenario 'I see the Number of rides ended at this station' do
-      visit station_path(@station_1)
+      visit "/#{@station_1.slug}"
 
       expect(page).to have_content("Number of Rides Ended at #{@station_1.name}: 2")
     end
 
     scenario 'I see the Most frequent destination station (for rides that began at this station)' do
-      visit station_path(@station_1)
+      visit "/#{@station_1.slug}"
 
       expect(page).to have_content("Most Frequent Destination Station: #{@station_2.name}")
     end
 
     scenario 'I see the Most frequent origination station (for rides that ended at this station)' do
-      visit station_path(@station_1)
+      visit "/#{@station_1.slug}"
 
       expect(page).to have_content("Most Frequent Origination Station: #{@station_1.name}")
     end
 
     scenario 'I see the Date with the highest number of trips started at this station' do
-      visit station_path(@station_1)
+      visit "/#{@station_1.slug}"
 
       expect(page).to have_content("Date with Highest Number of Trips Started at this Station: 2017-03-07")
     end
 
     scenario 'I see the Most frequent zip code for users starting trips at this station' do
-      visit station_path(@station_1)
+      visit "/#{@station_1.slug}"
 
       expect(page).to have_content("Most Frequent Zip Code for Users Starting Trips at this Station: 94301")
     end
     scenario 'I see the Bike ID most frequently starting a trip at this station' do
-      visit station_path(@station_1)
+      visit "/#{@station_1.slug}"
 
       expect(page).to have_content("Bike ID Most Frequently Starting a Trip at This Station: 8")
     end
