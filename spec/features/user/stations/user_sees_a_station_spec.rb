@@ -5,11 +5,11 @@ context 'As a registered user and admin' do
     before(:each) do
        @station_1 = create(:station)
        @station_2 = create(:station)
-       @admin = create(:admin)
+       @user = create(:user)
        @date = Time.strptime('3/7/17', '%m/%d/%y')
        create_list(:trip, 2, station: @station_1, start_station_id: @station_1.id, end_station_id: @station_1.id, zip_code: 91407, bike_id: 47)
        create_list(:trip, 3, station: @station_1, start_station_id: @station_1.id, end_station_id: @station_2.id, start_date: @date, zip_code: 94301, bike_id: 8)
-       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
+       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
      end
 
     scenario 'I see the Number of rides started at this station' do
