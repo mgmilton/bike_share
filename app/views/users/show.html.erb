@@ -1,15 +1,10 @@
-<html>
-
-  <body>
-    <h3> Logged in as <%= current_user.name %>! </h3>
-    <ul> Email: <%= current_user.email %></ul>
-    <ul> Account Created: <%= current_user.created_at %></ul>
-    <ul> Orders: <% current_user.orders.each do |order| %>
-      <ul><%= link_to order.id, order_path(order) %>
-      <% end %>
-      </ul>
-    </ul>
-  </body>
-
-  <button type="button" class="btn btn-warning"><%= link_to "Edit", edit_user_path(current_user) %></button>
-</html>
+<h3> Logged in as <%= current_user.name %>! </h3>
+<ul> Email: <%= current_user.email %></ul>
+<ul> Account Created: <%= current_user.created_at %></ul>
+<ul> Orders: <% current_user.orders.each do |order| %>
+  <ul><%= link_to order.id, order_path(order) %>
+  <% end %>
+  </ul>
+</ul>
+<button type="button" class="btn btn-warning"><%= link_to "Edit", edit_user_path(current_user) %></button>
+<%= link_to 'Bike Shop Accessories', admin_bike_shop_path %>

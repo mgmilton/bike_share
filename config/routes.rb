@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resources :items, only: [:create]
     resources :users, only: [:show]
     get 'bike-shop/new', to: 'items#new'
+    get 'bike-shop/edit', to: 'items#edit'
+    put 'bike-shop/:title', to: 'items#update'
+    delete 'bike-shop/:title', to: 'items#destroy'
   end
 
   resources :carts, only: [:create, :destroy, :show]
@@ -26,6 +29,14 @@ Rails.application.routes.draw do
   get "/weather-dashboard", to: "weather_dashboard#index"
   get '/stations-dashboard', to: 'stations#dashboard'
   get '/map', to: "conditions#map"
+  get '/stations-dashboard', to: 'stations#dashboard'
   get 'bike-shop', to: 'items#index'
+  get 'bike-shop/:title', to: 'items#show'
+
+  scope :admin, as: :admin do
+    get '/dashboard', to: 'users#show'
+    get '/bike-shop', to: 'items#index'
+  end
+
   get '/:name', to: 'stations#show'
 end

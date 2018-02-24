@@ -8,4 +8,16 @@
       <%= button_to "Add Item", carts_path(item_id: item) %>
     </div>
   </figcaption>
+  <% if item.active? %>
+    <%= button_to "Add to Cart", carts_path(item_id: item.id), class: "add_item_#{item.id}" %>
+  <% else %>
+    <p>Accessory Retired</p>
+  <% end %>
+  <% if current_admin? %>
+    <div class="item-<%= item.slug %>">
+      <%= item.status %>
+      <%= link_to "Edit", admin_bike_shop_edit_path(item) %>
+      <%= link_to "Delete", admin_bike_shop_path(item), method: :delete %>
+  </div>
+  <% end %>
 </figure>

@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
-  enum status: %w(active, retired)
+  before_save :generate_slug
+  enum status: %w(active retired)
   has_attached_file :image,
                     styles: { thumb: ['64x64#', :jpg],
                               original: ['500x500>', :jpg] },
@@ -13,4 +14,8 @@ class Item < ApplicationRecord
   validates_presence_of :title, :description, :price
   validates_uniqueness_of :title
   validates_numericality_of :price
+
+  def generate_slug
+    self.slug = self.title.parameterize
+  end
 end
