@@ -19,6 +19,9 @@
 .byebug_history
 /data/*
 .DS_Store
+
+# Ignore application configuration
+/config/application.yml
 /public/assets
 # Ignore application configuration
 /config/application.yml
