@@ -1,3 +1,10 @@
-<h3> Logged in as <%= current_user.name %>! </h3>
-<ul> Email: <%= current_user.email %></ul>
-<ul> Account Created: <%= current_user.created_at %></ul>
+<html>
+
+  <body>
+    <h3> Logged in as <%= current_user.name %>! </h3>
+    <ul> Email: <%= current_user.email %></ul>
+    <ul> Account Created: <%= current_user.created_at %></ul>
+  </body>
+
+  <button type="button" class="btn btn-warning"><%= link_to "Edit", edit_user_path(current_user) %></button>
+</html>

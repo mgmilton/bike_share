@@ -1,4 +1,5 @@
 class WeatherDashboardController < ApplicationController
+  before_action :require_user
   def index
     @rides_by_temp ||= Condition.rides_by_temperature
     @rides_by_precipitation ||= Condition.rides_by_precipitation

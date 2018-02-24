@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       redirect_to "/dashboard"
     else
       flash[:error] = "Something went wrong. Try again?"
-      render :'welcome#index'
+      render :root
     end
   end
 
@@ -21,4 +21,5 @@ class SessionsController < ApplicationController
     flash[:success] = "Successfully Logged Out"
     redirect_to root_path
   end
+
 end
