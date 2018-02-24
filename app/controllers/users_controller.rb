@@ -30,6 +30,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to '/dashboard'
+    else
+      render :new
+    end
+  end
+
   private
     def user_params
       params.require(:user).permit(:first_name, :last_name, :address, :city, :state, :zip_code, :email, :password)
