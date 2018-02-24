@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get "/weather-dashboard", to: "weather_dashboard#index"
   get '/stations-dashboard', to: 'stations#dashboard'
   get '/map', to: "conditions#map"
+  get '/stations-dashboard', to: 'stations#dashboard'
   get 'bike-shop', to: 'items#index'
   get '/:name', to: 'stations#show'
 end
