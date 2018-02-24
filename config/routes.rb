@@ -25,9 +25,18 @@ Rails.application.routes.draw do
   get "/trips-dashboard", to: "trips_dashboard#index"
   get "/weather-dashboard", to: "weather_dashboard#index"
   get '/stations-dashboard', to: 'stations#dashboard'
+<<<<<<< HEAD
   get '/map', to: "conditions#map"
   get '/stations-dashboard', to: 'stations#dashboard'
+=======
+>>>>>>> add admin dashboard
   get 'bike-shop', to: 'items#index'
   get 'bike-shop/:title', to: 'items#show'
+
+  scope :admin, as: :admin do
+    get '/dashboard', to: 'users#show'
+    get '/bike-shop', to: 'items#index'
+  end
+
   get '/:name', to: 'stations#show'
 end
