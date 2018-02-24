@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resources :items, only: [:create]
     resources :users, only: [:show]
     get 'bike-shop/new', to: 'items#new'
+    get 'bike-shop/edit', to: 'items#edit'
+    put 'bike-shop/:title', to: 'items#update'
+    delete 'bike-shop/:title', to: 'items#destroy'
   end
 
   resources :carts, only: [:create, :destroy, :show]
