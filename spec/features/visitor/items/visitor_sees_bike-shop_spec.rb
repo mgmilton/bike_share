@@ -29,8 +29,16 @@ context 'As a visitor' do
 
         expect(page).to have_content("You now have 1 #{@accessories.first.title} in your cart")
       end
+      scenario 'I also see my cart count updated on all pages' do
+        visit '/bike-shop'
+        expect(page).to have_content('Cart: 0')
+
+        find(".add_item_#{@accessories.first.id}").click
+        expect(page).to have_content('Cart: 1')
+
+        find(".add_item_#{@accessories.first.id}").click
+        expect(page).to have_content('Cart: 2')
+      end
     end
   end
 end
-
-# I also see my cart count updated on all pages.
