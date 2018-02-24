@@ -7,6 +7,8 @@ describe "As an admin" do
 
       visit '/'
 
+      expect(current_path).to eq(login_path)
+
       fill_in "email", with: admin.email
       fill_in "password", with: admin.password
 
