@@ -1,30 +1,31 @@
 Rails.application.routes.draw do
   root "welcome#index"
 
-  resources :conditions, only: [:index, :show]
-
   namespace :admin do
-  	resources :conditions, only: [:new, :create, :edit, :update, :destroy]
+    resources :conditions, only: [:new, :create, :edit, :update, :destroy]
+    resources :stations, except: [:index, :show], param: :name
+    resources :trips, only: [:new, :edit, :update, :destroy, :create]
+    resources :items, only: [:create]
+    get 'bike-shop/new', to: 'items#new'
   end
 
+  resources :carts, only: [:create]
+  resources :conditions, only: [:index, :show]
+  resources :trips, only: [:index, :show]
+  resources :stations, only: [:index]
   resources :users, only: [:new, :create]
-  get "/dashboard", to: "users#show"
 
+  get "/dashboard", to: "users#show"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
+
   get "/trips-dashboard", to: "trips_dashboard#index"
   get "/weather-dashboard", to: "weather_dashboard#index"
   get '/stations-dashboard', to: 'stations#dashboard'
-
-  resources :trips, only: [:index, :show]
-
-  resources :stations, only: [:index, :show], param: :name
-
   get '/stations-dashboard', to: 'stations#dashboard'
 
-  namespace :admin do
-    resources :stations, only: [:edit, :update, :destroy, :new, :create], param: :name
-    resources :trips, only: [:new, :edit, :update, :destroy]
-  end
+  get 'bike-shop', to: 'items#index'
+
+  get '/:name', to: 'stations#show'
 end

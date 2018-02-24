@@ -16,7 +16,7 @@ context 'As an admin' do
       fill_in 'station[longitude]', with: (-114.16272341)
       click_on 'Create Station'
 
-      expect(current_path).to eq('/stations/mountain-vista')
+      expect(current_path).to eq('/mountain-vista')
       expect(page).to have_content('Mountain Vista created succesfully')
       expect(page).to have_content('Dock Count: 10')
       expect(page).to have_content('San Jose')

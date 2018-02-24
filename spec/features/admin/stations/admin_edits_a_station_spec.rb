@@ -25,7 +25,7 @@ context 'As an admin' do
       fill_in 'station[longitude]', with: (-114.16272341)
       click_on 'Update Station'
 
-      expect(current_path).to eq(station_path(@station))
+      expect(current_path).to eq("/#{@station.slug}")
       expect(page).to have_content('Mountain Vista')
       expect(page).to have_content(10)
       expect(page).to have_content('San Jose')

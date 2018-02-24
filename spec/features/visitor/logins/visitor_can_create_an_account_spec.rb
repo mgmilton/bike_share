@@ -6,7 +6,7 @@ describe "As a visitor" do
 
       visit '/'
 
-      click_on "Create Account"
+      click_link "Sign Up"
 
       expect(current_path).to eq(new_user_path)
 

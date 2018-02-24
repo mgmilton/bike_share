@@ -1,0 +1,21 @@
+.btn {
+  background: $denim;
+  border: 2px solid white;
+  color: white;
+  font: {
+    size: 14px;
+    family: $open-sans;
+  }
+  a {
+    color: white;
+  }
+}
+.btn:hover {
+  border: 2px solid $marigold;
+  a {
+    color: $marigold;
+  }
+}
+.btn:active {
+  outline: none;
+}

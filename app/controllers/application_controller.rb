@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
   def require_user
     render file: "/public/404" unless current_user
   end
+
+  def set_cart
+    @cart = Cart.new(session[:cart])
+  end
 end

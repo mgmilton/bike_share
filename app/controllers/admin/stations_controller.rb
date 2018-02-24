@@ -6,11 +6,11 @@ class Admin::StationsController < Admin::BaseController
   end
 
   def update
-    @station = Station.friendly.find(params[:name])
-    @station.update(station_params)
-    if @station.save
-      flash[:success] = "#{@station.name} updated succesfully"
-      redirect_to station_path(@station)
+    station = Station.friendly.find(params[:name])
+    station.update(station_params)
+    if station.save
+      flash[:success] = "#{station.name} updated succesfully"
+      redirect_to "/#{station.slug}"
     else
       render :edit
     end
@@ -31,7 +31,7 @@ class Admin::StationsController < Admin::BaseController
     station = Station.new(station_params)
     if station.save
       flash[:success] = "#{station.name} created succesfully"
-      redirect_to station_path(station)
+      redirect_to "/#{station.slug}"
     else
       render :new
     end

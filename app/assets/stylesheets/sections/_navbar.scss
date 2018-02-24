@@ -1,0 +1,39 @@
+.navbar-fixed-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0px;
+  background-color: $denim;
+  .navbar-brand:hover {
+    color: $marigold;
+  }
+  .navbar-center {
+    .dropdown {
+      padding: 0px 40px;
+      margin: 0px;
+      .dropdown-menu {
+        background: $denim;
+        margin-top: 15px;
+        border: none;
+        a {
+          color: white;
+        }
+        a:hover {
+          background: $marigold;
+        }
+      }
+    }
+    .dropdown-toggle:active {
+      background: $denim;
+      color: $marigold;
+    }
+    .dropdown-toggle:visited {
+      background: $denim;
+      color: white;
+    }
+    .dropdown-toggle:hover {
+      background: $denim;
+      color: $marigold;
+    }
+  }
+}
