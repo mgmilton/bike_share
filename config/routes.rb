@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   root "welcome#index"
 
-  resources :conditions, only: [:index, :show]
+  resources :users, only: [:new, :create]
+  get "/dashboard", to: "users#show"
+
+  get "/login", to: "sessions#new"
+  post "/login", to: "sessions#create"
+  get "/logout", to: "sessions#destroy"
 
   resources :users, only: [:new, :create]
 
@@ -29,13 +34,12 @@ Rails.application.routes.draw do
   get '/stations-dashboard', to: 'stations#dashboard'
   get '/stations-dashboard', to: 'stations#dashboard'
 
-  resources :trips, only: [:index, :show]
+  get 'bike-shop', to: 'items#index'
 
+  resources :conditions, only: [:index, :show]
+  resources :trips, only: [:index, :show]
   resources :stations, only: [:index]
   get '/:name', to: 'stations#show'
-<<<<<<< HEAD
 
   get 'bike-shop/new', to: 'items#new'
-=======
->>>>>>> change stations show route to just name
 end
