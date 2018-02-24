@@ -8,5 +8,9 @@
       <%= button_to "Add Item", carts_path(item_id: item) %>
     </div>
   </figcaption>
-  <%= button_to "Add to Cart", carts_path(item_id: item.id), class: "add_item_#{item.id}" %>
+  <% if item.active? %>
+    <%= button_to "Add to Cart", carts_path(item_id: item.id), class: "add_item_#{item.id}" %>
+  <% else %>
+    <p>Accessory Retired</p>
+  <% end %>
 </figure>
