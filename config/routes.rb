@@ -10,11 +10,12 @@ Rails.application.routes.draw do
     get 'bike-shop/new', to: 'items#new'
   end
 
-  resources :carts, only: [:create, :destroy]
+  resources :carts, only: [:create, :destroy, :show]
   resources :conditions, only: [:index, :show]
   resources :trips, only: [:index, :show]
   resources :stations, only: [:index]
   resources :users, only: [:new, :create, :edit, :update]
+  resources :orders, only: [:create, :show]
 
   get "/dashboard", to: "users#show"
   get "/carts", to: "carts#index"
