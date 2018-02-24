@@ -15,6 +15,8 @@ describe "As a visitor" do
       expect(page).to have_content("Logged in as #{user.name}")
       expect(page).to have_content("Email: #{user.email}")
       expect(page).to have_content("Account Created: #{user.created_at}")
+      expect(page).to_not have_content("Login")
+      expect(page).to have_content("Log Out")
     end
   end
 end

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :carts, only: [:create]
   resources :conditions, only: [:index, :show]
   resources :trips, only: [:index, :show]
-  resources :stations, only: [:index]
+  resources :stations, only: [:index, :show], param: :name
   resources :users, only: [:new, :create]
 
   get "/dashboard", to: "users#show"
@@ -23,6 +23,11 @@ Rails.application.routes.draw do
   get "/trips-dashboard", to: "trips_dashboard#index"
   get "/weather-dashboard", to: "weather_dashboard#index"
   get '/stations-dashboard', to: 'stations#dashboard'
+  get '/map', to: "conditions#map"
+
+
+
+
   get '/stations-dashboard', to: 'stations#dashboard'
 
   get 'bike-shop', to: 'items#index'
