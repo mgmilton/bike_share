@@ -5,12 +5,14 @@ describe "As an admin" do
     it "he or she can login as an admin" do
       admin = create(:admin)
 
-
       visit '/'
+
+      expect(current_path).to eq(login_path)
 
       fill_in "email", with: admin.email
       fill_in "password", with: admin.password
-      click_on('Log In')
+
+      click_on "Log In"
 
       expect(page).to have_content("Logged in as Admin User: #{admin.name}")
       expect(page).to have_content("Email: #{admin.email}")
