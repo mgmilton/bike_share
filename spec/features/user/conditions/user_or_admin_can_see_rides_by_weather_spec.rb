@@ -3,6 +3,8 @@ require "rails_helper"
 describe "As a registered user and admin" do
   describe "When he or she visits the /weather-dashbord" do
     it "displays the breakdown of rides by weather conditions" do
+      user = create(:user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       create_list(:condition, 10)
       visit "/weather-dashboard"
 
