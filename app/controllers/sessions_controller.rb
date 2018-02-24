@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       redirect_to "/dashboard"
     else
       flash[:error] = "Something went wrong. Try again?"
-      render :'welcome#index'
+      render :root
     end
   end
 

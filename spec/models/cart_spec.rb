@@ -25,6 +25,7 @@ describe Cart, type: :model do
       @cart.remove_item(2)
       expect(@cart.contents).to eq({"1" => 1, "2" => 2})
     end
+  end
 
 
   #   it "handles default nil" do
