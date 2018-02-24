@@ -14,10 +14,23 @@ context 'As a visitor' do
         expect(page).to have_content(accessory.price)
       end
     end
+
+    scenario 'I see a button near each item that says "Add to Cart"' do
+      visit '/bike-shop'
+
+      expect(page).to have_button('Add to Cart')
+    end
+
+    describe 'When I click "Add to Cart",' do
+      scenario 'I see a flash message alerting me that I have added that specific accessory to my cart.' do
+        visit '/bike-shop'
+
+        find(".add_item_#{@accessories.first.id}").click
+
+        expect(page).to have_content("#{@accessories.first.title} added to cart")
+      end
+    end
   end
 end
 
-# I see a button near each item that says "Add to Cart"
-# When I click "Add to Cart",
-# I see a flash message alerting me that I have added that specific accessory to my cart.
 # I also see my cart count updated on all pages.
