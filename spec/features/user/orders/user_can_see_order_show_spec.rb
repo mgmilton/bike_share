@@ -17,6 +17,9 @@ describe "as a user" do
         end
 
         expect(current_path).to eq(bike_shop_path)
+
+        visit "/dashboard"
+
       end
     end
   end

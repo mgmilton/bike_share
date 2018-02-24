@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :trips, only: [:index, :show]
   resources :stations, only: [:index]
   resources :users, only: [:new, :create, :edit, :update]
+  resources :orders, only: [:create, :show]
 
   get "/dashboard", to: "users#show"
   get "/carts", to: "carts#index"

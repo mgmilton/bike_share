@@ -20,4 +20,11 @@ class Cart
   def count_of(item_id)
     @contents[item_id.to_s].to_i
   end
+
+  def total_cost
+    @contents.sum do |k, v|
+      item = Item.find(k.to_i)
+      item.price * v
+    end
+  end
 end
