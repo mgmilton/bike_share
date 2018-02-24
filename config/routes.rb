@@ -6,16 +6,19 @@ Rails.application.routes.draw do
     resources :stations, except: [:index, :show], param: :name
     resources :trips, only: [:new, :edit, :update, :destroy, :create]
     resources :items, only: [:create]
+    resources :users, only: [:show]
     get 'bike-shop/new', to: 'items#new'
   end
 
-  resources :carts, only: [:create]
+  resources :carts, only: [:create, :destroy]
   resources :conditions, only: [:index, :show]
   resources :trips, only: [:index, :show]
   resources :stations, only: [:index, :show], param: :name
   resources :users, only: [:new, :create, :edit, :update]
+  resources :items, only: [:destroy]
 
   get "/dashboard", to: "users#show"
+  get "/carts", to: "carts#index"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"

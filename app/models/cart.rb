@@ -13,7 +13,11 @@ class Cart
     @contents[item_id] += 1
   end
 
+  def remove_item
+    @contents[item_id] -= 1
+  end
+
   def count_of
-    @contents[item_id].to)i
+    @contents[item_id].to_i
   end
 end

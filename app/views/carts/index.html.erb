@@ -1,0 +1,5 @@
+<h1> All Items in Cart </h1>
+<% @cart.contents.each do |key, value| %>
+  <%= key %>
+  <button type="button" class="btn btn-danger"><%= link_to "Remove", cart_path(cart), method: :delete %></button></br></br>
+<% end %>
