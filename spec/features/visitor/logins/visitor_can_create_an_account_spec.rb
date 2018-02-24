@@ -17,7 +17,6 @@ describe "As a visitor" do
       click_on "Create User"
 
       expect(page).to have_content("Logged in as Tom Joad!")
-      expect(page).to have_content("Log Out")
       expect(page).to_not have_content("Login")
     end
   end

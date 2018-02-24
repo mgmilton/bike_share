@@ -6,8 +6,7 @@ describe "As an admin" do
       admin = create(:admin)
 
       visit '/'
-
-
+      
       click_on "Log In"
 
       expect(current_path).to eq(login_path)
