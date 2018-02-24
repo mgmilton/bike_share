@@ -49,6 +49,5 @@ FactoryBot.define do
     sequence(:title) { |n| "Item #{n}" }
     description 'Is way cool'
     price 20.00
-    image 'bike-light.jpg'
   end
 end
