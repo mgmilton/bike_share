@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   before_save :generate_slug
-  enum status: %w(active, retired)
+  enum status: %w(active retired)
   has_attached_file :image,
                     styles: { thumb: ['64x64#', :jpg],
                               original: ['500x500>', :jpg] },
