@@ -9,10 +9,12 @@
   }
   .navbar-center {
     .dropdown {
-      padding: 0px 45px;
-      margin: 0;
+      padding: 0px 40px;
+      margin: 0px;
       .dropdown-menu {
         background: $denim;
+        margin-top: 15px;
+        border: none;
         a {
           color: white;
         }
