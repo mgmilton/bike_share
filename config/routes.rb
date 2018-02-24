@@ -28,5 +28,6 @@ Rails.application.routes.draw do
   get '/map', to: "conditions#map"
   get '/stations-dashboard', to: 'stations#dashboard'
   get 'bike-shop', to: 'items#index'
+  get 'bike-shop/:title', to: 'items#show'
   get '/:name', to: 'stations#show'
 end
