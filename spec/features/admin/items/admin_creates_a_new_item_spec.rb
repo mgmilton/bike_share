@@ -13,7 +13,6 @@ context 'As an admin' do
       fill_in 'item[price]', with: 30.59
       click_on 'Create Accessory'
 
-      expect(current_path).to eq()
       expect(page).to have_content('Sturdy Helmet')
       expect(page).to have_content('Practical')
       expect(page).to have_content(30.59)
