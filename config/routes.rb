@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
     resources :stations, except: [:index, :show], param: :name
-    resources :trips, only: [:new, :edit, :update, :destroy]
+    resources :trips, only: [:new, :edit, :update, :destroy, :create]
     resources :items, only: [:create]
     get 'bike-shop/new', to: 'items#new'
   end
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :conditions, only: [:index, :show]
   resources :trips, only: [:index, :show]
   resources :stations, only: [:index]
+  resources :users, only: [:new, :create]
 
   get "/dashboard", to: "users#show"
   get "/login", to: "sessions#new"
