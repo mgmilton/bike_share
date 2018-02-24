@@ -17,14 +17,11 @@
       <%= render "shared/user_navigation" %>
     <% end %>
 
-    <main id="main-container" class="container">
-      <div class="row">
-        <div class="col-xs-9">
-          <% flash.each do |type, message| %>
-            <%= content_tag :div, message, class: type %>
-          <% end %>
-        </div>
-      </div>
+
+    <main id="main-container">
+      <% flash.each do |type, message| %>
+        <%= content_tag :div, message, class: type %>
+      <% end %>
 
     <%= yield %>
 
