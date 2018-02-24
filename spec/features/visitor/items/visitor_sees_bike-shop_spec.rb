@@ -27,7 +27,7 @@ context 'As a visitor' do
 
         find(".add_item_#{@accessories.first.id}").click
 
-        expect(page).to have_content("#{@accessories.first.title} added to cart")
+        expect(page).to have_content("You now have 1 #{@accessories.first.title} in your cart")
       end
     end
   end
