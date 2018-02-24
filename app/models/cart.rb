@@ -6,18 +6,18 @@ class Cart
   end
 
   def total_count
-    @contents.sum
+    @contents.values.sum
   end
 
   def add_item
     @contents[item_id] += 1
   end
 
-  def remove_item
-    @contents[item_id] -= 1
+  def remove_item(item_id)
+    @contents[item_id.to_s] -= 1
   end
 
-  def count_of
-    @contents[item_id].to_i
+  def count_of(item_id)
+    @contents[item_id.to_s].to_i
   end
 end
