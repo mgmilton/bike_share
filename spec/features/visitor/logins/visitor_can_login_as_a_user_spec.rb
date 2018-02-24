@@ -17,6 +17,7 @@ describe "As a visitor" do
       expect(page).to have_content("Account Created: #{user.created_at}")
       expect(page).to_not have_content("Login")
       expect(page).to have_content("Log Out")
+>>>>>>> resolves the merge conflicts
     end
   end
 end
