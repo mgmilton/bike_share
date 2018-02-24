@@ -10,6 +10,8 @@ context 'As a visitor' do
 
       @accessories.each do |accessory|
         expect(page).to have_content(accessory.title)
+        expect(page).to have_content(accessory.description)
+        expect(page).to have_content(accessory.price)
       end
     end
   end

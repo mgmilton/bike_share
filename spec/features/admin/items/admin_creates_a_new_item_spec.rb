@@ -7,7 +7,6 @@ context 'As an admin' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit 'admin/bike-shop/new'
-      save_and_open_page
 
       fill_in 'item[title]', with: 'Sturdy Helmet'
       fill_in 'item[description]', with: 'Practical'

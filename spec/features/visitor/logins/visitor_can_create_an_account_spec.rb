@@ -5,7 +5,7 @@ describe "As a visitor" do
     it "he or she can create a user account" do
 
       visit '/'
-      save_and_open_page
+
       click_link "Sign Up"
 
       expect(current_path).to eq(new_user_path)
