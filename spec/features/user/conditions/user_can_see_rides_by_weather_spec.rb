@@ -7,9 +7,8 @@ describe "As a registered user and admin" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       condition_1 = create(:condition)
       condition_2 = create(:condition)
-      trip1 = create(:trip, zip_code: 91407, condition_id: condition_1.id)
-      trip2 = create(:trip, zip_code: 91407, condition_id: condition_2.id)
       visit "/weather-dashboard"
+      save_and_open_page
       expect(page).to have_content("Amount of Bike Rides when High Temperature was between")
       expect(page).to have_content("Amount of Bike Rides when Precipitation was between")
       expect(page).to have_content("Amount of Bike Rides when Wind Speed was between")
