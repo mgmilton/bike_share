@@ -9,7 +9,7 @@ class Cart
     @contents.values.sum
   end
 
-  def add_item
+  def add_item(item_id)
     @contents[item_id] += 1
   end
 

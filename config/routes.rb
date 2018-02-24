@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get 'bike-shop/new', to: 'items#new'
   end
 
-  resources :carts, only: [:create, :destroy]
+  resources :carts, only: [:create, :destroy, :show]
   resources :conditions, only: [:index, :show]
   resources :trips, only: [:index, :show]
   resources :stations, only: [:index]
