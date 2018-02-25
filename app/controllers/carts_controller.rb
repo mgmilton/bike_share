@@ -13,7 +13,9 @@ class CartsController < ApplicationController
     item = Item.find(params[:item_id])
     if @cart.remove_item(params[:item_id])
       flash[:notice] = "Successfully removed #{item.title} from your cart"
-      session[:cart].delete(params[:item_id])
+      if session[:cart][params[:item_id]] == 0
+        session[:cart].delete(params[:item_id])
+      end
     else
       flash[:error] = "Seomthing went wrong. Try again?"
     end
