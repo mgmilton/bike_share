@@ -16,7 +16,10 @@ context 'As an admin' do
         click_link('Retire')
       end
 
-      expect(@active.status).to eq('retired')
+      within(".item-#{@active.slug}") do
+        expect(page).to have_content('retired')
+        expect(page).to have_link('Reactivate')
+      end
     end
   end
 end
