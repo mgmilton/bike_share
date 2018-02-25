@@ -15,11 +15,11 @@ class Cart
   end
 
   def remove_item(item_id)
-    @contents[item_id.to_s] -= 1
+    @contents[item_id] -= 1
   end
 
   def count_of(item_id)
-    @contents[item_id.to_s].to_i
+    @contents[item_id].to_i
   end
 
   def total_cost

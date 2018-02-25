@@ -1,5 +1,10 @@
 <h1> All Items in Cart </h1>
 <% @cart.contents.each do |key, value| %>
-  <%= key %>
-  <button type="button" class="btn btn-danger"><%= link_to "Remove", carts_path(cart), method: :delete %></button></br></br>
+  (<%= value %>) <%= Item.find(key).title %> - $<%= Item.find(key).price * value %> <br>
+  <ul>
+    <li><%= Item.find(key).description %></li>
+  </ul>
+  <button type="button" class="btn btn-danger"><%= link_to "Remove", carts_path(@cart), method: :delete %></button></br></br>
 <% end %>
+Total: $<%= @cart.total_cost %> <br>
+<button type="button" class="btn btn-danger"><%= link_to "Check Out", orders_path, method: :post %></button>

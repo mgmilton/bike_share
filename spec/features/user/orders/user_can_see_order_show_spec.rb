@@ -18,7 +18,13 @@ describe "as a user" do
 
         expect(current_path).to eq(bike_shop_path)
 
-        visit "/dashboard"
+        visit "/cart"
+
+        click_link "Check Out"
+
+        expect(page).to have_content("Your order has been successfully submitted")
+
+        click_on "1"
 
       end
     end
