@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :stations, except: [:index, :show], param: :name
     resources :trips, only: [:new, :edit, :update, :destroy, :create]
     resources :users, only: [:show]
-    resources :items, except: [:destroy], path: 'bike-shop'
+    resources :items, except: [:destroy, :show], path: 'bike-shop'
   end
 
   resources :conditions, only: [:index, :show]

@@ -11,16 +11,13 @@ context 'As an admin' do
     scenario 'I can edit that item' do
       visit admin_items_path
 
-      within(".item-#{@active.id}") do
-        click_link('Edit')
-      end
+      find(".edit-#{@active.id}").click
 
       fill_in 'item[title]', with: 'Bike Light'
       fill_in 'item[description]', with: 'Drivers Can See You'
       fill_in 'item[price]', with: 20.00
       click_on 'Update Accessory'
 
-      expect(current_path).to eq(admin_item_path(@active))
       expect(page).to have_content('Bike Light')
       expect(page).to have_content('Drivers Can See You')
       expect(page).to have_content(20.00)
@@ -31,30 +28,25 @@ context 'As an admin' do
       visit admin_items_path
       expect(@active.status).to eq('active')
 
-      within(".item-#{@active.id}") do
-        click_link('Retire')
-      end
+      find(".retire-#{@active.id}").click
 
-      within(".item-#{@active.id}") do
-        expect(page).to have_content('retired')
-        expect(page).to have_link('Reactivate')
-      end
+      expect(page).to have_content('retired')
+      expect(page).to have_link('Reactivate')
     end
   end
 
   describe 'when I visit admin bike-shop path and click reactivate next to a retired item' do
     scenario 'I can reactivate that item' do
       visit admin_items_path
+
       expect(@retired.status).to eq('retired')
+      expect(page).to have_content('retired')
+      expect(page).to have_link('Reactivate')
 
-      within(".item-#{@retired.id}") do
-        click_link('Reactivate')
-      end
+      find(".reactivate-#{@retired.id}").click
 
-      within(".item-#{@retired.id}") do
-        expect(page).to have_content('active')
-        expect(page).to have_link('Retire')
-      end
+      expect(page).to_not have_content('retired')
+      expect(page).to_not have_link('Reactivate')
     end
   end
 end

@@ -30,11 +30,7 @@ context 'As an admin' do
         expect(page).to have_xpath("//img[contains(@src,'#{item.image.url}')]")
         expect(page).to have_content(item.title)
         expect(page).to have_content(item.description)
-        within(".item-#{item.id}") do
-          expect(page).to have_link("Edit")
-          expect(page).to have_link("Retire")
-          expect(page).to have_content(item.status)
-        end
+        expect(page).to have_content(item.status)
       end
     end
 
@@ -43,9 +39,7 @@ context 'As an admin' do
       visit admin_dashboard_path
       click_link 'Bike Shop Accessories'
 
-      within(".item-#{@accessories.first.id}") do
-        expect(page).to have_link('Reactivate')
-      end
+      expect(page).to have_link('Reactivate')
     end
   end
 end

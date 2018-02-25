@@ -16,7 +16,7 @@ class Admin::ItemsController < Admin::BaseController
     item = Item.new(item_params)
     if item.save
       flash[:notice] = "#{item.title} created succesfully"
-      redirect_to '/bike-shop'
+      redirect_to admin_items_path
     else
       render :new
     end
@@ -29,7 +29,7 @@ class Admin::ItemsController < Admin::BaseController
     @item.update(item_params)
     if @item.save
       flash[:notice] = "#{@item.title} succesfully updated"
-      redirect_to admin_item_path(@item)
+      redirect_to admin_items_path
     else
       render :'items#index'
     end
