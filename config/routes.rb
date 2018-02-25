@@ -13,12 +13,13 @@ Rails.application.routes.draw do
     delete 'bike-shop/:title', to: 'items#destroy'
   end
 
-  resources :carts, only: [:create, :destroy, :show]
   resources :conditions, only: [:index, :show]
   resources :trips, only: [:index, :show]
   resources :stations, only: [:index]
   resources :users, only: [:new, :create, :edit, :update]
   resources :orders, only: [:create, :show]
+  resources :carts, only: [:create, :show]
+  patch "/remove_item", to: "carts#remove_item"
 
   get "/dashboard", to: "users#show"
   get "/cart", to: "carts#index"
