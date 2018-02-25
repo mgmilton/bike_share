@@ -5,13 +5,8 @@ class CartsController < ApplicationController
     @item = Item.find(params[:item_id])
     @cart.add_item(params[:item_id])
     session[:cart] = @cart.contents
-<<<<<<< HEAD
     flash[:success] = "You now have #{pluralize(session[:cart][@item.id.to_s], @item.title)} in your cart"
-    redirect_to bike_shop_path
-=======
-    flash[:success] = "You now have #{pluralize(session[:cart][item.id.to_s], item.title)} in your cart"
     redirect_to items_path
->>>>>>> remove item slug, change bike-shop routes to items, add admin item edit view action and tests
   end
 
   def remove_item
