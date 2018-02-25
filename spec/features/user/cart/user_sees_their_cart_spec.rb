@@ -96,7 +96,7 @@ describe "as a user" do
     end
 
     it "user can remove item from cart" do
-      visit bike_shop_path
+      visit items_path
 
       within(".item_#{@item1.id}") do
         click_on "Add Item"
