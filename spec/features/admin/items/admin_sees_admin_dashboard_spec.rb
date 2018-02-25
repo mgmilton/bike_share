@@ -32,19 +32,20 @@ context 'As an admin' do
         expect(page).to have_content(accessory.description)
         within(".item-#{accessory.slug}") do
           expect(page).to have_link("Edit")
-          expect(page).to have_link("Delete")
+          expect(page).to have_link("Retire")
           expect(page).to have_content(accessory.status)
         end
       end
     end
+
+    scenario 'I see a link to reactivate an item if the item is retired' do
+      @accessories.first.retired!
+      visit admin_dashboard_path
+      click_link 'Bike Shop Accessories'
+
+      within(".item-#{@accessories.first.slug}") do
+        expect(page).to have_link('Reactivate')
+      end
+    end
   end
 end
-
-#
-# Each accessory should have:
-#
-# A thumbnail of the image
-# Description
-# Status
-# Ability to Edit accessory
-# Ability to Retire/Reactivate accessory

@@ -17,7 +17,11 @@
     <div class="item-<%= item.slug %>">
       <%= item.status %>
       <%= link_to "Edit", admin_bike_shop_edit_path(item) %>
-      <%= link_to "Delete", admin_bike_shop_path(item), method: :delete %>
+      <% if item.active? %>
+        <%= link_to "Retire", admin_bike_shop_path(item[:status] = 0), method: :patch %>
+      <% elsif item.retired? %>
+        <%= link_to "Reactivate", admin_bike_shop_path(item[:status] = 1), method: :patch %>
+      <% end %>
   </div>
   <% end %>
 </figure>
