@@ -94,5 +94,40 @@ describe "as a user" do
 
       expect(page).to have_content("You now have 2 item1s in your cart")
     end
+
+    it "user can remove item from cart" do
+      visit items_path
+
+      within(".item_#{@item1.id}") do
+        click_on "Add Item"
+      end
+
+      within(".item_#{@item1.id}") do
+        click_on "Add Item"
+      end
+
+      within(".item_#{@item2.id}") do
+        click_on "Add Item"
+      end
+
+      visit '/cart'
+
+      within(".item_#{@item1.id}") do
+        click_link "Remove"
+      end
+
+      expect(page).to have_content("Successfully removed item1 from your cart")
+      expect(page).to have_content("(1) item1 - $20.0")
+      expect(page).to have_content("Cart: 2")
+
+      within(".item_#{@item1.id}") do
+        click_link "Remove"
+      end
+
+      expect(page).to have_content("Successfully removed item1 from your cart")
+      expect(page).to have_content("Cart: 1")
+      expect(page).to have_content("Total: $20.0")
+      expect(page).to_not have_content("(1) item1 - $20.0")
+    end
   end
 end
