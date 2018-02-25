@@ -3,6 +3,10 @@ class Admin::ItemsController < Admin::BaseController
     @items = Item.all
   end
 
+  def show
+    @item = Item.find_by(slug: params[:title])
+  end
+
   def new
     @item = Item.new
   end
@@ -18,12 +22,11 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def update
-    binding.pry
-    item = Item.find_by(slug: params[:title])
+    item = Item.find(params[:title])
     item.update(item_params)
     if item.save
       flash[:notice] = "#{item.title} succesfully updated"
-      redirect_to bike_shop_path(item)
+      redirect_to admin_items_path(item)
     else
       render :'items#index'
     end
@@ -31,6 +34,6 @@ class Admin::ItemsController < Admin::BaseController
 
   private
     def item_params
-      params.require(:item).permit(:title, :description, :price, :image)
+      params.require(:item).permit(:title, :description, :price, :image, :status)
     end
 end

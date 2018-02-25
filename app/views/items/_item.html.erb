@@ -16,11 +16,11 @@
   <% if current_admin? %>
     <div class="item-<%= item.slug %>">
       <%= item.status %>
-      <%= link_to "Edit", admin_bike_shop_edit_path(item) %>
+      <%= link_to "Edit", edit_admin_item_path(item) %>
       <% if item.active? %>
-        <%= link_to 'Retire', admin_bike_shop_path(item, status: 1), method: :patch %>
+        <%= link_to 'Retire', admin_item_path(item, item: {status: 'retired'}), method: :patch %>
       <% elsif item.retired? %>
-        <%= link_to 'Reactivate', admin_bike_shop_path(item, status: 0), method: :patch %>
+        <%= link_to 'Reactivate', admin_item_path(item, item: {status: 'active'}), method: :patch %>
       <% end %>
     </div>
   <% end %>

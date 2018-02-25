@@ -9,11 +9,11 @@ context 'As an admin' do
       @retired = create(:item, status: 1)
     end
     scenario 'I can retire that item' do
-      visit admin_bike_shop_path
+      visit admin_items_path
       expect(@active.status).to eq('active')
 
       within(".item-#{@active.slug}") do
-        click_on('Retire')
+        click_link('Retire')
       end
 
       expect(@active.status).to eq('retired')

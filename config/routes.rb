@@ -5,9 +5,8 @@ Rails.application.routes.draw do
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
     resources :stations, except: [:index, :show], param: :name
     resources :trips, only: [:new, :edit, :update, :destroy, :create]
-    resources :items, only: [:create]
     resources :users, only: [:show]
-    resources :items, as: 'bike_shop', only: [:new, :edit, :update], params: :title
+    resources :items, except: [:destroy], path: 'bike-shop', param: :title
   end
 
   resources :conditions, only: [:index, :show]
@@ -17,6 +16,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:create, :show]
   resources :carts, only: [:create, :show]
   patch "/remove_item", to: "carts#remove_item"
+  resources :items, path: 'bike-shop', only: [:show, :index], param: :title
 
   get "/dashboard", to: "users#show"
   get "/cart", to: "carts#index"
@@ -28,12 +28,9 @@ Rails.application.routes.draw do
   get '/stations-dashboard', to: 'stations#dashboard'
   get '/map', to: "conditions#map"
   get '/stations-dashboard', to: 'stations#dashboard'
-  get 'bike-shop', to: 'items#index'
-  get 'bike-shop/:title', to: 'items#show'
 
   scope :admin, as: :admin do
     get '/dashboard', to: 'users#show'
-    get '/bike-shop', to: 'items#index'
   end
 
   get '/:name', to: 'stations#show'

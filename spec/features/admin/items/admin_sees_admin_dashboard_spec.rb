@@ -18,7 +18,7 @@ context 'As an admin' do
         visit admin_dashboard_path
         click_link 'Bike Shop Accessories'
 
-        expect(current_path).to eq(admin_bike_shop_path)
+        expect(current_path).to eq('/admin/bike-shop')
       end
     end
 
@@ -26,14 +26,14 @@ context 'As an admin' do
       visit admin_dashboard_path
       click_link 'Bike Shop Accessories'
 
-      @accessories.each do |accessory|
-        expect(page).to have_xpath("//img[contains(@src,'#{accessory.image.url}')]")
-        expect(page).to have_content(accessory.title)
-        expect(page).to have_content(accessory.description)
-        within(".item-#{accessory.slug}") do
+      @accessories.each do |item|
+        expect(page).to have_xpath("//img[contains(@src,'#{item.image.url}')]")
+        expect(page).to have_content(item.title)
+        expect(page).to have_content(item.description)
+        within(".item-#{item.slug}") do
           expect(page).to have_link("Edit")
-          expect(page).to have_button("Retire")
-          expect(page).to have_content(accessory.status)
+          expect(page).to have_link("Retire")
+          expect(page).to have_content(item.status)
         end
       end
     end
@@ -44,7 +44,7 @@ context 'As an admin' do
       click_link 'Bike Shop Accessories'
 
       within(".item-#{@accessories.first.slug}") do
-        expect(page).to have_button('Reactivate')
+        expect(page).to have_link('Reactivate')
       end
     end
   end
