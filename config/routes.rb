@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:create, :show]
 
   get "/dashboard", to: "users#show"
-  get "/carts", to: "carts#index"
+  get "/cart", to: "carts#index"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
