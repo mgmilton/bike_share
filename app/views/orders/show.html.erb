@@ -1,11 +1,18 @@
 <h1>Order <%= @order.id %></h1>
 
-<strong>Order Total:</strong> <%= @order.total %>
-<strong>Order Status:</strong> <%= @order.status %>
-<strong>Date Submitted:</strong> <%= @order.created_at %>
-
-<% @order.items.each do |item| %>
-  Item: <%= item.title %>
-  Quantity: <%= @order.order_items.find_by(item_id: item.id).quantity %>
-  Subtotal: <%= @order.order_items.find_by(item_id: item.id).quantity * item.price %>
+<strong>Order Total:</strong> $<%= @order.total %> <br>
+<strong>Date Submitted:</strong> <%= @order.convert_time(@order.created_at) %> <br>
+<% if @order.status != "Submitted" %>
+  <strong>Date <%= @order.status %>:</strong> <%= @order.convert_time(@order.updated_at) %> <br>
 <% end %>
+<strong>Order Status:</strong> <%= @order.status %> <br>
+<br>
+<strong>Items Ordered:</strong>
+<ul>
+  <% @order.items.each do |item| %>
+    <strong>Item:</strong> <%= item.title %> <br>
+    <strong>Quantity:</strong> <%= @order.order_items.find_by(item_id: item.id).quantity %> <br>
+    <strong>Subtotal:</strong> <%= @order.order_items.find_by(item_id: item.id).quantity * item.price %> <br>
+    <br>
+  <% end %>
+</ul>

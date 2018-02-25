@@ -1,5 +1,6 @@
 <h1> All Items in Cart </h1>
 <% @cart.contents.each do |key, value| %>
+  <%= link_to image_tag(Item.find(key).image.url, class: "media-object"), Item.find(key).image.url, target: "blank" %>
   (<%= value %>) <%= Item.find(key).title %> - $<%= Item.find(key).price * value %> <br>
   <ul>
     <li><%= Item.find(key).description %></li>
