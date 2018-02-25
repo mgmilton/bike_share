@@ -30,7 +30,7 @@ context 'As a visitor' do
         expect(page).to have_content("You now have 1 #{@accessories.first.title} in your cart")
       end
       scenario 'I also see my cart count updated on all pages' do
-        visit bike_shop_path
+        visit items_path
         expect(page).to have_content('Cart: 0')
 
         find(".add_item_#{@accessories.first.id}").click
@@ -39,7 +39,7 @@ context 'As a visitor' do
         visit root_path
         expect(page).to have_content('Cart: 1')
 
-        visit bike_shop_path
+        visit items_path
         find(".add_item_#{@accessories.last.id}").click
 
         expect(page).to have_content('Cart: 2')

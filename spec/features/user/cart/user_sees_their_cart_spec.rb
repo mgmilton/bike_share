@@ -2,14 +2,14 @@ require "rails_helper"
 
 describe "as a user" do
   before :each do
-    user = create(:user)
+    @user = create(:user)
     @item1 = create(:item, title: "item1")
     @item2 = create(:item, title: "item2")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end
   describe "when i visit /cart" do
     it "shows an image, title, description and price for each item in my cart" do
-      visit bike_shop_path
+      visit items_path
 
       within(".item_#{@item1.id}") do
         click_on "Add Item"
@@ -32,7 +32,7 @@ describe "as a user" do
     end
 
     it "shows subtotal and quantity of each item" do
-      visit bike_shop_path
+      visit items_path
 
       within(".item_#{@item1.id}") do
         click_on "Add Item"
@@ -54,7 +54,7 @@ describe "as a user" do
     end
 
     it "user can remove item form cart" do
-      visit bike_shop_path
+      visit items_path
 
       within(".item_#{@item1.id}") do
         click_on "Add Item"
@@ -80,7 +80,7 @@ describe "as a user" do
     end
 
     it "pluralizes accurately" do
-      visit bike_shop_path
+      visit items_path
 
       within(".item_#{@item1.id}") do
         click_on "Add Item"

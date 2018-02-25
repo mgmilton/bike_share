@@ -6,7 +6,7 @@ class CartsController < ApplicationController
     @cart.add_item(params[:item_id])
     session[:cart] = @cart.contents
     flash[:success] = "You now have #{pluralize(session[:cart][@item.id.to_s], @item.title)} in your cart"
-    redirect_to bike_shop_path
+    redirect_to items_path
   end
 
   def remove_item

@@ -1,2 +1,4 @@
 <h1>Create a New Accessory</h1>
-<%= render partial: 'form' %>
+<%= render 'form' do |f| %>
+  <%= f.submit 'Create Accessory' %>
+<% end %>

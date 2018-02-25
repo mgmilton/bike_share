@@ -4,6 +4,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find_by(slug: params[:title])
+    @item = Item.find(params[:id])
   end
 end

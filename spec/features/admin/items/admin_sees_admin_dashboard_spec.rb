@@ -18,7 +18,7 @@ context 'As an admin' do
         visit admin_dashboard_path
         click_link 'Bike Shop Accessories'
 
-        expect(current_path).to eq(admin_bike_shop_path)
+        expect(current_path).to eq('/admin/bike-shop')
       end
     end
 
@@ -26,25 +26,20 @@ context 'As an admin' do
       visit admin_dashboard_path
       click_link 'Bike Shop Accessories'
 
-      @accessories.each do |accessory|
-        expect(page).to have_xpath("//img[contains(@src,'#{accessory.image.url}')]")
-        expect(page).to have_content(accessory.title)
-        expect(page).to have_content(accessory.description)
-        within(".item-#{accessory.slug}") do
-          expect(page).to have_link("Edit")
-          expect(page).to have_link("Delete")
-          expect(page).to have_content(accessory.status)
-        end
+      @accessories.each do |item|
+        expect(page).to have_xpath("//img[contains(@src,'#{item.image.url}')]")
+        expect(page).to have_content(item.title)
+        expect(page).to have_content(item.description)
+        expect(page).to have_content(item.status)
       end
+    end
+
+    scenario 'I see a link to reactivate an item if the item is retired' do
+      @accessories.first.update(status: 'retired')
+      visit admin_dashboard_path
+      click_link 'Bike Shop Accessories'
+
+      expect(page).to have_link('Reactivate')
     end
   end
 end
-
-#
-# Each accessory should have:
-#
-# A thumbnail of the image
-# Description
-# Status
-# Ability to Edit accessory
-# Ability to Retire/Reactivate accessory
