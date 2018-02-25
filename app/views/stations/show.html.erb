@@ -1,4 +1,4 @@
-<h1><%= @station.name %></h1>
+<h1><%= link_to @station.name, stations_path(@station) %></h1>
 <p><%=  @station.city %></p>
 <p><%= @station.latitude %>, <%= @station.longitude %></p>
 <p>Dock Count: <%= @station.dock_count %></p>
