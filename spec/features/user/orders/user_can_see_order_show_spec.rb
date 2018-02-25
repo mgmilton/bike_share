@@ -16,19 +16,40 @@ describe "as a user" do
           click_on "Add Item"
         end
 
+        within(".item_#{@item1.id}") do
+          click_on "Add Item"
+        end
+
+        within(".item_#{@item2.id}") do
+          click_on "Add Item"
+        end
+
         expect(current_path).to eq(bike_shop_path)
 
-        visit "/dashboard"
+        visit "/cart"
 
+        click_link "Check Out"
+
+        expect(page).to have_content("Your order has been successfully submitted")
+
+        click_on "1"
+
+        expect(page).to have_content("Cart: 0")
+        expect(page).to have_content("Order 1")
+        expect(page).to have_content("Order Total: $60.0 ")
+        expect(page).to have_content("Date Submitted:")
+        expect(page).to have_content("Date Ordered:")
+        expect(page).to have_content("Order Status: Ordered")
+        expect(page).to have_content("Items Ordered:")
+        expect(page).to have_content("Item: item1
+                                      Quantity: 2
+                                      Subtotal: 40.0")
+        expect(page).to have_content("Item: item2
+                                      Quantity: 1
+                                      Subtotal: 20.0")
       end
     end
   end
 end
-# I see the bike accessories that I ordered broken down by subtotal and quantity,
-# I see the total for this order,
-# I see the status of this order (ordered, completed, paid, cancelled)
-# I see the date/time that the order was submitted,
-# I do not see the order of another user.
-#
 # If the order was completed or cancelled,
 # I see a timestamp when the action took place.

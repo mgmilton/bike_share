@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
   def create
-    @order = current_user.orders.create
+    @order = current_user.orders.create(total: @cart.total_cost)
     session[:cart].each do |item_id, quantity|
       @order.order_items.create(item_id: item_id.to_i, quantity: quantity)
     end
