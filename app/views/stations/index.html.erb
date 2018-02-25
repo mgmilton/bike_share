@@ -1,6 +1,6 @@
 <h1>Stations</h1>
 <% @stations.each do |station| %>
-  <h2><%= link_to station.name, stations_path(station) %></h2>
+  <h2><%= link_to station.name, "#{station.slug}" %></h2>
   <p><%= station.city %></p>
   <p>Dock Count: <%= station.dock_count %></p>
   <p>Installation Date: <%= station.installation_date %></p>

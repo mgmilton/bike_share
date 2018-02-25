@@ -11,3 +11,5 @@
   <button type="button" class="btn btn-warning"><%= link_to "Edit", edit_admin_condition_path(@condition) %></button>
   <button type="button" class="btn btn-danger"><%= link_to "Delete", admin_condition_path(@condition), method: :delete %></button>
 <% end %>
+
+<%= link_to "<<< Back To All Conditions", conditions_path %>

@@ -1,6 +1,6 @@
 <h1>All Conditions </h1>
 <% @conditions.each do |condition| %>
-    <li>Date: <%= condition.date %> </li>
+    <li><%= link_to condition.date, condition_path(condition) %> </li>
     <li>Max Temperature (F): <%= condition.max_temperature%>  </li>
     <li>Mean Temperature (F): <%= condition.mean_temperature%> </li>
     <li>Min Temperature (F): <%= condition.min_temperature%></li>
