@@ -2,10 +2,10 @@
 
 <strong>Order Total:</strong> $<%= @order.total %> <br>
 <strong>Date Submitted:</strong> <%= @order.convert_time(@order.created_at) %> <br>
+<strong>Order Status:</strong> <%= @order.status %> <br>
 <% if @order.status != "Submitted" %>
   <strong>Date <%= @order.status %>:</strong> <%= @order.convert_time(@order.updated_at) %> <br>
 <% end %>
-<strong>Order Status:</strong> <%= @order.status %> <br>
 <br>
 <strong>Items Ordered:</strong>
 <ul>
