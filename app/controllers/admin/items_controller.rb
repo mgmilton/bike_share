@@ -1,10 +1,11 @@
 class Admin::ItemsController < Admin::BaseController
+  before_action :set_item, only: [:edit, :update, :show]
+
   def index
     @items = Item.all
   end
 
   def show
-    @item = Item.find_by(slug: params[:title])
   end
 
   def new
@@ -21,12 +22,14 @@ class Admin::ItemsController < Admin::BaseController
     end
   end
 
+  def edit
+  end
+
   def update
-    item = Item.find(params[:title])
-    item.update(item_params)
-    if item.save
-      flash[:notice] = "#{item.title} succesfully updated"
-      redirect_to admin_items_path
+    @item.update(item_params)
+    if @item.save
+      flash[:notice] = "#{@item.title} succesfully updated"
+      redirect_to admin_item_path(@item)
     else
       render :'items#index'
     end
@@ -35,5 +38,9 @@ class Admin::ItemsController < Admin::BaseController
   private
     def item_params
       params.require(:item).permit(:title, :description, :price, :image, :status)
+    end
+
+    def set_item
+      @item = Item.find(params[:id])
     end
 end

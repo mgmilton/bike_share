@@ -30,7 +30,7 @@ context 'As an admin' do
         expect(page).to have_xpath("//img[contains(@src,'#{item.image.url}')]")
         expect(page).to have_content(item.title)
         expect(page).to have_content(item.description)
-        within(".item-#{item.slug}") do
+        within(".item-#{item.id}") do
           expect(page).to have_link("Edit")
           expect(page).to have_link("Retire")
           expect(page).to have_content(item.status)
@@ -39,11 +39,11 @@ context 'As an admin' do
     end
 
     scenario 'I see a link to reactivate an item if the item is retired' do
-      @accessories.first.retired!
+      @accessories.first.update(status: 'retired')
       visit admin_dashboard_path
       click_link 'Bike Shop Accessories'
 
-      within(".item-#{@accessories.first.slug}") do
+      within(".item-#{@accessories.first.id}") do
         expect(page).to have_link('Reactivate')
       end
     end

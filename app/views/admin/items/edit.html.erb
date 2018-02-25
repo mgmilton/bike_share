@@ -1,2 +1,4 @@
 <h1>Update Accessory</h1>
-<%= render partial: 'form' %>
+<%= render 'form' do |f| %>
+  <%= f.submit 'Update Accessory' %>
+<% end %>

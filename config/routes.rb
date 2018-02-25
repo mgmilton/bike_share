@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :stations, except: [:index, :show], param: :name
     resources :trips, only: [:new, :edit, :update, :destroy, :create]
     resources :users, only: [:show]
-    resources :items, except: [:destroy], path: 'bike-shop', param: :title
+    resources :items, except: [:destroy], path: 'bike-shop'
   end
 
   resources :conditions, only: [:index, :show]
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:create, :show]
   resources :carts, only: [:create, :show]
   patch "/remove_item", to: "carts#remove_item"
-  resources :items, path: 'bike-shop', only: [:show, :index], param: :title
+  resources :items, path: 'bike-shop', only: [:show, :index]
 
   get "/dashboard", to: "users#show"
   get "/cart", to: "carts#index"

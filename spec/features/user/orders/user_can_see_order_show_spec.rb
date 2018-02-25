@@ -24,7 +24,7 @@ describe "as a user" do
           click_on "Add Item"
         end
 
-        expect(current_path).to eq(bike_shop_path)
+        expect(current_path).to eq(items_path)
 
         visit "/cart"
 

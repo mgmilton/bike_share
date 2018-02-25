@@ -6,7 +6,7 @@ context 'As a visitor' do
       @accessory = create(:item, status: 1)
     end
     scenario 'I am still able to access the accessory page' do
-      visit "bike-shop/#{@accessory.slug}"
+      visit "bike-shop/#{@accessory.id}"
 
       expect(page).to have_content(@accessory.title)
       expect(page).to have_content(@accessory.description)
@@ -14,7 +14,7 @@ context 'As a visitor' do
     end
 
     scenario 'I am not able to add the accessory to my cart,and I see "Accessory Retired' do
-      visit "bike-shop/#{@accessory.slug}"
+      visit "bike-shop/#{@accessory.id}"
 
       expect(page).to have_content("Accessory Retired")
       expect(page).to_not have_button('Add To Cart')
