@@ -25,7 +25,7 @@ describe "as a user" do
         expect(page).to have_content("Your order has been successfully submitted")
 
         click_on "1"
-
+save_and_open_page
       end
     end
   end

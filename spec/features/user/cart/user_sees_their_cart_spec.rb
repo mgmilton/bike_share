@@ -78,5 +78,21 @@ describe "as a user" do
       expect(page).to have_content("Successfully removed item2 from your cart")
       expect(page).to_not have_content("item2 - $20.0 Is way cool")
     end
+
+    it "pluralizes accurately" do
+      visit bike_shop_path
+
+      within(".item_#{@item1.id}") do
+        click_on "Add Item"
+      end
+
+      expect(page).to have_content("You now have 1 item1 in your cart")
+
+      within(".item_#{@item1.id}") do
+        click_on "Add Item"
+      end
+
+      expect(page).to have_content("You now have 2 item1s in your cart")
+    end
   end
 end
