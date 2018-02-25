@@ -4,7 +4,9 @@
   <ul>
     <li><%= Item.find(key).description %></li>
   </ul>
-  <button type="button" class="btn btn-danger"><%= link_to "Remove", carts_path(@cart), method: :delete %></button></br></br>
+  <div class="item_<%= key %>">
+    <button type="button" class="btn btn-danger"><%= link_to "Remove", remove_item_path(item_id: key), method: :patch %></button></br></br>
+  </div>
 <% end %>
 Total: $<%= @cart.total_cost %> <br>
 <button type="button" class="btn btn-danger"><%= link_to "Check Out", orders_path, method: :post %></button>

@@ -9,10 +9,14 @@ class CartsController < ApplicationController
     redirect_to bike_shop_path
   end
 
-  def destroy
+  def remove_item
     item = Item.find(params[:item_id])
-    @cart.contents[item.id].destroy
-    flash[:notice] = "Successfully removed #{@item.title} from your cart"
-    redirect_to '/carts'
+    if @cart.remove_item(params[:item_id])
+      flash[:notice] = "Successfully removed #{item.title} from your cart"
+      session[:cart].delete(params[:item_id])
+    else
+      flash[:error] = "Seomthing went wrong. Try again?"
+    end
+    redirect_to '/cart'
   end
 end

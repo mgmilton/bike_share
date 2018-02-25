@@ -23,9 +23,9 @@ class Cart
   end
 
   def total_cost
-    @contents.sum do |k, v|
-      item = Item.find(k.to_i)
-      item.price * v
+    @contents.sum do |item, quantity|
+      item = Item.find(item.to_i)
+      item.price * quantity
     end
   end
 end
