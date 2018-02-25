@@ -17,6 +17,18 @@ class Admin::ItemsController < Admin::BaseController
     end
   end
 
+  def update
+    binding.pry
+    item = Item.find_by(slug: params[:title])
+    item.update(item_params)
+    if item.save
+      flash[:notice] = "#{item.title} succesfully updated"
+      redirect_to bike_shop_path(item)
+    else
+      render :'items#index'
+    end
+  end
+
   private
     def item_params
       params.require(:item).permit(:title, :description, :price, :image)

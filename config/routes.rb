@@ -7,9 +7,7 @@ Rails.application.routes.draw do
     resources :trips, only: [:new, :edit, :update, :destroy, :create]
     resources :items, only: [:create]
     resources :users, only: [:show]
-    get 'bike-shop/new', to: 'items#new'
-    get 'bike-shop/edit', to: 'items#edit'
-    put 'bike-shop/:title', to: 'items#update'
+    resources :items, as: 'bike_shop', only: [:new, :edit, :update], params: :title
   end
 
   resources :conditions, only: [:index, :show]

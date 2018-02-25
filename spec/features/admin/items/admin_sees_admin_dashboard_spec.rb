@@ -32,7 +32,7 @@ context 'As an admin' do
         expect(page).to have_content(accessory.description)
         within(".item-#{accessory.slug}") do
           expect(page).to have_link("Edit")
-          expect(page).to have_link("Retire")
+          expect(page).to have_button("Retire")
           expect(page).to have_content(accessory.status)
         end
       end
@@ -44,7 +44,7 @@ context 'As an admin' do
       click_link 'Bike Shop Accessories'
 
       within(".item-#{@accessories.first.slug}") do
-        expect(page).to have_link('Reactivate')
+        expect(page).to have_button('Reactivate')
       end
     end
   end
