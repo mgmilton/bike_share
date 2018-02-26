@@ -10,7 +10,9 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
   </head>
 
-  <body>
+
+
+  <body class='main-background'>
     <% if current_user.nil?  %>
       <%= render "shared/login_navigation" %>
     <% else %>
@@ -18,13 +20,11 @@
     <% end %>
 
 
-    <main class="main-container"
       <% flash.each do |type, message| %>
       <%= content_tag :div, message.html_safe, class: type %>
       <% end %>
 
     <%= yield %>
 
-  </main>
   </body>
 </html>
