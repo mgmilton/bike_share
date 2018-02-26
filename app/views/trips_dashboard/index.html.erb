@@ -17,11 +17,27 @@
 <strong>Busiest Day:</strong> <%= @trips.highest_number_of_rides %> rides on <%= @trips.busiest_day %> <br>
 <strong>Slowest Day:</strong> <%= @trips.least_number_of_rides %> rides on <%= @trips.slowest_day %> <br>
 <br>
-<strong>Weather For Busiest Day:</strong> High Temperature: <%= @trips.weather_for_busiest_day.max_temperature %> Lowest Temperature: <%= @trips.weather_for_busiest_day.min_temperature %> Precipitation: <%= @trips.weather_for_busiest_day.mean_precipitation %><br>
+<strong>Weather For Busiest Day:</strong>
+<ul>
+  <li>High Temperature: <%= @trips.weather_for_busiest_day.max_temperature %> </li> <br>
+  <li>Mean Temperature <%= @trips.weather_for_busiest_day.mean_temperature %> </li> <br>
+  <li>Low Temperature: <%= @trips.weather_for_busiest_day.min_temperature %> </li> <br>
+  <li>Mean Humidity <%= @trips.weather_for_busiest_day.mean_humidity %> </li> <br>
+  <li>Mean Visibility (Miles) <%= @trips.weather_for_busiest_day.mean_visibility %> </li> <br>
+  <li>Mean Wind Speed <%= @trips.weather_for_busiest_day.mean_wind_speed %> </li> <br>
+  <li>Mean Precipitation: <%= @trips.weather_for_busiest_day.mean_precipitation %> </li> <br>
+</ul>
 
-<strong>Weather For Slowest Day:</strong> High Temperature: <%= @trips.weather_for_slowest_day.max_temperature %> Lowest Temperature: <%= @trips.weather_for_slowest_day.min_temperature %> Precipitation: <%= @trips.weather_for_slowest_day.mean_precipitation %><br>
-
-<br>
+<strong>Weather For Slowest Day:</strong>
+<ul>
+  <li>High Temperature: <%= @trips.weather_for_slowest_day.max_temperature %> </li> <br>
+  <li>Mean Temperature <%= @trips.weather_for_slowest_day.mean_temperature %> </li> <br>
+  <li>Low Temperature: <%= @trips.weather_for_slowest_day.min_temperature %> </li> <br>
+  <li>Mean Humidity <%= @trips.weather_for_slowest_day.mean_humidity %> </li> <br>
+  <li>Mean Visibility (Miles) <%= @trips.weather_for_slowest_day.mean_visibility %> </li> <br>
+  <li>Mean Wind Speed <%= @trips.weather_for_slowest_day.mean_wind_speed %> </li> <br>
+  <li>Mean Precipitation: <%= @trips.weather_for_slowest_day.mean_precipitation %> </li> <br>
+</ul>
 
 <strong>Station With Most Starting Rides:</strong> <%= @trips.station_with_most_starts_name %> <br>
 <strong>Station With Most Ending Rides:</strong> <%= @trips.station_with_most_ends_name %> <br>

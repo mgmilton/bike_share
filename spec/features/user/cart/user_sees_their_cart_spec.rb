@@ -135,5 +135,23 @@ describe "as a user" do
       expect(page).to have_content("Total: $20.0")
       expect(page).to_not have_content("(1) item1 - $20.0")
     end
+
+    it "shows link in flash message to deleted item upon deletion" do
+      visit items_path
+
+      within(".item_#{@item1.id}") do
+        click_on "Add Item"
+      end
+
+      visit '/cart'
+
+      within(".item_#{@item1.id}") do
+        click_link "Remove"
+      end
+
+      click_link "item1"
+
+      expect(current_path).to eq("/bike-shop/#{@item1.id}")
+    end
   end
 end
