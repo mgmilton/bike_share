@@ -42,3 +42,6 @@ CSV.foreach "db/fixture-data/trip.csv", OPTIONS do |row|
                zip_code:          row[:zip_code]
              )
 end
+
+User.create!(name: "admin", email: "admin@email.com", password: "admin", role: 1)
+User.create!(name: "user", email: "user@email.com", password: "user")
