@@ -10,7 +10,6 @@ describe "As a visitor" do
 
       visit condition_path(c1)
 
-      expect(page).to have_content(c1.date)
       expect(page).to have_content(c1.max_temperature)
       expect(page).to have_content(c1.mean_temperature)
       expect(page).to have_content(c1.min_temperature)
