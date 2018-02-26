@@ -28,7 +28,10 @@
              <button class="btn"><%= link_to 'Log Out', logout_path %></button>
            <% end %>
          </li>
-         <li>Cart: <%= @cart.total_count %></li>
+         <li class="nav-cart">
+           <span class="glyphicon glyphicon-shopping-cart"></span>
+           <%= @cart.total_count %>
+         </li>
        </ul>
   </div>
 </nav>
