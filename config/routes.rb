@@ -11,17 +11,12 @@ Rails.application.routes.draw do
 
   resources :conditions, only: [:index, :show]
   resources :trips, only: [:index, :show]
-<<<<<<< HEAD
   resources :stations, only: [:index]
   resources :users, only: [:new, :create, :edit, :update]
   resources :orders, only: [:create, :show]
   resources :carts, only: [:create, :show]
   patch "/remove_item", to: "carts#remove_item"
   resources :items, path: 'bike-shop', only: [:show, :index]
-=======
-  resources :stations, only: [:index, :show], param: :name
-  resources :users, only: [:new, :create]
->>>>>>> resolves the merge conflicts
 
   get "/dashboard", to: "users#show"
   get "/cart", to: "carts#index"
@@ -32,13 +27,6 @@ Rails.application.routes.draw do
   get "/weather-dashboard", to: "weather_dashboard#index"
   get '/stations-dashboard', to: 'stations#dashboard'
   get '/map', to: "conditions#map"
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> resolves the merge conflicts
   get '/stations-dashboard', to: 'stations#dashboard'
 
   scope :admin, as: :admin do
