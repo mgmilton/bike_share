@@ -1,24 +1,11 @@
-
-<ul> Name: <%= current_user.name %> </ul>
-
+<h3> Logged in as <%= current_user.name %>! </h3>
 <ul> Email: <%= current_user.email %></ul>
 <ul> Account Created: <%= current_user.created_at %></ul>
-<ul> Address: <%= current_user.address %> </ul>
-<ul> Orders: <% current_user.orders.each do |order| %>
+<ul> Your Orders: <% current_user.orders.each do |order| %>
   <ul>
     <li><%= link_to order.id, order_path(order) %></li>
   </ul>
   <% end %>
 </ul>
-<% if current_admin? %>
-    <ul> All Orders: <% Order.all.each do |order| %>
-      <ul>
-        <li><%= link_to order.id, order_path(order) %></li>
-      </ul>
-    <% end %>
-    </ul>
-<% end %>
 <button type="button" class="btn btn-warning"><%= link_to "Edit", edit_user_path(current_user) %></button>
-<% if current_admin? %>
-  <%= link_to 'Bike Shop Accessories', admin_items_path %>
-<% end %>
+<%= link_to 'Bike Shop Accessories', admin_items_path %>
