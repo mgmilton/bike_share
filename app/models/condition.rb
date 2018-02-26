@@ -1,5 +1,5 @@
 class Condition < ApplicationRecord
-  has_many :trips
+  has_many :trips, dependent: :destroy
   before_validation :check_zip_code
 
   def check_zip_code

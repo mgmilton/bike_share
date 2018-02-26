@@ -15,7 +15,7 @@
 
 /node_modules
 /yarn-error.log
-
+/active_designer
 .byebug_history
 /data/*
 .DS_Store
