@@ -45,3 +45,16 @@ end
 
 User.create!(name: "admin", email: "admin@email.com", password: "admin", role: 1)
 User.create!(name: "user", email: "user@email.com", password: "user")
+
+Item.create!(title: "item1", description: "an aweful item", price: 10)
+Item.create!(title: "item2", description: "a poor item", price: 20)
+Item.create!(title: "item3", description: "a bad item", price: 30)
+Item.create!(title: "item4", description: "an okay item", price: 40)
+Item.create!(title: "item5", description: "an average item", price: 50)
+Item.create!(title: "item6", description: "a decent item", price: 60)
+Item.create!(title: "item7", description: "a good item", price: 70)
+Item.create!(title: "item8", description: "a great item", price: 80)
+Item.create!(title: "item9", description: "a superb item", price: 90)
+Item.create!(title: "item10", description: "a fantastic item", price: 100)
+Item.create!(title: "item11", description: "a legendary item", price: 110)
+Item.create!(title: "item12", description: "a perfect item", price: 120)
