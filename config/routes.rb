@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   patch "/remove_item", to: "carts#remove_item"
   resources :items, path: 'bike-shop', only: [:show, :index]
 
-  get "/dashboard", to: "users#show"
+  get "/dashboard", to: "users#dashboard"
   get "/cart", to: "carts#index"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   get '/stations-dashboard', to: 'stations#dashboard'
 
   scope :admin, as: :admin do
-    get '/dashboard', to: 'users#show'
+    get '/dashboard', to: 'users#dashboard'
   end
 
   get '/:name', to: 'stations#show'
