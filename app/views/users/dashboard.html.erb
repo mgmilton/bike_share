@@ -11,4 +11,6 @@
   <% end %>
 </ul>
 <button type="button" class="btn btn-warning"><%= link_to "Edit", edit_user_path(current_user) %></button>
-<%= link_to 'Bike Shop Accessories', admin_items_path %>
+<% if current_admin? %>
+  <%= link_to 'Bike Shop Accessories', admin_items_path %>
+<% end %>

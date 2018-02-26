@@ -9,8 +9,8 @@
   <%= f.label :image %>
   <%= f.file_field :image %>
   <%= f.select(:status) do  %>
-    <% ['active', 'retired'].each_with_index do |c, index| -%>
-      <%= content_tag(:option, c, value: index) %>
+    <% ['active', 'retired'].each do |c| -%>
+      <%= content_tag(:option, c, value: c) %>
     <% end %>
   <% end %>
   <%= yield f %>
