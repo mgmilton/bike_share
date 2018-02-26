@@ -34,7 +34,9 @@ describe "as a user" do
 
         click_on "1"
 
-        expect(page).to have_content("Cart: 0")
+        within('.nav-cart') do
+          expect(page).to have_content(0)
+        end
         expect(page).to have_content("Order 1")
         expect(page).to have_content("Order Total: $60.0 ")
         expect(page).to have_content("Date Submitted:")
