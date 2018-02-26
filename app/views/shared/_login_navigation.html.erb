@@ -2,9 +2,9 @@
   <%= link_to "Bike Share", root_path, class: 'navbar-header' %>
 
   <ul class="nav navbar-nav navbar-center">
-    <li><%= link_to 'Stations Data', stations_path, class: 'nav-item' %></li>
-    <li><%= link_to 'Trips Data', trips_path, class: 'nav-item' %></li>
-    <li><%= link_to 'Conditions Data', conditions_path, class: 'nav-item' %></li>
+    <li><%= link_to 'Stations Data', stations_path, class: 'nav-item dropdown-toggle' %></li>
+    <li><%= link_to 'Trips Data', trips_path, class: 'nav-item dropdown-toggle' %></li>
+    <li><%= link_to 'Conditions Data', conditions_path, class: 'nav-item dropdown-toggle' %></li>
   </ul>
 
   <figure class="nav navbar-nav"><%= render partial: 'sessions/new' %></figure>
