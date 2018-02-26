@@ -42,8 +42,12 @@
   color: white;
   font: {
     family: $open-sans;
+    size: 20px;
   }
   .glyphicon-shopping-cart {
     color: white
+  }
+  .glyphicon-shopping-cart:hover {
+    color: $marigold;
   }
 }

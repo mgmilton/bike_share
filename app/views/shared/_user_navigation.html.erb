@@ -1,5 +1,9 @@
 <nav class="navbar navbar-fixed-top">
-  <%= link_to "Bike Share", root_path, class: 'navbar-header navbar-brand' %>
+  <% if current_admin? %>
+    <%= link_to "Bike Share", admin_user_path, class: 'navbar-header navbar-brand' %>
+  <% else %>
+    <%= link_to "Bike Share", user_path, class: 'navbar-header navbar-brand' %>
+  <% end %>
 
   <ul class="nav navbar-nav navbar-center">
     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href= ""> Stations <span class="caret"> </span></a>
@@ -30,9 +34,11 @@
            <% end %>
          </li>
          <li class="nav-cart">
-           <span class="glyphicon glyphicon-shopping-cart"></span>
+           <%= link_to '/cart' do %>
+             <i class="glyphicon glyphicon-shopping-cart"></i>
+           <% end %>
            <%= @cart.total_count %>
-         </li>
-       </ul>
+        </li>
+      </ul>
   </div>
 </nav>
