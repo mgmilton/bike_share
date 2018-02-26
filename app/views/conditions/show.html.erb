@@ -1,4 +1,4 @@
-<h3>Condition for <%= @condition.date %> </h3>
+<h3>Condition for <% @condition%> </h3>
 <li>Max Temperature (F): <%= @condition.max_temperature%>  </li>
 <li>Mean Temperature (F): <%= @condition.mean_temperature%> </li>
 <li>Min Temperature (F): <%= @condition.min_temperature%></li>
@@ -7,9 +7,6 @@
 <li>Mean Wind Speed (MPH): <%= @condition.mean_wind_speed%> </li>
 <li>Mean Precipitation (Inches): <%= @condition.mean_precipitation%></li>
 <li>Zip Code: <%= @condition.zip_code%></li>
-<%if current_user.role == "admin" %>
-  <button type="button" class="btn btn-warning"><%= link_to "Edit", edit_admin_condition_path(@condition) %></button>
-  <button type="button" class="btn btn-danger"><%= link_to "Delete", admin_condition_path(@condition), method: :delete %></button>
-<% end %>
+
 
 <%= link_to "<<< Back To All Conditions", conditions_path %>
