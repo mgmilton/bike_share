@@ -74,7 +74,9 @@ describe "as a user" do
         click_link "Remove"
       end
 
-      expect(page).to have_content("Cart: 2")
+      within ('.nav-cart') do
+        expect(page).to have_content(2)
+      end
       expect(page).to have_content("Successfully removed item2 from your cart")
       expect(page).to_not have_content("item2 - $20.0 Is way cool")
     end
@@ -118,14 +120,18 @@ describe "as a user" do
 
       expect(page).to have_content("Successfully removed item1 from your cart")
       expect(page).to have_content("(1) item1 - $20.0")
-      expect(page).to have_content("Cart: 2")
+      within('.nav-cart') do
+        expect(page).to have_content(2)
+      end
 
       within(".item_#{@item1.id}") do
         click_link "Remove"
       end
 
       expect(page).to have_content("Successfully removed item1 from your cart")
-      expect(page).to have_content("Cart: 1")
+      within('.nav-cart') do
+        expect(page).to have_content(1)
+      end
       expect(page).to have_content("Total: $20.0")
       expect(page).to_not have_content("(1) item1 - $20.0")
     end

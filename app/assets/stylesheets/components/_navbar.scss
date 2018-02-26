@@ -23,7 +23,7 @@
         }
       }
     }
-    .dropdown-toggle:active {
+    .dropdown-toggle:active, .nav-item:active {
       background: $denim;
       color: $marigold;
     }
@@ -35,5 +35,15 @@
       background: $denim;
       color: $marigold;
     }
+  }
+}
+
+.nav-cart {
+  color: white;
+  font: {
+    family: $open-sans;
+  }
+  .glyphicon-shopping-cart {
+    color: white
   }
 }

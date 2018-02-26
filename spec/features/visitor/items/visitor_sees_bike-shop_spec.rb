@@ -31,20 +31,28 @@ context 'As a visitor' do
       end
       scenario 'I also see my cart count updated on all pages' do
         visit items_path
-        expect(page).to have_content('Cart: 0')
+        within('.nav-cart') do
+          expect(page).to have_content(0)
+        end
 
         find(".add_item_#{@accessories.first.id}").click
 
-        expect(page).to have_content('Cart: 1')
+        within('.nav-cart') do
+          expect(page).to have_content(1)
+        end
         visit root_path
         expect(page).to have_content('Cart: 1')
 
         visit items_path
         find(".add_item_#{@accessories.last.id}").click
 
-        expect(page).to have_content('Cart: 2')
+        within('.nav-cart') do
+          expect(page).to have_content(2)
+        end
         visit trips_path
-        expect(page).to have_content('Cart: 2')
+        within('.nav-cart') do
+          expect(page).to have_content(2)
+        end
       end
     end
   end
