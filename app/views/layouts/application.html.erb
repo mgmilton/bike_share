@@ -18,7 +18,7 @@
     <% end %>
 
 
-    <main id="main-container">
+    <main class="main-container"
       <% flash.each do |type, message| %>
       <%= content_tag :div, message, class: type %>
       <% end %>

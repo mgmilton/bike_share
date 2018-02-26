@@ -23,7 +23,7 @@
         }
       }
     }
-    .dropdown-toggle:active {
+    .dropdown-toggle:active, .nav-item:active {
       background: $denim;
       color: $marigold;
     }
