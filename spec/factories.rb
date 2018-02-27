@@ -12,13 +12,23 @@ FactoryBot.define do
   end
 
   factory :user do
-    sequence(:name) {|n| "Name #{n}"}
+    sequence(:first_name) {|n| "First#{n}"}
+    sequence(:last_name) {|n| "Last#{n}"}
+    sequence(:address) {|n| "#{n} Lost Lane"}
+    city "San Francisco"
+    state "California"
+    zip_code 91407
     sequence(:email) {|n| "Email#{n}@gmail.com"}
     sequence(:password) {|n| "Password#{n}"}
   end
 
   factory :admin, class: User do
-    name "Admin"
+    sequence(:first_name) {|n| "First#{n}"}
+    sequence(:last_name) {|n| "Last#{n}"}
+    sequence(:address) {|n| "#{n} Lost Lane"}
+    city "San Francisco"
+    state "California"
+    zip_code 91407
     email "admin@gmail.com"
     password "Admin"
     role 1
@@ -49,5 +59,15 @@ FactoryBot.define do
     sequence(:title) { |n| "Item #{n}" }
     description 'Is way cool'
     price 20.00
+  end
+
+  factory :order do
+    sequence(:total) { |n| n }
+    user
+  end
+
+  factory :order_item do
+    order
+    item
   end
 end
