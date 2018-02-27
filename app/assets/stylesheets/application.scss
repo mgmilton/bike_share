@@ -19,14 +19,3 @@
 @import 'components/text';
 @import 'components/navbar';
 @import 'components/images';
-
-$success-green: #5bee7d;
-$error-red: #fd5e61;
-
- .success {
-   background-color: $success-green;
- }
-
- .error {
-   background-color: $error-red;
- }

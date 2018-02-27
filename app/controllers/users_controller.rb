@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
+      flash[:success] = "Successfully logged in!"
       redirect_to '/dashboard'
     else
       render :new
@@ -34,4 +35,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:first_name, :last_name, :address, :city, :state, :zip_code, :email, :password)
     end
+
 end

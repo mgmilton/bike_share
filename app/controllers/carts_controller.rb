@@ -24,7 +24,7 @@ class CartsController < ApplicationController
         session[:cart].delete(params[:item_id])
       end
     else
-      flash[:error] = "Something went wrong. Try again?"
+      flash[:danger] = "Something went wrong. Try again?"
     end
     redirect_to '/cart'
   end
@@ -34,7 +34,7 @@ class CartsController < ApplicationController
     if @cart.add_item(params[:item_id])
       flash[:success] = "Successfully added #{view_context.link_to("#{item.title}", item_path(item))} to your cart."
     else
-      flash[:error] = "Something went wrong. Try again?"
+      flash[:danger] = "Something went wrong. Try again?"
     end
     redirect_to '/cart'
   end

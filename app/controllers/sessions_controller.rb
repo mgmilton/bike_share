@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       flash[:success] = "Successfully Logged In"
       redirect_to '/dashboard'
     else
-      flash[:error] = "Something went wrong. Try again?"
+      flash[:danger] = "Something went wrong. Try again?"
       redirect_to root_path
     end
   end

@@ -1,5 +1,6 @@
 id,duration,start_date,start_station_id,end_date,end_station_id,bike_id,subscription_type,zip_code
 4377,289,2/26/14 12:27,55,2/26/14 12:32,56,471,Subscriber,94965
+4378,289,2/26/13 12:27,55,2/26/13 12:32,56,471,Subscriber,91407
 4959,292,2/26/14 19:18,64,2/26/14 19:23,61,361,Customer,94109
 4828,293,2/26/14 17:41,58,2/26/14 17:46,59,160,Subscriber,94107
 4450,298,2/26/14 13:01,59,2/26/14 13:06,57,598,Subscriber,94109

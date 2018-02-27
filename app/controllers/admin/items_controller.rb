@@ -15,7 +15,7 @@ class Admin::ItemsController < Admin::BaseController
   def create
     item = Item.new(item_params)
     if item.save
-      flash[:notice] = "#{item.title} created succesfully"
+      flash[:success] = "#{item.title} created succesfully"
       redirect_to admin_items_path
     else
       render :new
@@ -28,7 +28,7 @@ class Admin::ItemsController < Admin::BaseController
   def update
     @item.update(item_params)
     if @item.save
-      flash[:notice] = "#{@item.title} succesfully updated"
+      flash[:success] = "#{@item.title} succesfully updated"
       redirect_to admin_items_path
     else
       render :'items#index'
