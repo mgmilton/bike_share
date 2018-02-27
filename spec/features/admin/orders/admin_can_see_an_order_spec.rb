@@ -15,10 +15,3 @@ context 'As an admin' do
     end
   end
 end
-#
-  # I see the purchaser's full name and address,
-# I see the item's name, which is linked to the item page.
-# I see the quantity in this order.
-# I see the line item subtotal,
-# I see the total for the order,
-# I also see the status for the order
