@@ -2,11 +2,18 @@
 
 <strong>Duration:</strong> <%= @trip.duration %> <br>
 <strong>Start date:</strong> <%= @trip.start_date %> <br>
-<strong>Start station:</strong> <%= @trip.start_station_id %> <br>
+<strong>Start station:</strong> <%= Station.find(@trip.start_station_id).name %> <br>
 <strong>End date:</strong> <%= @trip.end_date %> <br>
-<strong>End station:</strong> <%= @trip.end_station_id %> <br>
+<strong>End station:</strong> <%= Station.find(@trip.end_station_id).name %> <br>
 <strong>Bike used:</strong> <%= @trip.bike_id %> <br>
 <strong>Subscription type:</strong> <%= @trip.subscription_type %> <br>
-<strong>Zip code:</strong> <%= @trip.zip_code %>
+<strong>Zip code:</strong> <%= @trip.zip_code %> <br>
+<div class="trip_<%= @trip.id %>">
+  <%if current_user && current_user.admin? %>
+   <button  type="button" class="btn btn-warning"><%= link_to "Edit", edit_admin_trip_path(@trip) %></button>
+   <button  type="button" class="btn btn-danger"><%= link_to "Delete", admin_trip_path(@trip), method: :delete %></button>
+  <% end %>
+</div>
+
 
 <%= link_to "<<< Back To All Trips", trips_path %>

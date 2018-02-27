@@ -1,21 +1,18 @@
 <h2> 30 Most Recent Trips</h2>
 
-<% unless params[:offset] %>
-  <%= link_to "Next 30 Trips", "/trips/?offset=30" %> <br>
-<% end %>
-<% if params[:offset] %>
-  <%= link_to "Next 30 Trips", "/trips/?offset=#{(params[:offset]).to_i + 30}" %> <br>
+<% if params[:offset].to_i <= @trips.count + 59 %>
+  <button type="button" class="btn btn-warning"> <%= link_to "Next 30 Trips", "/trips/?offset=#{(params[:offset]).to_i + 30}" %></button> <br>
 <% end %>
 <% if params[:offset].to_i != 0 %>
-  <%= link_to "Previous 30 Trips", "/trips/?offset=#{(params[:offset]).to_i - 30}" %> <br>
+  <button type="button" class="btn btn-warning"> <%= link_to "Previous 30 Trips", "/trips/?offset=#{(params[:offset]).to_i - 30}" %></button> <br>
 <% end %>
 
 <% @trips.each do |trip| %>
   <strong>Trip Duration:</strong> <%= trip.duration %>
   <strong>Trip Start Date:</strong> <%= trip.start_date %>
-  <strong>Trip Starting Station:</strong> <%= trip.start_station_id %>
+  <strong>Trip Starting Station:</strong> <%= Station.find(trip.start_station_id).name %>
   <strong>Trip End Date:</strong> <%= trip.end_date %>
-  <strong>Trip Ending Station:</strong> <%= trip.end_station_id %>
+  <strong>Trip Ending Station:</strong> <%= Station.find(trip.end_station_id).name %>
   <strong>Bike Used:</strong> <%= trip.bike_id %>
   <strong>Subcriber Type:</strong> <%= trip.subscription_type %>
   <strong>Trip Zip Code:</strong> <%= trip.zip_code %>

@@ -43,8 +43,8 @@ CSV.foreach "db/fixture-data/trip.csv", OPTIONS do |row|
              )
 end
 
-User.create!(name: "admin", email: "admin@email.com", password: "admin", role: 1)
-User.create!(name: "user", email: "user@email.com", password: "user")
+User.create!(first_name: "dwayne", last_name: "johnson", email: "admin@email.com", password: "admin", address: "123 main st", city: "san francisco", state: "ca", zip_code: 91407, role: 1)
+User.create!(first_name: "john", last_name: "cena", email: "user@email.com", password: "user", address: "123 pearl st", city: "san francisco", state: "ca", zip_code: 91407)
 
 Item.create!(title: "item1", description: "an aweful item", price: 10)
 Item.create!(title: "item2", description: "a poor item", price: 20)
