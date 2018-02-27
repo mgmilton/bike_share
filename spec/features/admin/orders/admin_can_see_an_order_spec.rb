@@ -11,7 +11,7 @@ context 'As an admin' do
       visit admin_order_path(@order)
 
       expect(page).to have_content(@order.user.full_name)
-      expect(page).to have_content(@order.user.address)
+      expect(page).to have_content(@order.user.full_address)
     end
   end
 end

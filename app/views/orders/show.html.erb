@@ -1,5 +1,8 @@
 <h1>Order <%= @order.id %></h1>
-
+<% if current_admin? %>
+  <p>User:<%= @order.user.full_name %></p>
+  <p>User's Address:<%= @order.user.full_address %></p>
+<% end %>
 <strong>Order Total:</strong> $<%= @order.total %> <br>
 <strong>Date Submitted:</strong> <%= @order.convert_time(@order.created_at) %> <br>
 <strong>Order Status:</strong> <%= @order.status %> <br>

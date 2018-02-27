@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 20180227004617) do
     t.integer "role", default: 0
     t.string "first_name"
     t.string "last_name"
-    t.text "address"
+    t.string "address"
     t.string "city"
     t.string "state"
     t.string "zip_code"
