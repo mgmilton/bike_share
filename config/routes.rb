@@ -5,7 +5,6 @@ Rails.application.routes.draw do
     resources :conditions, only: [:new, :create, :edit, :update, :destroy]
     resources :stations, except: [:index, :show], param: :name
     resources :trips, only: [:new, :edit, :update, :destroy, :create]
-    resources :users, only: [:show]
     resources :items, except: [:destroy, :show], path: 'bike-shop'
   end
 
@@ -27,11 +26,11 @@ Rails.application.routes.draw do
   get "/weather-dashboard", to: "weather_dashboard#index"
   get '/stations-dashboard', to: 'stations#dashboard'
   get '/map', to: "conditions#map"
-
   get '/stations-dashboard', to: 'stations#dashboard'
 
   scope :admin, as: :admin do
     get '/dashboard', to: 'users#dashboard'
+    resources :orders, only: [:show]
   end
 
   get '/:name', to: 'stations#show'
