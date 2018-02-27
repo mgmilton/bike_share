@@ -1,0 +1,43 @@
+<h1><%= link_to "All Orders", admin_orders_path %></h1>
+<%= link_to 'Bike Shop Accessories', admin_items_path %>
+<%= form_tag admin_orders_path, method: :get  do %>
+  <%= label_tag :status, "Order Status" %>
+  <%= select_tag :status, options_for_select([['Ordered'], ['Paid'], ['Canceled'], ['Completed']]) %>
+  <%= submit_tag  "Filter" %>
+<% end %>
+<%= link_to "View All", admin_orders_path %>
+<p>
+  Ordered(<%= @orders.ordered.count %>)
+  Paid(<%= @orders.paid.count %>)
+  Canceled(<%= @orders.canceled.count %>)
+  Completed(<%= @orders.completed.count %>)
+</p>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Order Id</th>
+      <th>Status</th>
+      <th>Total</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+    <tr class="order-<%= order.id %>" scope="row">
+      <th><%= link_to order.id, admin_order_path(order) %></th>
+      <td><%= order.status %></td>
+      <td><%= order.total %></td>
+      <td>
+        <% if order.status == 'Paid' %>
+          <%= button_to 'cancel', "dashboard/#{order.id}?status=Canceled", method: :patch %>
+          <%= button_to 'mark as completed', "dashboard/#{order.id}?status=Completed", method: :patch %>
+        <% end %>
+        <% if order.status == 'Ordered' %>
+          <%= button_to 'cancel', "dashboard/#{order.id}?status=Canceled", method: :patch %>
+          <%= button_to 'mark as paid', "dashboard/#{order.id}?status=Paid", method: :patch %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

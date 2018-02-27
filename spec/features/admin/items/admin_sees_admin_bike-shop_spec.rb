@@ -8,14 +8,14 @@ context 'As an admin' do
       @accessories = create_list(:item, 12)
     end
     scenario 'I see a link for viewing all accessories' do
-      visit admin_dashboard_path
+      visit '/admin/dashboard'
 
       expect(page).to have_link('Bike Shop Accessories')
     end
 
     describe 'When I click that link' do
       scenario 'My current path should be "/admin/bike-shop"' do
-        visit admin_dashboard_path
+        visit '/admin/dashboard'
         click_link 'Bike Shop Accessories'
 
         expect(current_path).to eq('/admin/bike-shop')
@@ -23,11 +23,10 @@ context 'As an admin' do
     end
 
     scenario 'I see a table with all accessories (active and inactive)' do
-      visit admin_dashboard_path
+      visit '/admin/dashboard'
       click_link 'Bike Shop Accessories'
 
       @accessories.each do |item|
-        expect(page).to have_xpath("//img[contains(@src,'#{item.image.url}')]")
         expect(page).to have_content(item.title)
         expect(page).to have_content(item.description)
         expect(page).to have_content(item.status)
@@ -36,7 +35,7 @@ context 'As an admin' do
 
     scenario 'I see a link to reactivate an item if the item is retired' do
       @accessories.first.update(status: 'retired')
-      visit admin_dashboard_path
+      visit '/admin/dashboard'
       click_link 'Bike Shop Accessories'
 
       expect(page).to have_button('Reactivate')

@@ -21,8 +21,6 @@ describe "as a user" do
 
       visit '/cart'
 
-      expect(page).to have_xpath("//img[contains(@src,'#{@item1.image.url}')]")
-      expect(page).to have_xpath("//img[contains(@src,'#{@item2.image.url}')]")
       expect(page).to have_content(@item1.title)
       expect(page).to have_content(@item2.title)
       expect(page).to have_content(@item1.description)

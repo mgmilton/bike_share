@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :stations, except: [:index, :show], param: :name
     resources :trips, only: [:new, :edit, :update, :destroy, :create]
     resources :items, except: [:destroy, :show], path: 'bike-shop'
+    resources :orders, only: [:index, :show, :update], path: 'dashboard'
   end
 
   resources :conditions, only: [:index, :show]
@@ -30,11 +31,6 @@ Rails.application.routes.draw do
   get '/map', to: "conditions#map"
 
   get '/stations-dashboard', to: 'stations#dashboard'
-
-  scope :admin, as: :admin do
-    get '/dashboard', to: 'users#dashboard'
-    resources :orders, only: [:show]
-  end
 
   get '/:name', to: 'stations#show'
 end
