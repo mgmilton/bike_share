@@ -38,16 +38,16 @@
   }
 }
 
-.nav-cart {
+.nav-icon {
   color: white;
   font: {
     family: $open-sans;
     size: 20px;
   }
-  .glyphicon-shopping-cart {
+  .glyphicon {
     color: white
   }
-  .glyphicon-shopping-cart:hover {
+  .glyphicon:hover {
     color: $marigold;
   }
 }

@@ -5,9 +5,11 @@
     <%= link_to "Bike Share", dashboard_path, class: 'navbar-header navbar-brand' %>
   <% end %>
 
-  <%= link_to 'Bike Shop', items_path, class: 'nav-item dropdown-toggle' %>
+  <%= link_to 'Shop', items_path, class: 'nav-item dropdown-toggle' %>
 
+  <
   <ul class="nav navbar-nav navbar-center">
+    
     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href= ""> Stations <span class="caret"> </span></a>
       <ul class="dropdown-menu">
         <li><%= link_to 'Stations Data', stations_path %></li>
@@ -36,9 +38,14 @@
            <% end %>
          </li>
       </ul>
-      <div class="nav-cart">
+      <div class="nav-icon">
+        <%= link_to dashboard_path do %>
+          <i class="glyphicon glyphicon-home"></i>
+        <% end %>
+      </div>
+      <div class="nav-icon">
         <%= link_to '/cart' do %>
-        <i class="glyphicon glyphicon-shopping-cart"></i>
+          <i class="glyphicon glyphicon-shopping-cart"></i>
         <% end %>
         <%= @cart.total_count %>
       </div>
