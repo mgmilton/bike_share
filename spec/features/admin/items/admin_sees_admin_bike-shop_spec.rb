@@ -27,7 +27,6 @@ context 'As an admin' do
       click_link 'Bike Shop Accessories'
 
       @accessories.each do |item|
-        expect(page).to have_xpath("//img[contains(@src,'#{item.image.url}')]")
         expect(page).to have_content(item.title)
         expect(page).to have_content(item.description)
         expect(page).to have_content(item.status)

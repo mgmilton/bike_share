@@ -6,7 +6,8 @@ class Item < ApplicationRecord
                                        original: '-quality 85 -strip' },
                     storage: :s3,
                     s3_credentials: {access_key_id: ENV["AWS_KEY"], secret_access_key: ENV["AWS_SECRET"]},
-                    bucket: "accessory-image"
+                    bucket: "accessory-image",
+                    default_url: 'bike-accessories.jpg'
   validates_attachment :image,
                      content_type: { content_type: ['image/jpeg', 'image/gif', 'image/png'] }
   validates_presence_of :title, :description, :price

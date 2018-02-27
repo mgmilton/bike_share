@@ -1,0 +1,21 @@
+<h1>Order <%= order.id %></h1>
+<% if current_admin? %>
+  <p>User:<%= order.user.full_name %></p>
+  <p>User's Address:<%= order.user.full_address %></p>
+<% end %>
+<strong>Order Total:</strong> $<%= order.total %> <br>
+<strong>Date Submitted:</strong> <%= order.convert_time(order.created_at) %> <br>
+<strong>Order Status:</strong> <%= order.status %> <br>
+<% if order.status != "Submitted" %>
+  <strong>Date <%= order.status %>:</strong> <%= order.convert_time(order.updated_at) %> <br>
+<% end %>
+<br>
+<strong>Items Ordered:</strong>
+<ul>
+  <% order.order_items.each do |order_item| %>
+    <strong>Item:</strong> <%= link_to order_item.item.title, items_path(order_item.item) %> <br>
+    <strong>Quantity:</strong> <%= order_item.quantity %> <br>
+    <strong>Subtotal:</strong> <%= order_item.subtotal %> <br>
+    <br>
+  <% end %>
+</ul>
