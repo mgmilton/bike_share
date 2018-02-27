@@ -10,7 +10,6 @@
     <li>Mean Precipitation (Inches): <%= condition.mean_precipitation%></li>
     <li>Zip Code: <%= condition.zip_code%></li>
     <% if current_admin? %>
-      <button type="button" class="btn btn-primary"> <%= link_to "Condition", condition_path(condition) %> </button>
       <button type="button" class="btn btn-warning"><%= link_to "Edit", edit_admin_condition_path(condition) %></button>
       <button type="button" class="btn btn-danger"><%= link_to "Delete", admin_condition_path(condition), method: :delete %></button></br></br>
     <% end %>
