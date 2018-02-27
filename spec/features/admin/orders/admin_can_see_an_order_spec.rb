@@ -8,7 +8,7 @@ context 'As an admin' do
       @order = create(:order)
     end
     scenario "I see the order's date and time" do
-      visit order_path(@order)
+      visit admin_order_path(@order)
 
       expect(page).to have_content(@order.created_at)
       expect(page).to have_content(@order.updated_at)
