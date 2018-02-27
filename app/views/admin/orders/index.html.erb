@@ -2,4 +2,8 @@
 <% @orders.each do |order| %>
   <%= link_to order.id, admin_order_path(order) %>
 <% end %>
+<h2>Ordered: <%= @orders.ordered.count %></h2>
+<h2>Paid: <%= @orders.paid.count %></h2>
+<h2>Canceled: <%= @orders.canceled.count %></h2>
+<h2>Completed: <%= @orders.completed.count %></h2>
 <%= link_to 'Bike Shop Accessories', admin_items_path %>
