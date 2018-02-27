@@ -12,7 +12,7 @@ class Admin::TripsController < Admin::BaseController
       flash[:success] = "Trip Successfully Saved"
       redirect_to trip_path(@trip)
     else
-      flash[:error] = "Something went wrong. Try again?"
+      flash[:danger] = "Something went wrong. Try again?"
       render :new
     end
   end
@@ -26,7 +26,7 @@ class Admin::TripsController < Admin::BaseController
       flash[:success] = "Trip Successfully Updated"
       redirect_to trip_path(@trip)
     else
-      flash[:error] = 'Something went wrong. Try again?'
+      flash[:danger] = 'Something went wrong. Try again?'
       render :edit
     end
   end
@@ -36,7 +36,7 @@ class Admin::TripsController < Admin::BaseController
       flash[:success] = "Trip Successfully Deleted"
       redirect_to trips_path
     else
-      flash[:error] = "Something went wrong. Try again?"
+      flash[:danger] = "Something went wrong. Try again?"
       render trips_path
     end
   end

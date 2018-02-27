@@ -11,6 +11,6 @@ class User < ApplicationRecord
   end
 
   def full_address
-    address + "/n/r#{city}, #{state} #{zip_code}"
+    address + " " + city + " " + state + " " + zip_code.to_s
   end
 end

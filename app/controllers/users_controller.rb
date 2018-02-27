@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
+      flash[:success] = "Successfully logged in!"
       redirect_to '/dashboard'
     else
       render :new
@@ -14,20 +15,6 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-  end
-
-  def edit
-    @user = current_user
-  end
-
-  def update
-    @user = current_user
-    if @user.save
-      session[:user_id] = @user.id
-      redirect_to '/dashboard'
-    else
-      render :new
-    end
   end
 
   def edit
