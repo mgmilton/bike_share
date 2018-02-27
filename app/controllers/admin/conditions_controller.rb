@@ -11,6 +11,7 @@ class Admin::ConditionsController < Admin::BaseController
       flash[:success] = "Condition was created."
       redirect_to condition_path(@condition)
     else
+      flash[:error] = "Something went wrong. Try again?"
       render :new
     end
   end
@@ -20,19 +21,23 @@ class Admin::ConditionsController < Admin::BaseController
   end
 
   def update
-    @condition.update(condition_params)
-    if @condition.save
+    if @condition.update(condition_params)
       flash[:success] = "Condition was updated."
       redirect_to condition_path(@condition)
     else
+      flash[:error] = 'Something went wrong. Try again?'
       render :edit
     end
   end
 
   def destroy
-    @condition.destroy
-    flash[:success] = "Condition was deleted."
-    redirect_to conditions_path
+    if @condition.destroy
+      flash[:success] = "Condition was deleted."
+      redirect_to conditions_path
+    else
+      flash[:error] = "Something went wrong. Try again?"
+      render conditions_path
+    end
   end
 
   private

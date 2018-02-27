@@ -4,7 +4,7 @@ describe "ad as admin" do
   describe "when i visit the new trip path" do
     it "shows a form i can complete to create a new trip" do
       admin = create(:admin)
-      station = create(:station)
+      station = create(:station, name: "Test Station")
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit new_admin_trip_path
@@ -12,7 +12,6 @@ describe "ad as admin" do
       fill_in "Duration", with: 21
       fill_in "Bike", with: 99
       fill_in "Start date", with: Date.today
-      fill_in "Start station", with: 1
       fill_in "End date", with: Date.today
       fill_in "End station", with: 36
       fill_in "Subscription type", with: "Subscriber"
