@@ -10,7 +10,7 @@
   <strong>Date <%= @order.status %>:</strong> <%= @order.convert_time(@order.updated_at) %> <br>
 <% end %>
 <br>
-<strong>Items Ordered:</strong>
+<strong>Your Orders:</strong>
 <ul>
   <% @order.order_items.each do |order_item| %>
     <strong>Item:</strong> <%= link_to order_item.item.title, items_path(order_item.item) %> <br>

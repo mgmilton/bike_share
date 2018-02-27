@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+before_action :require_user
 
   def create
     @order = current_user.orders.create(total: @cart.total_cost)
@@ -11,6 +12,12 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    if current_admin?
+      @order = Order.find(params[:id])
+    elsif current_user.orders.ids.include?(params[:id].to_i)
+      @order = Order.find(params[:id])
+    else
+      render "/session"
+    end
   end
 end

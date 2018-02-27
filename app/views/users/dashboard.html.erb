@@ -10,6 +10,14 @@
   </ul>
   <% end %>
 </ul>
+<% if current_admin? %>
+    <ul> All Orders: <% Order.all.each do |order| %>
+      <ul>
+        <li><%= link_to order.id, order_path(order) %></li>
+      </ul>
+    <% end %>
+    </ul>
+<% end %>
 <button type="button" class="btn btn-warning"><%= link_to "Edit", edit_user_path(current_user) %></button>
 <% if current_admin? %>
   <%= link_to 'Bike Shop Accessories', admin_items_path %>
