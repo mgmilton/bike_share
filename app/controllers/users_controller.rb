@@ -24,6 +24,7 @@ class UsersController < ApplicationController
     @user = current_user
     if @user.save
       session[:user_id] = @user.id
+      binding.pry
       redirect_to '/dashboard'
     else
       render :new
