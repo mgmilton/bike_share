@@ -10,14 +10,21 @@ describe "As a visitor" do
 
       expect(current_path).to eq(new_user_path)
 
-      fill_in "user[name]", with: "Tom Joad"
+      fill_in "user[first_name]", with: "Tom"
+      fill_in "user[last_name]", with: "Joad"
+      fill_in "user[address]", with: "4743 Mountain Road"
+      fill_in "user[city]", with: "Nederland"
+      fill_in "user[state]", with: "Colorado"
+      fill_in "user[zip_code]", with: "91407"
       fill_in "user[email]", with: "tomjoad@socialism.com"
       fill_in "user[password]", with: "test"
 
       click_on "Create User"
 
-      expect(page).to have_content("Logged in as Tom Joad!")
-      expect(page).to_not have_content("Login")
+      expect(current_path).to eq(dashboard_path)
+      expect(page).to have_content("Logged in as Tom Joad")
+      expect(page).to_not have_button("Log In")
+      expect(page).to have_button("Log Out")
     end
   end
 end
