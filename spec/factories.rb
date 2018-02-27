@@ -50,4 +50,14 @@ FactoryBot.define do
     description 'Is way cool'
     price 20.00
   end
+
+  factory :order do
+    sequence(:total) { |n| n }
+    user
+  end
+
+  factory :order_item do
+    order
+    item
+  end
 end
