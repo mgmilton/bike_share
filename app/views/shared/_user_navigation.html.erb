@@ -1,6 +1,6 @@
 <nav class="navbar navbar-fixed-top">
   <% if current_admin? %>
-    <%= link_to "Bike Share", admin_dashboard_path, class: 'navbar-header navbar-brand' %>
+    <%= link_to "Bike Share", admin_orders_path, class: 'navbar-header navbar-brand' %>
   <% else %>
     <%= link_to "Bike Share", dashboard_path, class: 'navbar-header navbar-brand' %>
   <% end %>
