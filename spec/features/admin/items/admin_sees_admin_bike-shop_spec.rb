@@ -38,7 +38,7 @@ context 'As an admin' do
       visit '/admin/dashboard'
       click_link 'Bike Shop Accessories'
 
-      expect(page).to have_button('Reactivate')
+      expect(page).to have_link('Reactivate')
     end
   end
 end
