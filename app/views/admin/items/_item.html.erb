@@ -9,7 +9,7 @@
       <% if item.active? %>
         <%= button_to 'Retire', admin_item_path(item, item: {status: 'retired'}), method: :put, class: "retire-#{item.id}" %>
       <% elsif item.retired? %>
-        <%= link_to 'Reactivate', admin_item_path(item, item: {status: 'active'}), method: :put, class: "reactivate-#{item.id}" %>
+        <%= button_to 'Reactivate', admin_item_path(item, item: {status: 'active'}), method: :put, class: "reactivate-#{item.id}" %>
       <% end %>
   </th>
 </tr>

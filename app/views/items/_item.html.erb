@@ -5,12 +5,11 @@
       <h1><%= link_to item.title, item_path(item) %></h1>
       <h2>$<%= item.price %></h2>
       <p><%= item.description %></p>
-      <%= button_to "Add Item", carts_path(item_id: item) %>
-    </div>
-  </figcaption>
   <% if item.active? %>
     <%= button_to "Add to Cart", carts_path(item_id: item.id), class: "add_item_#{item.id}" %>
   <% else %>
     <p>Accessory Retired</p>
   <% end %>
+</div>
+</figcaption>
 </figure>

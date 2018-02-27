@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   resources :orders, only: [:create, :show]
   resources :carts, only: [:create, :show]
   patch "/remove_item", to: "carts#remove_item"
+  patch "/decrease", to: "carts#decrease"
+  patch "/increase", to: "carts#increase"
   resources :items, path: 'bike-shop', only: [:show, :index]
 
   get "/dashboard", to: "users#dashboard"
@@ -26,6 +28,7 @@ Rails.application.routes.draw do
   get "/weather-dashboard", to: "weather_dashboard#index"
   get '/stations-dashboard', to: 'stations#dashboard'
   get '/map', to: "conditions#map"
+
   get '/stations-dashboard', to: 'stations#dashboard'
 
   scope :admin, as: :admin do

@@ -5,6 +5,9 @@
     <%= link_to "Bike Share", dashboard_path, class: 'navbar-header navbar-brand' %>
   <% end %>
 
+  <%= link_to 'Bike Shop', items_path, class: 'nav-item dropdown-toggle' %>
+
+
   <ul class="nav navbar-nav navbar-center">
     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href= ""> Stations <span class="caret"> </span></a>
       <ul class="dropdown-menu">
@@ -33,12 +36,12 @@
              <button class="btn"><%= link_to 'Log Out', logout_path %></button>
            <% end %>
          </li>
-         <li class="nav-cart">
-           <%= link_to '/cart' do %>
-             <i class="glyphicon glyphicon-shopping-cart"></i>
-           <% end %>
-           <%= @cart.total_count %>
-        </li>
       </ul>
+      <div class="nav-cart">
+        <%= link_to '/cart' do %>
+        <i class="glyphicon glyphicon-shopping-cart"></i>
+        <% end %>
+        <%= @cart.total_count %>
+      </div>
   </div>
 </nav>
