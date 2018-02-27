@@ -1,6 +1,6 @@
 # Bike Share
 
-Bike Share is a Ruby on Rails web server that utilizes ActiveRecord to parse through [SF Bay Area Bike Share data](https://www.kaggle.com/benhamner/sf-bay-area-bike-share/data). In this project, a station has many trips. and trips have many weather conditions. Upon signing up, a user can view data analtics by clicking the dashboard links in the dropdown. Each station, trip, and condition page has a built in form where a user can create there own.
+Bike Share is a Ruby on Rails web server that utilizes ActiveRecord to parse through [SF Bay Area Bike Share data](https://www.kaggle.com/benhamner/sf-bay-area-bike-share/data). In this project, a station has many trips. and trips have many weather conditions. Upon signing up, a user can view data analytics by clicking the dashboard links in the dropdown. Each station, trip, and condition page has a built in form where a user can create there own.
 
 Additionally, we built an online commerce platform that allows for users to purchase many items. A visitor can locate the store by clicking link x where they will see 12 with defaulted images.  
 
@@ -77,27 +77,38 @@ rspec
 ## Break down into end to end tests
 
 * Simple Model Test:
+
+The following test ensures that a user has an email and he or she can be assigned a role of admin.
+
 ```
 rspec spec/models/user_spec.rb
 ```
 
 * Complex Model Test:
+The following test ensures that a station has all the proper attributes (name, dock count, city, installation, latitude and longitude) and that the name is unique. The instance method ```.most_frequent_zip_code``` selects the most frequent trip zip code associated with this station.
+
 ```
 rspec spec/models/station_spec.rb
 ```
 
 * Simple Feature Test:
+
+When a visitor goes to the root page, he or she can login.
+
 ```
 rspec spec/features/visitor/logins/visitor_can_login_as_a_user_spec.rb
 ```
 
 * Complex Feature Test:
+This test evaluates that an administrator can visit the bike-shop path and click edit, fill in information about the item. After hitting submit the item's attributes have changed.
+
 ```
-rspec spec/features/visitor/logins/visitor_can_login_as_a_user_spec.rb
+rspec spec/features/admin/items/admin_edits_an_item_spec.rb
 ```
 
 
 * Simple Factory Test:
+
 ```
 rspec spec/features/visitor/logins/visitor_can_login_as_a_user_spec.rb
 ```

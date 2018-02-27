@@ -10,7 +10,7 @@ class Station < ApplicationRecord
                           :longitude
   validates_uniqueness_of :name
 
-  has_many :trips
+  has_many :trips, dependent: :nullify
   scope :started_at, ->(date) { where('start_date')}
   def zip_code
     zip_codes[self.city]
