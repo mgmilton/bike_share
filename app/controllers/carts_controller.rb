@@ -11,13 +11,30 @@ class CartsController < ApplicationController
 
   def remove_item
     item = Item.find(params[:item_id])
+    session[:cart].delete(params[:item_id])
+    flash[:success] = "Successfully removed #{view_context.link_to("#{item.title}", item_path(item))} from your cart."
+    redirect_to '/cart'
+  end
+
+  def decrease
+    item = Item.find(params[:item_id])
     if @cart.remove_item(params[:item_id])
       flash[:success] = "Successfully removed #{view_context.link_to("#{item.title}", item_path(item))} from your cart."
       if session[:cart][params[:item_id]] == 0
         session[:cart].delete(params[:item_id])
       end
     else
-      flash[:error] = "Seomthing went wrong. Try again?"
+      flash[:error] = "Something went wrong. Try again?"
+    end
+    redirect_to '/cart'
+  end
+
+  def increase
+    item = Item.find(params[:item_id])
+    if @cart.add_item(params[:item_id])
+      flash[:success] = "Successfully added #{view_context.link_to("#{item.title}", item_path(item))} to your cart."
+    else
+      flash[:error] = "Something went wrong. Try again?"
     end
     redirect_to '/cart'
   end

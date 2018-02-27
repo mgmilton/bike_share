@@ -7,6 +7,8 @@
   </ul>
   <div class="item_<%= key %>">
     <button type="button" class="btn btn-danger"><%= link_to "Remove", remove_item_path(item_id: key), method: :patch %></button></br></br>
+    <button type="button" class="btn btn-danger"><%= link_to "increase Count", increase_path(item_id: key), method: :patch %></button></br></br>
+    <button type="button" class="btn btn-danger"><%= link_to "Decrease Count", decrease_path(item_id: key), method: :patch %></button></br></br>
   </div>
 <% end %>
 Total: $<%= @cart.total_cost %> <br>

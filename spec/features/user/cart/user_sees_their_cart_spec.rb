@@ -9,14 +9,14 @@ describe "as a user" do
   end
   describe "when i visit /cart" do
     it "shows an image, title, description and price for each item in my cart" do
-      visit items_path
+      visit "/bike-shop"
 
       within(".item_#{@item1.id}") do
-        click_on "Add Item"
+        click_on "Add to Cart"
       end
 
       within(".item_#{@item2.id}") do
-        click_on "Add Item"
+        click_on "Add to Cart"
       end
 
       visit '/cart'
@@ -35,15 +35,15 @@ describe "as a user" do
       visit items_path
 
       within(".item_#{@item1.id}") do
-        click_on "Add Item"
+        click_on "Add to Cart"
       end
 
       within(".item_#{@item1.id}") do
-        click_on "Add Item"
+        click_on "Add to Cart"
       end
 
       within(".item_#{@item2.id}") do
-        click_on "Add Item"
+        click_on "Add to Cart"
       end
 
       visit '/cart'
@@ -57,15 +57,15 @@ describe "as a user" do
       visit items_path
 
       within(".item_#{@item1.id}") do
-        click_on "Add Item"
+        click_on "Add to Cart"
       end
 
       within(".item_#{@item1.id}") do
-        click_on "Add Item"
+        click_on "Add to Cart"
       end
 
       within(".item_#{@item2.id}") do
-        click_on "Add Item"
+        click_on "Add to Cart"
       end
 
       visit '/cart'
@@ -85,13 +85,13 @@ describe "as a user" do
       visit items_path
 
       within(".item_#{@item1.id}") do
-        click_on "Add Item"
+        click_on "Add to Cart"
       end
 
       expect(page).to have_content("You now have 1 item1 in your cart")
 
       within(".item_#{@item1.id}") do
-        click_on "Add Item"
+        click_on "Add to Cart"
       end
 
       expect(page).to have_content("You now have 2 item1s in your cart")
@@ -101,21 +101,21 @@ describe "as a user" do
       visit items_path
 
       within(".item_#{@item1.id}") do
-        click_on "Add Item"
+        click_on "Add to Cart"
       end
 
       within(".item_#{@item1.id}") do
-        click_on "Add Item"
+        click_on "Add to Cart"
       end
 
       within(".item_#{@item2.id}") do
-        click_on "Add Item"
+        click_on "Add to Cart"
       end
 
       visit '/cart'
 
       within(".item_#{@item1.id}") do
-        click_link "Remove"
+        click_link "Decrease"
       end
 
       expect(page).to have_content("Successfully removed item1 from your cart")
@@ -140,7 +140,7 @@ describe "as a user" do
       visit items_path
 
       within(".item_#{@item1.id}") do
-        click_on "Add Item"
+        click_on "Add to Cart"
       end
 
       visit '/cart'

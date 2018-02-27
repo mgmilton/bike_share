@@ -31,7 +31,7 @@ context 'As an admin' do
       find(".retire-#{@active.id}").click
 
       expect(page).to have_content('retired')
-      expect(page).to have_link('Reactivate')
+      expect(page).to have_button('Reactivate')
     end
   end
 
@@ -41,12 +41,12 @@ context 'As an admin' do
 
       expect(@retired.status).to eq('retired')
       expect(page).to have_content('retired')
-      expect(page).to have_link('Reactivate')
+      expect(page).to have_button('Reactivate')
 
       find(".reactivate-#{@retired.id}").click
 
       expect(page).to_not have_content('retired')
-      expect(page).to_not have_link('Reactivate')
+      expect(page).to_not have_button('Reactivate')
     end
   end
 end

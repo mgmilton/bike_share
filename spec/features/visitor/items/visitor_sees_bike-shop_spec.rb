@@ -41,7 +41,6 @@ context 'As a visitor' do
           expect(page).to have_content(1)
         end
         visit root_path
-        expect(page).to have_content('Cart: 1')
 
         visit items_path
         find(".add_item_#{@accessories.last.id}").click

@@ -10,18 +10,18 @@ describe "as a user" do
   describe "when i visit /dashboard" do
     describe "and i click on one of my orders" do
       it "should have path /orders/:id" do
-        visit "bike-shop"
+        visit "/bike-shop"
 
         within(".item_#{@item1.id}") do
-          click_on "Add Item"
+          click_on "Add to Cart"
         end
 
         within(".item_#{@item1.id}") do
-          click_on "Add Item"
+          click_on "Add to Cart"
         end
 
         within(".item_#{@item2.id}") do
-          click_on "Add Item"
+          click_on "Add to Cart"
         end
 
         expect(current_path).to eq(items_path)
@@ -30,7 +30,7 @@ describe "as a user" do
 
         click_link "Check Out"
 
-        expect(page).to have_content("Your order has been successfully submitted")
+        expect(page).to have_content("Successfully submitted your order")
 
         click_on "1"
 
@@ -42,7 +42,7 @@ describe "as a user" do
         expect(page).to have_content("Date Submitted:")
         expect(page).to have_content("Date Ordered:")
         expect(page).to have_content("Order Status: Ordered")
-        expect(page).to have_content("Items Ordered:")
+        expect(page).to have_content("Your Orders:")
         expect(page).to have_content("Item: item1
                                       Quantity: 2
                                       Subtotal: 40.0")
