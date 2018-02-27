@@ -20,7 +20,7 @@ describe "As a visitor" do
       fill_in "user[password]", with: "test"
 
       click_on "Create User"
-      save_and_open_page
+
       expect(current_path).to eq(dashboard_path)
       expect(page).to have_content("Logged in as Tom Joad")
       expect(page).to_not have_button("Log In")
