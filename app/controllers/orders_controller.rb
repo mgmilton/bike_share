@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+before_action :require_user
 
   def create
     if current_user
