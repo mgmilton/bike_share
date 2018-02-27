@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:success] = "Successfully Logged In"
-      redirect_to 
+      redirect_to '/dashboard'
     else
       flash[:error] = "Something went wrong. Try again?"
       redirect_to root_path
