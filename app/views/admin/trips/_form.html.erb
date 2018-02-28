@@ -23,8 +23,15 @@
       <%= f.collection_select(:end_station_id, Station.order(:name), :id, :name)%></label>
       </div>
     </div>
-    <%= f.label :subscription_type %>
-    <%= f.text_field :subscription_type %>
+
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">
+        <%= f.label :subscription_type %> </label>
+        <div class="col-sm-10">
+    <%= f.collection_select(:subscription_type, Station.order(:subscription_type), :id, :subscription_type%>      
+    </div>
+    </div>
+
     <%= f.label :zip_code %>
     <%= f.number_field :zip_code %>
     <%= f.submit %>
