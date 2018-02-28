@@ -1,4 +1,9 @@
 <h1>Stations</h1>
+<div class="row justify-content-around">
+ <div class="col-4">
+  <button type="button" class="btn btn-warning"> <%= link_to "Create Station", "/admin/stations/new" %></button> </br></br>
+</div>
+</div>
 <% @stations.each do |station| %>
   <h2><%= link_to station.name, "#{station.slug}" %></h2>
   <p><%= station.city %></p>
@@ -6,8 +11,10 @@
   <p>Installation Date: <%= station.installation_date %></p>
   <% if current_admin? %>
   <section class=btn-group>
-    <%= link_to 'Edit', edit_admin_station_path(station) %>
-    <%= link_to 'Delete', admin_station_path(station), method: :delete, class: "delete-#{station.id}" %>
+      <button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_admin_station_path(station) %></button>
+      <button type="button" class="btn btn-warning"><%= link_to 'Delete', admin_station_path(station), method: :delete, class: "delete-#{station.id}" %></button>
   </section>
   <% end %>
 <% end %>
+
+<%= render "shared/bike_map"%>

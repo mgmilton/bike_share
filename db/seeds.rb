@@ -2,6 +2,11 @@ require 'csv'
 require 'date'
 require 'time'
 
+Condition.destroy_all
+Station.destroy_all
+Trip.destroy_all
+Item.destroy_all
+User.destroy_all
 OPTIONS = {headers: true, header_converters: :symbol}
 
 CSV.foreach "db/fixture-data/weather.csv", OPTIONS do |row|

@@ -13,8 +13,8 @@
     <p>Bike ID Most Frequently Starting a Trip at This Station: <%= @station.most_frequent_bike_id %></p>
 <% end %>
 <% if current_admin? %>
-  <%= link_to 'Edit', edit_admin_station_path(@station) %>
-  <%= link_to 'Delete', admin_station_path(@station), method: :delete %>
+  <button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_admin_station_path(@station) %></button>
+  <button type="button" class="btn btn-danger"><%= link_to 'Delete', admin_station_path(@station), method: :delete %></button>
 <% end %>
 
 <%= link_to "<<< Back To All Stations", stations_path %>

@@ -1,5 +1,11 @@
+<% if current_admin? %>
+<div class="row justify-content-around">
+ <div class="col-4">
+  <button type="button" class="btn btn-warning"> <%= link_to "Create Trip", "/admin/trips/new" %></button> </br></br>
+</div>
+</div>
+  <% end %>
 <h2> 30 Most Recent Trips</h2>
-
 <% if params[:offset].to_i <= @trips.count + 59 %>
   <button type="button" class="btn btn-warning"> <%= link_to "Next 30 Trips", "/trips/?offset=#{(params[:offset]).to_i + 30}" %></button> <br>
 <% end %>
