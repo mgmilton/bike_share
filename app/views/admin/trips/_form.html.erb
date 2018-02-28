@@ -1,10 +1,27 @@
 <%= form_for [:admin, @trip] do |f| %>
-    <%= f.label :duration %>
+<div class="form-group row">
+  <label class="col-sm-2 col-form-label">
+    <%= f.label :duration %></label>
+        <div class="col-sm-10">
     <%= f.number_field :duration %>
-    <%= f.label :bike_id %>
-    <%= f.number_field :bike_id %>
-    <%= f.label :start_date %>
+  </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-2 col-form-label">
+    <%= f.label :bike_id %></label>
+  </div>
+</div>
+    <div class="col-sm-10">
+  <%= f.number_field :bike_id %></div>
+</div>
+</div>
+
+<label class="col-sm-2 col-form-label">
+    <%= f.label :start_date %></label>
+    <div class="col-sm-10">
     <%= f.date_field :start_date %>
+  </div>
+</div>
 
 <div class="form-group row">
   <label class="col-sm-2 col-form-label">
@@ -14,8 +31,13 @@
   </div>
 </div>
 
-    <%= f.label :end_date %>
+<label class="col-sm-2 col-form-label">
+    <%= f.label :end_date %></label>
+    <div class="col-sm-10">
     <%= f.date_field :end_date %>
+  </div>
+</div>
+
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">
     <%= f.label :end_station_id %> </label>
@@ -28,11 +50,16 @@
       <label class="col-sm-2 col-form-label">
         <%= f.label :subscription_type %> </label>
         <div class="col-sm-10">
-        <%= f.collection_select(:subscription_type, Trip.pluck(:subscription_type).uniq, :id, :subscription_type)%>      
+        <%= f.collection_select(:subscription_type, Trip.pluck(:subscription_type).uniq, :id, :subscription_type)%>
     </div>
     </div>
 
-    <%= f.label :zip_code %>
-    <%= f.number_field :zip_code %>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">
+      <%= f.label :zip_code %></label>
+      <div class="col-sm-10">
+      <%= f.number_field :zip_code %>
+    </div>
+  </div>
     <%= f.submit %>
 <% end %>
