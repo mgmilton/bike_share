@@ -2,20 +2,34 @@
   background: $denim;
   border: 2px solid white;
   color: white;
-  font: {
-    size: 14px;
-    family: $open-sans;
-  }
   a {
     color: white;
+    font: {
+      size: 14px;
+      family: $open-sans;
+    }
   }
 }
+
+.btn:active {
+  outline: none;
+}
+
 .btn:hover {
   border: 2px solid $marigold;
-  a {
+  outline: none;
+  a:hover {
     color: $marigold;
   }
 }
-.btn:active {
+
+button {
   outline: none;
+  a:hover {
+    color: $marigold;
+  }
+}
+
+.btn-group {
+  display: flex;
 }

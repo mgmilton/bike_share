@@ -1,3 +1,12 @@
 input {
   outline: none;
+  padding: 5px 10px;
+  margin-right: 10px;
+  margin-left: 4px;
+}
+
+.form-group {
+  display: flex;
+  justify-content: center;
+  margin: 35px;
 }

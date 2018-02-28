@@ -1,17 +1,15 @@
-<h1><%= link_to "All Orders", admin_orders_path %></h1>
+<%= link_to "All Orders", admin_orders_path %>
 <%= link_to 'Bike Shop Accessories', admin_items_path %>
-<%= form_tag admin_orders_path, method: :get  do %>
-  <%= label_tag :status, "Order Status" %>
-  <%= select_tag :status, options_for_select([['Ordered'], ['Paid'], ['Canceled'], ['Completed']]) %>
-  <%= submit_tag  "Filter" %>
-<% end %>
-<%= link_to "View All", admin_orders_path %>
 <p>
   Ordered(<%= @orders.ordered.count %>)
   Paid(<%= @orders.paid.count %>)
   Canceled(<%= @orders.canceled.count %>)
   Completed(<%= @orders.completed.count %>)
 </p>
+<%= form_tag admin_orders_path, method: :get  do %>
+<%= select_tag :status, options_for_select([['Ordered'], ['Paid'], ['Canceled'], ['Completed']]) %>
+<%= submit_tag  "Filter", class: 'btn' %>
+<% end %>
 <table class="table table-bordered">
   <thead>
     <tr>

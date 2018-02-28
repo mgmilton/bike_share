@@ -1,20 +1,17 @@
-<h1>Stations</h1>
-<div class="row justify-content-around">
- <div class="col-4">
-  <button type="button" class="btn btn-warning"> <%= link_to "Create Station", "/admin/stations/new" %></button> </br></br>
-</div>
-</div>
-<% @stations.each do |station| %>
-  <h2><%= link_to station.name, "#{station.slug}" %></h2>
-  <p><%= station.city %></p>
-  <p>Dock Count: <%= station.dock_count %></p>
-  <p>Installation Date: <%= station.installation_date %></p>
-  <% if current_admin? %>
-  <section class=btn-group>
-      <button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_admin_station_path(station) %></button>
-      <button type="button" class="btn btn-warning"><%= link_to 'Delete', admin_station_path(station), method: :delete, class: "delete-#{station.id}" %></button>
-  </section>
+<h1 class="main-header">Stations</h1>
+<div class="card-container">
+  <% @stations.each do |station| %>
+  <figure class="card">
+    <h2 class="sub-header"><%= link_to station.name, "#{station.slug}" %></h2>
+    <p class="regular-text"><%= station.city %></p>
+    <p class="regular-text">Dock Count: <%= station.dock_count %></p>
+    <p class="regular-text">Installation Date: <%= station.installation_date %></p>
+    <% if current_admin? %>
+    <section class=btn-group>
+      <%= button_to 'Edit', edit_admin_station_path(station), method: :put, class: 'btn'%>
+      <%= button_to 'Delete', admin_station_path(station), method: :delete, class: "delete-#{station.id} btn" %>
+    </section>
+    <% end %>
+  </figure>
   <% end %>
-<% end %>
-
-<%= render "shared/bike_map"%>
+</div>

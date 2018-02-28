@@ -7,34 +7,49 @@
   .navbar-brand:hover {
     color: $marigold;
   }
-  .navbar-center {
-    .dropdown {
-      padding: 0px 40px;
-      margin: 0px;
-      .dropdown-menu {
-        background: $denim;
-        margin-top: 15px;
-        border: none;
-        a {
-          color: white;
-        }
-        a:hover {
-          background: $marigold;
+  .navbar-brand {
+    font: {
+      family: $yellowtail;
+      size: 45px;
+    }
+  }
+    a {
+      font: {
+        family: $open-sans;
+        size: 20px;
+      }
+    }
+    .btn {
+      a {
+        font: {
+          size: 14px;
         }
       }
     }
+
+    .dropdown-menu {
+      background: $denim;
+      margin-top: 15px;
+      border: none;
+      a {
+        color: white;
+      }
+      a:hover {
+        background: $marigold;
+      }
+    }
+
     .dropdown-toggle:active, .nav-item:active {
       background: $denim;
       color: $marigold;
     }
-    .dropdown-toggle:visited {
-      background: $denim;
-      color: white;
-    }
-    .dropdown-toggle:hover {
-      background: $denim;
-      color: $marigold;
-    }
+  .dropdown-toggle:visited, .nav-item:visited {
+    background: $denim;
+    color: white;
+  }
+  .dropdown-toggle:hover {
+    background: $denim;
+    color: $marigold;
   }
 }
 
@@ -44,10 +59,23 @@
     family: $open-sans;
     size: 20px;
   }
+
   .glyphicon {
-    color: white
+    color: white;
+    margin-top: 10px;
   }
+
   .glyphicon:hover {
+    background: $denim;
     color: $marigold;
   }
+}
+
+.login-text {
+  margin-left: 60px;
+  margin-top: 10px;
+}
+
+.navbar-form {
+  display: flex;
 }

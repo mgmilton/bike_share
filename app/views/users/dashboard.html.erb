@@ -1,19 +1,8 @@
-<h3> Logged in as <%= current_user.name %>! </h3>
-<ul> Email: <%= current_user.email %></ul>
-<ul> Account Created: <%= current_user.created_at %></ul>
-<ul> Your Orders: <% current_user.orders.each do |order| %>
-  <ul>
-    <li><%= link_to order.id, order_path(order) %></li>
-  </ul>
-  <% end %>
-</ul>
-<% if current_admin? %>
-    <ul> All Orders: <% Order.all.each do |order| %>
-      <ul>
-        <li><%= link_to order.id, order_path(order) %></li>
-      </ul>
-    <% end %>
-    </ul>
+<h1 class="main-header"> Welcome, <%= current_user.full_name %> </h1>
+<h2 class="sub-header"> Email: <%= current_user.email %></h2>
+<h2 class="sub-header"> Account Created: <%= current_user.created_at %></h2>
+<h2 class="sub-header"> Your Orders: </h2>
+<% current_user.orders.each do |order| %>
+  <%= link_to order.id, order_path(order) %>
 <% end %>
-<button type="button" class="btn btn-warning"><%= link_to "Edit", edit_user_path(current_user) %></button>
-<%= link_to 'Bike Shop Accessories', admin_items_path %>
+<button type="button" class="btn"><%= link_to "Edit Account", edit_user_path(current_user) %></button>

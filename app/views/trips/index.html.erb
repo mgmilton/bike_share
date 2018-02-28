@@ -1,34 +1,33 @@
-<% if current_admin? %>
-<div class="row justify-content-around">
- <div class="col-4">
-  <button type="button" class="btn btn-warning"> <%= link_to "Create Trip", "/admin/trips/new" %></button> </br></br>
-</div>
-</div>
-  <% end %>
-<h2> 30 Most Recent Trips</h2>
-<% if params[:offset].to_i <= @trips.count + 59 %>
-  <button type="button" class="btn btn-warning"> <%= link_to "Next 30 Trips", "/trips/?offset=#{(params[:offset]).to_i + 30}" %></button> <br>
-<% end %>
-<% if params[:offset].to_i != 0 %>
-  <button type="button" class="btn btn-warning"> <%= link_to "Previous 30 Trips", "/trips/?offset=#{(params[:offset]).to_i - 30}" %></button> <br>
-<% end %>
+<h2 class="main-header"> 30 Most Recent Trips</h2>
 
-<% @trips.each do |trip| %>
-  <strong>Trip Duration:</strong> <%= trip.duration %>
-  <strong>Trip Start Date:</strong> <%= trip.start_date %>
-  <strong>Trip Starting Station:</strong> <%= Station.find(trip.start_station_id).name %>
-  <strong>Trip End Date:</strong> <%= trip.end_date %>
-  <strong>Trip Ending Station:</strong> <%= Station.find(trip.end_station_id).name %>
-  <strong>Bike Used:</strong> <%= trip.bike_id %>
-  <strong>Subcriber Type:</strong> <%= trip.subscription_type %>
-  <strong>Trip Zip Code:</strong> <%= trip.zip_code %>
-  <strong><%= link_to "View This Trip", trip_path(trip) %></strong>
-  <br>
-  <div class="trip_<%= trip.id %>">
-    <%if current_user && current_user.admin? %>
-     <button  type="button" class="btn btn-warning"><%= link_to "Edit", edit_admin_trip_path(trip) %></button>
-     <button  type="button" class="btn btn-danger"><%= link_to "Delete", admin_trip_path(trip), method: :delete %></button>
-    <% end %>
-  </div>
-  <br>
-<% end %>
+<div class="btn-group">
+  <% if params[:offset].to_i <= @trips.count + 59 %>
+    <button type="button" class="btn"> <%= link_to "Next 30 Trips", "/trips/?offset=#{(params[:offset]).to_i + 30}" %></button> <br>
+  <% end %>
+  <% if params[:offset].to_i != 0 %>
+    <button type="button" class="btn"> <%= link_to "Previous 30 Trips", "/trips/?offset=#{(params[:offset]).to_i - 30}" %></button> <br>
+  <% end %>
+</div>
+
+<div class="card-container">
+  <% @trips.each do |trip| %>
+  <figure class="card">
+    <h2 class="sub-header">Trip Duration:</h2> <p class="regular-text><%= trip.duration %>
+    <h2 class="sub-header">Trip Start Date:</h2> <p class="regular-text><%= trip.start_date %>
+    <h2 class="sub-header">Trip Starting Station:</h2> <p class="regular-text><%= Station.find(trip.start_station_id).name %>
+    <h2 class="sub-header">Trip End Date:</h2> <p class="regular-text><%= trip.end_date %>
+    <h2 class="sub-header">Trip Ending Station:</h2> <p class="regular-text><%= Station.find(trip.end_station_id).name %>
+    <h2 class="sub-header">Bike Used:</h2> <p class="regular-text><%= trip.bike_id %>
+    <h2 class="sub-header">Subcriber Type:</h2> <p class="regular-text><%= trip.subscription_type %>
+    <h2 class="sub-header">Trip Zip Code:</h2> <p class="regular-text><%= trip.zip_code %>
+    <h2 class="sub-header"><%= link_to "View This Trip", trip_path(trip) %></strong>
+    <br>
+    <div class="trip_<%= trip.id %>">
+      <%if current_user && current_user.admin? %>
+      <button  type="button" class="btn"><%= link_to "Edit", edit_admin_trip_path(trip) %></button>
+      <button  type="button" class="btn"><%= link_to "Delete", admin_trip_path(trip), method: :delete %></button>
+      <% end %>
+    </div>
+  </figure>
+  <% end %>
+</div>

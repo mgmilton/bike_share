@@ -1,20 +1,22 @@
-<h1><%= link_to @station.name, stations_path(@station) %></h1>
-<p><%=  @station.city %></p>
-<p><%= @station.latitude %>, <%= @station.longitude %></p>
-<p>Dock Count: <%= @station.dock_count %></p>
-<p>Installed: <%= @station.installation_date %></p>
-<% if current_user && !@station.trips.empty? %>
-    <p>Number of Rides Started at <%= @station.name %>: <%= @station.trip_start_count %></p>
-    <p>Number of Rides Ended at <%= @station.name %>: <%= @station.trip_end_count %></p>
-    <p>Most Frequent Destination Station: <%= @station.most_frequent_destination %></p>
-    <p>Most Frequent Origination Station: <%= @station.most_frequent_origination %></p>
-    <p>Date with Highest Number of Trips Started at this Station: <%= @station.busiest_date %></p>
-    <p>Most Frequent Zip Code for Users Starting Trips at this Station: <%= @station.most_frequent_zip_code %></p>
-    <p>Bike ID Most Frequently Starting a Trip at This Station: <%= @station.most_frequent_bike_id %></p>
-<% end %>
-<% if current_admin? %>
-  <button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_admin_station_path(@station) %></button>
-  <button type="button" class="btn btn-danger"><%= link_to 'Delete', admin_station_path(@station), method: :delete %></button>
-<% end %>
+<h1 class="main-header"><%= @station.name %></h1>
+<figure class="card">
+  <h2 class="sub-header"><%=  @station.city %></h2>
+  <h2 class="sub-header"><%= @station.latitude %>, <%= @station.longitude %></h2>
+  <h2 class="sub-header">Dock Count: <%= @station.dock_count %></h2>
+  <h2 class="sub-header">Installed: <%= @station.installation_date %></h2>
+  <% if current_user && !@station.trips.empty? %>
+      <p class="regular-text">Number of Rides Started at <%= @station.name %>: <%= @station.trip_start_count %></p>
+      <p class="regular-text">Number of Rides Ended at <%= @station.name %>: <%= @station.trip_end_count %></p>
+      <p class="regular-text">Most Frequent Destination Station: <%= @station.most_frequent_destination %></p>
+      <p class="regular-text">Most Frequent Origination Station: <%= @station.most_frequent_origination %></p>
+      <p class="regular-text">Date with Highest Number of Trips Started at this Station: <%= @station.busiest_date %></p>
+      <p class="regular-text">Most Frequent Zip Code for Users Starting Trips at this Station: <%= @station.most_frequent_zip_code %></p>
+      <p class="regular-text">Bike ID Most Frequently Starting a Trip at This Station: <%= @station.most_frequent_bike_id %></p>
+  <% end %>
+  <% if current_admin? %>
+    <button class="btn"><%= link_to 'Edit', edit_admin_station_path(@station) %></button>
+    <button class="btn"><%= link_to 'Delete', admin_station_path(@station), method: :delete %></button>
+  <% end %>
+</figure>
 
 <%= link_to "<<< Back To All Stations", stations_path %>

@@ -1,12 +1,14 @@
-<figure class="media">
+<figure class="media card">
   <%= link_to image_tag(item.image.url, class: 'media-object'), item.image.url, target: '_blank' %>
   <figcaption class="media-heading">
     <div class="item_<%= item.id %>">
-      <h1><%= link_to item.title, item_path(item) %></h1>
-      <h2>$<%= item.price %></h2>
-      <p><%= item.description %></p>
+      <h1 class="sub-header"><%= link_to item.title, item_path(item) %></h1>
+      <h2 class="regular-text">$<%= item.price %></h2>
+      <p class="regular-text"><%= item.description %></p>
   <% if item.active? %>
-    <%= button_to "Add to Cart", carts_path(item_id: item.id), class: "add_item_#{item.id}" %>
+    <center>
+      <%= button_to "Add to Cart", carts_path(item_id: item.id), class: "add_item_#{item.id} btn" %>
+    </center>
   <% else %>
     <p>Accessory Retired</p>
   <% end %>

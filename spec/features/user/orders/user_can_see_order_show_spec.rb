@@ -34,7 +34,7 @@ describe "as a user" do
 
         click_on "1"
 
-        within('.nav-cart') do
+        within('.nav-icon') do
           expect(page).to have_content(0)
         end
         expect(page).to have_content("Order 1")

@@ -72,7 +72,7 @@ describe "as a user" do
         click_link "Remove"
       end
 
-      within ('.nav-cart') do
+      within ('.nav-icon') do
         expect(page).to have_content(2)
       end
       expect(page).to have_content("Successfully removed item2 from your cart")
@@ -118,7 +118,7 @@ describe "as a user" do
 
       expect(page).to have_content("Successfully removed item1 from your cart")
       expect(page).to have_content("(1) item1 - $20.0")
-      within('.nav-cart') do
+      within('.nav-icon') do
         expect(page).to have_content(2)
       end
 
@@ -127,7 +127,7 @@ describe "as a user" do
       end
 
       expect(page).to have_content("Successfully removed item1 from your cart")
-      within('.nav-cart') do
+      within('.nav-icon') do
         expect(page).to have_content(1)
       end
       expect(page).to have_content("Total: $20.0")

@@ -1,19 +1,20 @@
-<h1>All Conditions </h1>
-<% if current_admin? %>
-  <button type="button" class="btn btn-warning"> <%= link_to "Create Condition", "/admin/conditions/new" %></button> </br></br>
+<h1 class="main-header">All Conditions </h1>
+<div class="card-container">
+  <% @conditions.each do |condition| %>
+    <figure class="card">
+      <h2 class="sub-header"><%= link_to condition.date, condition_path(condition) %> </h2>
+      <p class="regular-text">Max Temperature (F): <%= condition.max_temperature%>  </p>
+      <p class="regular-text">Mean Temperature (F): <%= condition.mean_temperature%> </p>
+      <p class="regular-text">Min Temperature (F): <%= condition.min_temperature%></p>
+      <p class="regular-text">Mean Humidity: <%= condition.mean_humidity%> </p>
+      <p class="regular-text">Mean Visibility (Miles): <%= condition.mean_visibility%> </p>
+      <p class="regular-text">Mean Wind Speed (MPH): <%= condition.mean_wind_speed%> </p>
+      <p class="regular-text">Mean Precipitation (Inches): <%= condition.mean_precipitation%></p>
+      <p class="regular-text">Zip Code: <%= condition.zip_code%></p>
+      <% if current_admin? %>
+        <button type="button" class="btn btn-warning"><%= link_to "Edit", edit_admin_condition_path(condition) %></button>
+        <button type="button" class="btn btn-danger"><%= link_to "Delete", admin_condition_path(condition), method: :delete %></button></br></br>
+      <% end %>
+    </figure>
   <% end %>
-<% @conditions.each do |condition| %>
-    <li><%= link_to condition.date, condition_path(condition) %> </li>
-    <li>Max Temperature (F): <%= condition.max_temperature%>  </li>
-    <li>Mean Temperature (F): <%= condition.mean_temperature%> </li>
-    <li>Min Temperature (F): <%= condition.min_temperature%></li>
-    <li>Mean Humidity: <%= condition.mean_humidity%> </li>
-    <li>Mean Visibility (Miles): <%= condition.mean_visibility%> </li>
-    <li>Mean Wind Speed (MPH): <%= condition.mean_wind_speed%> </li>
-    <li>Mean Precipitation (Inches): <%= condition.mean_precipitation%></li>
-    <li>Zip Code: <%= condition.zip_code%></li>
-    <% if current_admin? %>
-      <button type="button" class="btn btn-warning"><%= link_to "Edit", edit_admin_condition_path(condition) %></button>
-      <button type="button" class="btn btn-danger"><%= link_to "Delete", admin_condition_path(condition), method: :delete %></button></br></br>
-    <% end %>
-<% end %>
+</div>

@@ -13,12 +13,13 @@
 
 
   <body>
-    <% if current_user.nil?  %>
+    <% if current_admin? %>
+      <%= render "shared/admin_navigation" %>
+    <% elsif current_user.nil?  %>
       <%= render "shared/login_navigation" %>
     <% else %>
       <%= render "shared/user_navigation" %>
     <% end %>
-
 
     <main class="main-container" id="flashes">
       <% flash.each do |type, message| %>

@@ -1,8 +1,27 @@
+a {
+  font: {
+    family: $yellowtail;
+    size: 25px;
+  }
+}
+
+a:hover {
+  color: $marigold;
+}
+
+.main-header {
+  color: $denim;
+  font: {
+    family: $open-sans;
+    size: 50px;
+  }
+}
+
 label {
   color: white;
   font: {
     family: $open-sans;
-    size: 14px;
+    size: 20px;
   }
 
 }
@@ -19,13 +38,47 @@ label {
   color: $marigold;
 }
 
-li, .nav-item {
+.nav-item {
   color: white;
   font: {
     family: $open-sans;
     size: 18px;
   }
 }
+
+.nav-text {
+  color: white;
+  padding: 10px;
+  font: {
+    family: $open-sans;
+    size: 12px;
+  }
+}
+
 a:hover {
   text-decoration: none;
+}
+
+.sub-header {
+  text-align: center;
+  a {
+    color: $steel;
+    font: {
+      family: $open-sans;
+      size: 30px;
+      weight: bold;
+    }
+  }
+  a:hover {
+    color: $marigold;
+  }
+}
+
+.regular-text {
+  text-align: center;
+  color: $steel;
+  font: {
+    family: $open-sans;
+    size: 15px;
+  }
 }
