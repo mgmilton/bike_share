@@ -50,7 +50,7 @@
       <label class="col-sm-2 col-form-label">
         <%= f.label :subscription_type %> </label>
         <div class="col-sm-10">
-        <%= f.collection_select(:subscription_type, Trip.pluck(:subscription_type).uniq, :id, :subscription_type)%>
+          <%= f.collection_select(:subscription_type, Trip.order(:subscription_type), :id, :subscription_type)%>
     </div>
     </div>
 
