@@ -1,4 +1,7 @@
 <h1>All Conditions </h1>
+<% if current_admin? %>
+  <button type="button" class="btn btn-warning"> <%= link_to "Create Condition", "/admin/conditions/new" %></button> </br></br>
+  <% end %>
 <% @conditions.each do |condition| %>
     <li><%= link_to condition.date, condition_path(condition) %> </li>
     <li>Max Temperature (F): <%= condition.max_temperature%>  </li>
