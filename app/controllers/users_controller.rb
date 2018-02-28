@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    if @user.save
+    if @user.update(user_params)
       session[:user_id] = @user.id
       redirect_to '/dashboard'
     else
