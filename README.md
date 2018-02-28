@@ -2,7 +2,7 @@
 
 Bike Share is a Ruby on Rails web server that utilizes ActiveRecord to parse through [SF Bay Area Bike Share data](https://www.kaggle.com/benhamner/sf-bay-area-bike-share/data). In this project, a station has many trips. and trips have many weather conditions. Upon signing up, a user can view data analytics by clicking the dashboard links in the dropdown. Each station, trip, and condition page has a built in form where a user can create there own.
 
-Additionally, we built an online commerce platform that allows for users to purchase many items. A visitor can locate the store by clicking link x where they will see 13 with defaulted images. Feel free to change the image!  
+Additionally, we built an online commerce platform that allows for users to purchase many items. A visitor can locate the store by clicking link the bike share header where they will see 12 with defaulted images.
 
 ![schema](https://i.imgur.com/2NsFqq6.png)
 ## Table of Contents
@@ -13,6 +13,7 @@ Additionally, we built an online commerce platform that allows for users to purc
 - [End to End Testing](#break-down-into-end-to-end-tests)
 - [Coding Style Tests](#and-coding-style-tests)
 - [Built With](#built-with)
+- [Deployment](#deployment)
 - [Contributing](#contributing)
 - [Authors](#authors)
 - [Acknowledgements](#acknowledgments)
@@ -126,6 +127,21 @@ rspec spec/features/user/conditions/user_or_admin_can_see_rides_by_weather_spec.
 * [capybara](https://github.com/teamcapybara/capybara)
 * [factorybot](https://github.com/thoughtbot/factory_bot)
 * [database cleaner](https://github.com/DatabaseCleaner/database_cleaner)
+
+## Deployment
+```
+heroku create
+heroku apps
+heroku open
+rake assets:clobber
+git add .
+git commit -m "clobbers existing assets"
+
+heroku rake db:reset
+heroku rake db:migrate
+heroku rake db:seed
+```
+
 
 ## Contributing
 
