@@ -6,7 +6,7 @@ class Trip < ApplicationRecord
                         :end_station_id,
                         :bike_id,
                         :subscription_type
-                        # :zip_code
+
   belongs_to :condition, optional: true
   belongs_to :station
   before_validation :check_zip_code, :set_condition
