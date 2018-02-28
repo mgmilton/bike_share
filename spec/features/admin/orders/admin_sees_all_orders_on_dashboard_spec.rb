@@ -29,14 +29,14 @@ context 'As an admin' do
     scenario 'I can filter orders to display by each status type ("Ordered", "Paid", "Cancelled", "Completed"),' do
       visit 'admin/dashboard'
 
-      select('Ordered', from: 'Order Status')
+      select('Ordered', from: 'Status')
       click_on 'Filter'
       expect(page).to have_link(@orders.first.id)
       expect(page).to_not have_link(@completed.first.id)
       expect(page).to_not have_link(@paid.first.id)
       expect(page).to_not have_link(@completed.first.id)
 
-      select('Canceled', from: 'Order Status')
+      select('Canceled', from: 'Status')
       click_on 'Filter'
       expect(page).to have_link(@canceled.first.id)
       expect(page).to_not have_link(@completed.first.id)

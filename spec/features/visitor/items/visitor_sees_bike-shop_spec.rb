@@ -31,13 +31,13 @@ context 'As a visitor' do
       end
       scenario 'I also see my cart count updated on all pages' do
         visit items_path
-        within('.nav-cart') do
+        within('.nav-icon') do
           expect(page).to have_content(0)
         end
 
         find(".add_item_#{@accessories.first.id}").click
 
-        within('.nav-cart') do
+        within('.nav-icon') do
           expect(page).to have_content(1)
         end
         visit root_path
@@ -45,11 +45,11 @@ context 'As a visitor' do
         visit items_path
         find(".add_item_#{@accessories.last.id}").click
 
-        within('.nav-cart') do
+        within('.nav-icon') do
           expect(page).to have_content(2)
         end
         visit trips_path
-        within('.nav-cart') do
+        within('.nav-icon') do
           expect(page).to have_content(2)
         end
       end

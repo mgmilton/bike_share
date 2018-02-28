@@ -5,12 +5,14 @@ describe "As a visitor" do
     it "he or she can login" do
       user = create(:user)
 
-      visit '/'
+      visit '/login'
 
-      fill_in "email", with: user.email
-      fill_in "password", with: user.password
+      within(".card") do
+        fill_in "Email", with: user.email
+        fill_in "Password", with: user.password
 
-      click_on "Log In"
+        click_on "Log In"
+      end
 
       expect(page).to have_content("Logged in as #{user.name}")
       expect(page).to have_content("Email: #{user.email}")

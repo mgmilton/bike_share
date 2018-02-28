@@ -13,15 +13,15 @@ describe "as a user" do
         visit "/bike-shop"
 
         within(".item_#{@item1.id}") do
-          click_on "Add to Cart"
+          click_link "Add to Cart"
         end
 
         within(".item_#{@item1.id}") do
-          click_on "Add to Cart"
+          click_link "Add to Cart"
         end
 
         within(".item_#{@item2.id}") do
-          click_on "Add to Cart"
+          click_link "Add to Cart"
         end
 
         expect(current_path).to eq(items_path)

@@ -1,15 +1,17 @@
-<h1>Stations Dashboard</h1>
-<p><%= @stations.count %> Total Stations</p>
-<p>Average Bikes Available Per Station: <%= @stations.average_bikes %></p>
-<p>Most Bikes Available at a Station: <%= @stations.most_bikes_available %></p>
-<p>Stations with <%= @stations.most_bikes_available %> Bikes Available:</p>
-<% @stations.highest_dock_count.each do |station| %>
-<li><%= station %></li>
-<% end %>
-<p>Fewest Bikes Available at a Station: <%= @stations.fewest_bikes_available %></p>
-<p>Stations with <%= @stations.fewest_bikes_available %> Bikes Available:</p>
-<% @stations.lowest_dock_count.each do |station| %>
-<li><%= station %></li>
-<% end %>
-<p>Most Recently Installed Station: <%= @stations.most_recent %></p>
-<p>Oldest Station: <%= @stations.oldest %></p>
+<h1 class="main-header">Stations Dashboard</h1>
+<figure class="card">
+  <h2 class="sub-header"><%= @stations.count %> Total Stations</p>
+  <h2 class="sub-header">Average Bikes Available Per Station: <%= @stations.average_bikes %></h2>
+  <h2 class="sub-header">Most Bikes Available at a Station: <%= @stations.most_bikes_available %></h2>
+  <h2 class="sub-header">Stations with <%= @stations.most_bikes_available %> Bikes Available:</h2>
+  <% @stations.highest_dock_count.each do |station| %>
+    <h2 class="sub-header"><%= station %></h2>
+  <% end %>
+  <h2 class="sub-header">Fewest Bikes Available at a Station: <%= @stations.fewest_bikes_available %></h2>
+  <h2 class="sub-header">Stations with <%= @stations.fewest_bikes_available %> Bikes Available:</h2>
+  <% @stations.lowest_dock_count.each do |station| %>
+    <h2 class="sub-header"><%= station %></h2>
+  <% end %>
+  <h2 class="sub-header">Most Recently Installed Station: <%= @stations.most_recent %></h2>
+  <h2 class="sub-header">Oldest Station: <%= @stations.oldest %></h2>
+</figure>
