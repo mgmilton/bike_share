@@ -13,8 +13,9 @@ describe "ad as admin" do
       fill_in "Duration", with: 21
       fill_in "Bike", with: 99
       fill_in "Start date", with: Date.today
+      select("Test Station", from: "Start station")
+      select("Another Test Station", from: "End station")
       fill_in "End date", with: Date.today
-      fill_in "End station", with: 1
       fill_in "Subscription type", with: "Subscriber"
       click_on "Create Trip"
 
@@ -23,10 +24,11 @@ describe "ad as admin" do
       expect(page).to have_content("Trip Details")
       expect(page).to have_content("Duration: 21")
       expect(page).to have_content("Bike used: 99")
+      expect(page).to have_content("Start station: Test Station")
       expect(page).to have_content("Start date: #{Date.today}")
-      expect(page).to have_content("Start station: Another Test Station")
+      expect(page).to have_content("End station: Another Test Station")
       expect(page).to have_content("End date: #{Date.today}")
-      expect(page).to have_content("End station: Test Station")
+      expect(page).to have_content("Test Station")
       expect(page).to have_content("Subscription type: Subscriber")
       expect(page).to have_content("Zip code: 91407")
     end

@@ -13,6 +13,8 @@ describe "as a registered user or admin" do
     @trip3 = create(:trip, duration: 3, bike_id: 10, subscription_type: "Customer", zip_code: 94041, start_station_id: @station1.id, end_station_id: @station2.id, start_date: Date.strptime("12/25/2017", "%m/%e/%y"))#, condition: @condition1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end
+
+
   describe "when i visit the trips_dashboard_path" do
     it "shows the average duration of a ride" do
       visit trips_dashboard_path
@@ -38,18 +40,6 @@ describe "as a registered user or admin" do
       # needs to be tweaked
       expect(page).to have_content("Total Rides By Month")
       expect(page).to have_content("3")
-    end
-
-    it "shows most ridden bike with number of rides" do
-      visit trips_dashboard_path
-
-      expect(page).to have_content("Least Ridden Bike: #{@trip1.bike_id} with 2 rides")
-    end
-
-    it "shows least ridden bike with number of rides" do
-      visit trips_dashboard_path
-
-      expect(page).to have_content("Most Ridden Bike: #{@trip3.bike_id} with 1 rides")
     end
 
     it "shows user types with number and percentage" do
@@ -78,23 +68,17 @@ describe "as a registered user or admin" do
       expect(page).to have_content("Station With Most Ending Rides: #{@station2.name}")
     end
 
-    # it "shows the weather for the busiest day" do
-    #   visit trips_dashboard_path
-    #
-    #
-    # end
-    #
-    # it "shows the weather for the slowest day" do
-    #   visit trips_dashboard_path
-    #
-    #
-    # end
+
+    it "shows the weather for the busiest day" do
+      visit trips_dashboard_path
+
+      expect(page).to have_content("High Temperature: 105.0")
+    end
+
+    it "shows the weather for the slowest day" do
+      visit trips_dashboard_path
+
+      expect(page).to have_content("Mean Precipitation: 0.0")
+    end
   end
 end
-
-
-# I see the Weather on the day with the highest rides.
-# I see the Weather on the day with the lowest rides.
-
-# I see the Station with the most rides as a starting place,
-# I see the Station with the most rides as an ending place,
