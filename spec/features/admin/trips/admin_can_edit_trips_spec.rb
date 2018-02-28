@@ -27,9 +27,7 @@ describe "as an admin" do
 
       expect(page).to have_content("Trip Successfully Updated")
 
-      visit trips_path
-
-      expect(page).to have_content("Trip Duration: 100")
+      expect(page).to have_content("Duration: 100")
     end
 
     it "shows a link to delete" do

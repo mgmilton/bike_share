@@ -8,8 +8,8 @@
     <p class="regular-text">Installation Date: <%= station.installation_date %></p>
     <% if current_admin? %>
     <section class=btn-group>
-      <%= button_to 'Edit', edit_admin_station_path(station), method: :put, class: 'btn'%>
-      <%= button_to 'Delete', admin_station_path(station), method: :delete, class: "delete-#{station.id} btn" %>
+      <button class="btn"><%= link_to 'Edit', edit_admin_station_path(station), method: :put %></button>
+      <button class="btn"><%= link_to 'Delete', admin_station_path(station), method: :delete, class: "delete-#{station.id}" %></button>
     </section>
     <% end %>
   </figure>

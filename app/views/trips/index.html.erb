@@ -12,15 +12,15 @@
 <div class="card-container">
   <% @trips.each do |trip| %>
   <figure class="card">
-    <h2 class="sub-header">Trip Duration:</h2> <p class="regular-text><%= trip.duration %>
-    <h2 class="sub-header">Trip Start Date:</h2> <p class="regular-text><%= trip.start_date %>
-    <h2 class="sub-header">Trip Starting Station:</h2> <p class="regular-text><%= Station.find(trip.start_station_id).name %>
-    <h2 class="sub-header">Trip End Date:</h2> <p class="regular-text><%= trip.end_date %>
-    <h2 class="sub-header">Trip Ending Station:</h2> <p class="regular-text><%= Station.find(trip.end_station_id).name %>
-    <h2 class="sub-header">Bike Used:</h2> <p class="regular-text><%= trip.bike_id %>
-    <h2 class="sub-header">Subcriber Type:</h2> <p class="regular-text><%= trip.subscription_type %>
-    <h2 class="sub-header">Trip Zip Code:</h2> <p class="regular-text><%= trip.zip_code %>
-    <h2 class="sub-header"><%= link_to "View This Trip", trip_path(trip) %></strong>
+    <h2 class="sub-header">Trip Duration:</h2> <p class="regular-text"><%= trip.duration %></p>
+    <h2 class="sub-header">Trip Start Date:</h2> <p class="regular-text"><%= trip.start_date %></p>
+    <h2 class="sub-header">Trip Starting Station:</h2> <p class="regular-text"><%= Station.find(trip.start_station_id).name %></p>
+    <h2 class="sub-header">Trip End Date:</h2> <p class="regular-text"><%= trip.end_date %></p>
+    <h2 class="sub-header">Trip Ending Station:</h2> <p class="regular-text"><%= Station.find(trip.end_station_id).name %></p>
+    <h2 class="sub-header">Bike Used:</h2> <p class="regular-text"><%= trip.bike_id %></p>
+    <h2 class="sub-header">Subcriber Type:</h2> <p class="regular-text"><%= trip.subscription_type %></p>
+    <h2 class="sub-header">Trip Zip Code:</h2> <p class="regular-text"><%= trip.zip_code %></p>
+    <h2 class="sub-header"><%= link_to "View This Trip", trip_path(trip) %></h2>
     <br>
     <div class="trip_<%= trip.id %>">
       <%if current_user && current_user.admin? %>

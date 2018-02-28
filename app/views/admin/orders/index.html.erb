@@ -1,3 +1,4 @@
+<%= render partial: 'users/user' %>
 <%= link_to "All Orders", admin_orders_path %>
 <%= link_to 'Bike Shop Accessories', admin_items_path %>
 <p>
@@ -7,7 +8,8 @@
   Completed(<%= @orders.completed.count %>)
 </p>
 <%= form_tag admin_orders_path, method: :get  do %>
-<%= select_tag :status, options_for_select([['Ordered'], ['Paid'], ['Canceled'], ['Completed']]) %>
+<%= label_tag :status %>
+<%= select_tag :status, options_for_select([['Ordered'], ['Paid'], ['Canceled'], ['Completed']]), class: 'status-filter' %>
 <%= submit_tag  "Filter", class: 'btn' %>
 <% end %>
 <table class="table table-bordered">

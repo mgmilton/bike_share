@@ -7,7 +7,7 @@
       <p class="regular-text"><%= item.description %></p>
   <% if item.active? %>
     <center>
-      <%= button_to "Add to Cart", carts_path(item_id: item.id), class: "add_item_#{item.id} btn" %>
+      <button class="btn"><%= link_to "Add to Cart", carts_path(item_id: item.id), class: "add_item_#{item.id}", method: :post %></button>
     </center>
   <% else %>
     <p>Accessory Retired</p>

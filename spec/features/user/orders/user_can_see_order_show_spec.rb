@@ -13,15 +13,15 @@ describe "as a user" do
         visit "/bike-shop"
 
         within(".item_#{@item1.id}") do
-          click_on "Add to Cart"
+          click_link "Add to Cart"
         end
 
         within(".item_#{@item1.id}") do
-          click_on "Add to Cart"
+          click_link "Add to Cart"
         end
 
         within(".item_#{@item2.id}") do
-          click_on "Add to Cart"
+          click_link "Add to Cart"
         end
 
         expect(current_path).to eq(items_path)
@@ -34,7 +34,7 @@ describe "as a user" do
 
         click_on "1"
 
-        within('.nav-icon') do
+        within('.nav-cart') do
           expect(page).to have_content(0)
         end
         expect(page).to have_content("Order 1")

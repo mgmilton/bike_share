@@ -4,6 +4,18 @@
   justify-content: space-between;
   padding: 10px 0px;
   background-color: $denim;
+  .dropdown-toggle:active, .dropdown:active {
+    background: $denim;
+    color: $marigold;
+  }
+  .dropdown-toggle:visited, .nav-item:visited {
+    background: $denim;
+    color: white;
+  }
+  .dropdown-toggle:hover {
+    background: $denim;
+    color: $marigold;
+  }
   .navbar-brand:hover {
     color: $marigold;
   }
@@ -26,7 +38,6 @@
         }
       }
     }
-
     .dropdown-menu {
       background: $denim;
       margin-top: 15px;
@@ -38,19 +49,6 @@
         background: $marigold;
       }
     }
-
-    .dropdown-toggle:active, .nav-item:active {
-      background: $denim;
-      color: $marigold;
-    }
-  .dropdown-toggle:visited, .nav-item:visited {
-    background: $denim;
-    color: white;
-  }
-  .dropdown-toggle:hover {
-    background: $denim;
-    color: $marigold;
-  }
 }
 
 .nav-icon {
