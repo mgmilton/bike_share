@@ -6,8 +6,8 @@
   <p>Installation Date: <%= station.installation_date %></p>
   <% if current_admin? %>
   <section class=btn-group>
-    <%= link_to 'Edit', edit_admin_station_path(station) %>
-    <%= link_to 'Delete', admin_station_path(station), method: :delete, class: "delete-#{station.id}" %>
+      <button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_admin_station_path(station) %></button>
+      <button type="button" class="btn btn-warning"><%= link_to 'Delete', admin_station_path(station), method: :delete, class: "delete-#{station.id}" %></button>
   </section>
   <% end %>
 <% end %>
