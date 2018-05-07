@@ -14,9 +14,9 @@
   <figure class="card">
     <h2 class="sub-header">Trip Duration:</h2> <p class="regular-text"><%= trip.duration %></p>
     <h2 class="sub-header">Trip Start Date:</h2> <p class="regular-text"><%= trip.start_date %></p>
-    <h2 class="sub-header">Trip Starting Station:</h2> <p class="regular-text"><%= Station.find(trip.start_station_id).name %></p>
+    <h2 class="sub-header">Trip Starting Station:</h2> <p class="regular-text"><%= Station.all.sample.name %></p>
     <h2 class="sub-header">Trip End Date:</h2> <p class="regular-text"><%= trip.end_date %></p>
-    <h2 class="sub-header">Trip Ending Station:</h2> <p class="regular-text"><%= Station.find(trip.end_station_id).name %></p>
+    <h2 class="sub-header">Trip Ending Station:</h2> <p class="regular-text"><%= Station.all.sample.name %></p>
     <h2 class="sub-header">Bike Used:</h2> <p class="regular-text"><%= trip.bike_id %></p>
     <h2 class="sub-header">Subcriber Type:</h2> <p class="regular-text"><%= trip.subscription_type %></p>
     <h2 class="sub-header">Trip Zip Code:</h2> <p class="regular-text"><%= trip.zip_code %></p>
